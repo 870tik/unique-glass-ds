@@ -1,0 +1,29 @@
+/* ------------------------------------------------------------
+   phase 8 — icon system（Lucide / ISC。sprite は js/lg-icons.js が注入）
+   マークアップ: <i data-lg-icon="search"></i> → svg.lg-icon に置換
+   ------------------------------------------------------------ */
+.lg-icon {
+  flex: none;
+  width: var(--lg-ref-size-icon);
+  height: var(--lg-ref-size-icon);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--lg-ref-size-icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: middle;
+}
+.lg-icon--lg {
+  width: var(--lg-ref-size-icon-lg);
+  height: var(--lg-ref-size-icon-lg);
+}
+.lg-empty .lg-icon {
+  width: var(--lg-empty-icon-size);
+  height: var(--lg-empty-icon-size);
+  opacity: 0.4;
+}
+.lg-stepper .dot .lg-icon,
+.lg-select-trigger .caret .lg-icon {
+  width: var(--lg-ref-type-micro-size);
+  height: var(--lg-ref-type-micro-size);
+}

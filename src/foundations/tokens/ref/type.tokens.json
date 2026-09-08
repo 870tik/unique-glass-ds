@@ -1,0 +1,79 @@
+{
+  "lg": {
+    "ref": {
+      "type": {
+        "$description": "タイポグラフィスケール。部品ローカルの font-size はこの段階に揃える。利用は .lg-type-* ユーティリティか var 参照",
+        "display-size": {
+          "$value": "24px",
+          "$type": "dimension",
+          "$description": "ページ見出し（h1）。SaaS では控えめに1画面1回"
+        },
+        "title-size": {
+          "$value": "19px",
+          "$type": "dimension",
+          "$description": "セクション見出し（h2）"
+        },
+        "heading-size": {
+          "$value": "15px",
+          "$type": "dimension",
+          "$description": "パネル見出し・モーダルタイトル（h3/h4）"
+        },
+        "body-size": {
+          "$value": "13.5px",
+          "$type": "dimension",
+          "$description": "本文・テーブル・メニューの基準サイズ"
+        },
+        "caption-size": {
+          "$value": "11.5px",
+          "$type": "dimension",
+          "$description": "補足・ヘルプ・delta 表示"
+        },
+        "micro-size": {
+          "$value": "10px",
+          "$type": "dimension",
+          "$description": "uppercase ラベル・タグ。tracking-wide と併用"
+        },
+        "weight-regular": {
+          "$value": 400,
+          "$type": "fontWeight",
+          "$description": "本文"
+        },
+        "weight-medium": {
+          "$value": 500,
+          "$type": "fontWeight",
+          "$description": "ボタン・強調ラベル"
+        },
+        "weight-semibold": {
+          "$value": 650,
+          "$type": "fontWeight",
+          "$description": "見出し・KPI 数値"
+        },
+        "leading-tight": {
+          "$value": 1.3,
+          "$type": "number",
+          "$description": "見出し・数値の行送り"
+        },
+        "leading-body": {
+          "$value": 1.7,
+          "$type": "number",
+          "$description": "本文の行送り"
+        },
+        "tracking-wide": {
+          "$value": "0.14em",
+          "$type": "dimension",
+          "$description": "uppercase の技術ラベル用トラッキング（micro/caption と併用）"
+        },
+        "family-mono": {
+          "$value": "'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace",
+          "$type": "fontFamily",
+          "$description": "計測の声（R15）: spec-tag・ラベル・数表・目盛り。IBM Plex Mono（OFL・同梱）"
+        },
+        "family-display": {
+          "$value": "'Space Grotesk', -apple-system, 'Helvetica Neue', 'Hiragino Sans', sans-serif",
+          "$type": "fontFamily",
+          "$description": "声（R15）: 見出し・数値・巨大アウトラインの Latin 顔。幾何学×技術の Space Grotesk（OFL・assets/fonts 同梱）。和文はシステムへフォールバック"
+        }
+      }
+    }
+  }
+}

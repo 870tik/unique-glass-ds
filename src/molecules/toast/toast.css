@@ -1,0 +1,47 @@
+/* ---------- toast（右下スタック・一時面） ---------- */
+.lg-toast-stack {
+  position: fixed;
+  right: var(--lg-ref-space-lg);
+  bottom: var(--lg-ref-space-lg);
+  z-index: var(--lg-ref-z-toast);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--lg-toast-gap);
+}
+.lg-toast {
+  --lg-r: var(--lg-toast-radius);
+  width: var(--lg-toast-width);
+  max-width: calc(100vw - 36px);
+  padding: var(--lg-toast-pad-y) var(--lg-toast-pad-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--lg-ref-space-md);
+  font-size: var(--lg-ref-type-body-size);
+  will-change: transform;
+}
+.lg-toast.is-leaving {
+  opacity: 0;
+  transition: opacity var(--lg-ref-duration-fade) ease;
+}
+.lg-toast-action {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  flex: none;
+  height: var(--lg-toast-action-height);
+  padding: 0 var(--lg-ref-space-sm);
+  border-radius: var(--lg-ref-radius-pill);
+  font-family: inherit;
+  font-size: var(--lg-chip-font-size);
+  font-weight: var(--lg-button-font-weight);
+  color: var(--lg-ink);
+  background: color-mix(in srgb, var(--lg-ink)
+    calc(var(--lg-ref-alpha-pill) * 100%), transparent);
+}
+.lg-toast-action:focus-visible {
+  outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+  outline-offset: var(--lg-ref-size-focus-offset);
+}
+.lg-toast.is-positive { color: var(--lg-ref-color-positive); }

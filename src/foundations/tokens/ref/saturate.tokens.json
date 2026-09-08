@@ -1,0 +1,18 @@
+{
+  "lg": {
+    "ref": {
+      "saturate": {
+        "regular": {
+          "$value": 1.4,
+          "$type": "number",
+          "$description": "Regular の背景彩度リフト。集光の帰結（公理2）。SVG チェーン内 feColorMatrix と baseline CSS の両方がこの単一値を参照する"
+        },
+        "clear": {
+          "$value": 1.2,
+          "$type": "number",
+          "$description": "Clear の背景彩度リフト。素通しに近いので控えめ"
+        }
+      }
+    }
+  }
+}

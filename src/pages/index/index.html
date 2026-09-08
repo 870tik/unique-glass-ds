@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="ja" data-lg-surface="dark" data-lg-observer="personal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unique Glass DS</title>
+<!-- @include src/pages/_shared/persona-boot.html -->
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/liquid-glass.css">
+<link rel="stylesheet" href="../css/themes/studio-dark.css">
+<style>
+:root { --mono: var(--lg-ref-type-family-mono); }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body {
+  margin: 0; min-height: 100vh;
+  background: color-mix(in srgb, var(--lg-ref-color-opaque-dark) 88%, var(--lg-ref-color-black));
+}
+body {
+  font-family: -apple-system, "Helvetica Neue", "Hiragino Sans", sans-serif;
+  color: var(--lg-adaptive-dark-ink);
+  overflow-x: clip;
+}
+.tag { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; opacity: .55; }
+
+/* ====== 入力環境で書き口を変える（hover の有無で挙動が違うため） ====== */
+.pc-only, .sp-only { display: none; }
+@media (hover: hover) and (pointer: fine) { .pc-only { display: revert; } }
+@media (hover: none), (pointer: coarse) { .sp-only { display: revert; } }
+
+
+/* ====== 共通: 帯 ====== */
+.band { position: relative; overflow: clip; padding: clamp(72px, 12vh, 140px) var(--lg-ref-space-lg); }
+.band .inner { position: relative; z-index: 1; max-width: var(--lg-layout-page-max); margin-inline: auto; }
+.band .no { font-family: var(--mono); font-size: var(--lg-ref-type-micro-size); letter-spacing: .2em; opacity: .45; display: block; margin-bottom: var(--lg-ref-space-lg); }
+.band h2 { font-size: clamp(26px, 4vw, 44px); font-weight: var(--lg-ref-type-weight-semibold); line-height: var(--lg-ref-type-leading-tight); letter-spacing: -0.01em; margin: 0 0 var(--lg-ref-space-lg); }
+.band .lede { max-width: 560px; color: color-mix(in srgb, var(--lg-ink) 72%, transparent); margin: 0 0 var(--lg-ref-space-2xl); }
+.bg-grid {
+  position: absolute; inset: -60px; z-index: 0; pointer-events: none;
+  /* accent 自体が環境光の角度で回るため、ここでの hue-rotate は不要（二重回転になる） */
+  background:
+    radial-gradient(60% 55% at 72% 18%,
+      color-mix(in srgb, var(--lg-ref-color-accent) 22%, transparent), transparent 70%),
+    radial-gradient(48% 52% at 12% 88%,
+      color-mix(in srgb, var(--lg-ref-color-accent-deep) 15%, transparent), transparent 72%),
+    linear-gradient(color-mix(in srgb, var(--lg-adaptive-dark-ink) 7%, transparent) 1px, transparent 1px) 0 0 / 100% 48px,
+    linear-gradient(90deg, color-mix(in srgb, var(--lg-adaptive-dark-ink) 7%, transparent) 1px, transparent 1px) 0 0 / 48px 100%;
+  mask-image: radial-gradient(80% 75% at 50% 50%, #000 40%, transparent 100%);
+}
+
+/* ====== HERO — 3秒で触らせる ====== */
+.lp-hero { min-height: 94vh; display: grid; align-content: center; text-align: center; }
+.lp-outline {
+  position: absolute; z-index: 0;
+  font-family: var(--lg-ref-type-family-display);
+  font-weight: var(--lg-ref-type-weight-semibold);
+  letter-spacing: .04em;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--lg-ink) 30%, transparent);
+  user-select: none; pointer-events: none; line-height: 1; white-space: nowrap;
+}
+.lp-hero .lp-outline { font-size: clamp(110px, 24vw, 340px); top: 6%; left: 50%; transform: translateX(-50%); }
+.lp-title {
+  font-size: clamp(30px, 5.2vw, 62px);
+  font-weight: var(--lg-ref-type-weight-semibold);
+  line-height: var(--lg-ref-type-leading-tight);
+  letter-spacing: -0.02em;
+  margin: var(--lg-ref-space-lg) 0 0;
+}
+.lp-lede { max-width: 540px; margin: var(--lg-ref-space-lg) auto 0; color: color-mix(in srgb, var(--lg-ink) 72%, transparent); }
+.hero-card { width: min(400px, 92vw); margin: var(--lg-ref-space-2xl) auto 0; text-align: left; }
+.hero-card .hint { font-family: var(--mono); font-size: var(--lg-ref-type-caption-size); letter-spacing: .1em; color: var(--lg-button-accent); }
+.lp-hero .actions { display: flex; gap: var(--lg-ref-space-sm); justify-content: center; margin-top: var(--lg-ref-space-xl); flex-wrap: wrap; }
+
+/* ====== LIGHT — 分光の署名（light surface） ====== */
+.band--light {
+  background:
+    repeating-radial-gradient(circle at 108% 42%, transparent 0 38px,
+      color-mix(in srgb, var(--lg-ref-color-ink-dark) 7%, transparent) 38px 39px),
+    var(--lg-ref-color-opaque-light);
+  color: var(--lg-ref-color-ink-dark);
+}
+.band--light .lp-outline {
+  font-size: clamp(120px, 22vw, 340px);
+  right: -3vw; bottom: -8%;
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--lg-ref-color-ink-dark) 34%, transparent);
+}
+.solo { max-width: 460px; }
+.solo .cell-note { margin-top: var(--lg-ref-space-md); }
+
+/* ====== ALIVE — 生命徴 ====== */
+.alive-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: var(--lg-ref-space-3xl); align-items: center; }
+.alive-split .lede { margin-bottom: 0; }
+@media (max-width: 880px) { .alive-split { grid-template-columns: 1fr; gap: var(--lg-ref-space-2xl); } }
+.chips { display: flex; gap: var(--lg-ref-space-sm); flex-wrap: wrap; margin-top: var(--lg-ref-space-lg); }
+
+/* ====== OBSERVER — 目玉 ====== */
+.band--observer { text-align: center; }
+.band--observer h2 { font-size: clamp(30px, 5.6vw, 60px); }
+.band--observer .lede { margin-inline: auto; }
+.obs-actions { display: flex; gap: var(--lg-ref-space-sm); justify-content: center; flex-wrap: wrap; }
+.dock-cue { display: block; margin-top: var(--lg-ref-space-2xl); font-family: var(--mono); font-size: var(--lg-ref-type-caption-size); letter-spacing: .1em; color: var(--lg-button-accent); }
+
+/* ====== SYSTEM — 中身 ====== */
+
+/* ====== HOWTO — 使い方 ====== */
+.howto-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: var(--lg-ref-space-lg); margin-bottom: var(--lg-ref-space-2xl); }
+.step-no {
+  display: inline-grid; place-items: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  font-family: var(--mono); font-size: var(--lg-ref-type-caption-size);
+  background: color-mix(in srgb, var(--lg-button-accent) 22%, transparent);
+  color: var(--lg-ink);
+  margin-bottom: var(--lg-ref-space-md);
+}
+.howto-demo { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--lg-ref-space-xl); align-items: center; }
+@media (max-width: 720px) { .howto-demo { grid-template-columns: 1fr; } }
+.howto-code {
+  margin: 0; padding: var(--lg-ref-space-lg) var(--lg-ref-space-xl);
+  border-radius: var(--lg-ref-radius-lg);
+  background: color-mix(in srgb, var(--lg-ref-color-black) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--lg-ink) 10%, transparent);
+  font-family: var(--mono); font-size: var(--lg-ref-type-caption-size);
+  line-height: 1.9; overflow-x: auto;
+  color: color-mix(in srgb, var(--lg-ink) 80%, transparent);
+}
+.howto-result { display: grid; justify-items: center; gap: var(--lg-ref-space-md); padding: var(--lg-ref-space-lg); }
+
+/* ====== DOORS — 入口（media surface） ====== */
+.band--doors::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0;
+  filter: hue-rotate(var(--lg-obs-ambient, 0deg));
+  background:
+    radial-gradient(50% 60% at 78% 12%, color-mix(in srgb, #ffd9a0 70%, transparent), transparent 70%),
+    linear-gradient(158deg, #6f79c8 0%, #a86fa8 34%, #e08a74 62%, #274a43 100%);
+}
+.lp-doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: var(--lg-ref-space-lg); }
+.lp-door-head { display: flex; align-items: center; gap: var(--lg-ref-space-sm); margin-bottom: var(--lg-ref-space-sm); }
+.lp-door-head .go { margin-left: auto; opacity: .5; }
+
+footer { text-align: center; padding: var(--lg-ref-space-2xl) var(--lg-ref-space-lg) calc(var(--lg-ref-space-4xl) + var(--lg-ref-space-3xl)); }
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .lp-hero .bg-grid { animation: lp-drift 26s ease-in-out infinite alternate; }
+  @keyframes lp-drift { from { transform: translate3d(0,0,0); } to { transform: translate3d(-24px, -14px, 0); } }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .bg-grid, .lp-outline { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- @include src/pages/_shared/global-header.html -->
+
+<!-- ====== HERO — まず触らせる ====== -->
+<header class="band lp-hero">
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="lp-outline" aria-hidden="true">GLASS</div>
+  <div class="inner">
+    <h1 class="lp-title">ガラスをベースにした、<br>ユニークなデザインシステム。</h1>
+    <p class="lg-type-body lp-lede">
+      ボタンも、カードも、入力欄も — 背後の光を屈折させるガラスで組んだ
+      Web UI コンポーネント集です。ビルド不要、HTML と CSS を置くだけで動きます。
+    </p>
+    <div class="lg-glass lg-card hero-card" data-lg-gel tabindex="0">
+      <div class="lg-card-body">
+        <span class="hint">▼ ためしに、このカードを長押ししてみてください</span>
+        <p class="lg-type-body" style="margin:var(--lg-ref-space-sm) 0 0">
+          ゼリーのように潰れて、離すとぷるんと戻ります。
+          よく見ると、<b>ガラスの屈折まで一緒に潰れています</b>。
+        </p>
+      </div>
+    </div>
+    <div class="actions">
+      <a class="lg-glass lg-button lg-button--primary" data-lg-gel href="#howto">使い方を見る ↓</a>
+      <a class="lg-glass lg-button" data-lg-gel href="catalog.html">部品一覧へ</a>
+    </div>
+  </div>
+</header>
+
+<!-- ====== 01 LIGHT — 分光の署名（light surface） ====== -->
+<section class="band band--light" id="light" data-lg-surface="light" aria-label="分光の署名">
+  <div class="lp-outline" aria-hidden="true">LENS</div>
+  <div class="inner">
+    <span class="no">01 — 見た目のちがい</span>
+    <h2>縁のにじみが、本物。</h2>
+    <p class="lg-type-body lede">
+      よくある「すりガラス風」は、実はただのぼかしフィルタです。この素材は背後の光を
+      実際に屈折させているので、本物のレンズと同じ<b>色のにじみ（虹）</b>が縁に出ます。
+    </p>
+    <div class="solo">
+      <div class="lg-glass lg-card" data-lg-gel="0.985" tabindex="0">
+        <div class="lg-card-body">
+          <span class="lg-type-title">縁を、よく見てください。</span>
+          <p class="lg-type-body" style="margin:var(--lg-ref-space-md) 0 0; color:color-mix(in srgb, var(--lg-ink) 78%, transparent)">
+            背後の同心円がカードの縁で曲がって、赤と青ににじんでいます。<span class="pc-only">
+            カーソルを縁に沿って動かすと、虹色の光が追いかけてきます。</span><span class="sp-only">
+            指で押さえている間、縁に虹色の光が点きます。</span>
+          </p>
+        </div>
+      </div>
+      <p class="lg-type-caption cell-note" style="opacity:.65">ぼかしの重ね塗りではなく、屈折の実計算です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 02 ALIVE — 少し生きている ====== -->
+<section class="band" id="alive" aria-label="生命徴">
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="inner">
+    <div class="alive-split">
+      <div>
+        <span class="no">02 — 動きのちがい</span>
+        <h2>触ったときだけ、<br>生きている。</h2>
+        <p class="lg-type-body lede">
+          押すと潰れ、離すとぷるんと戻り、触れると光が応える。
+          でも誰も触っていないときは、完全に静止しています。
+          勝手に動き続ける装飾はひとつもありません — 動きはぜんぶ、操作への返事です。
+        </p>
+      </div>
+      <div>
+        <div class="lg-glass lg-card" data-lg-gel="0.985" tabindex="0">
+          <div class="lg-card-body lg-type-body">
+            <span class="pc-only">カーソルを乗せると — 押す前に — レンズが少しだけ締まります。
+            <b>Tab キーでフォーカス</b>してしばらく待つと、縁の光がゆっくり明滅します。
+            まるで、見つめられて呼吸しているように。</span><span class="sp-only">
+            触れた瞬間に縁が光り、押すと屈折ごと締まり、離すとぷるんと戻ります。
+            指を離れたガラスは、また静かになります。</span>
+          </div>
+        </div>
+        <div class="chips">
+          <button class="lg-chip" aria-pressed="false">ガラス以外の部品も</button>
+          <button class="lg-chip" aria-pressed="true">押せば</button>
+          <button class="lg-chip" aria-pressed="false">ぷるんと応える</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 03 OBSERVER — 目玉 ====== -->
+<section class="band band--observer" id="observer" aria-label="観測者効果">
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="inner">
+    <span class="no">03 — あなた専用</span>
+    <h2>ユーザーによって、<br>デザインが微妙に変わります。</h2>
+    <p class="lg-type-body lede">
+      このページの色合い・光の角度・動きのクセは、ブラウザごとに少しずつ違う値で
+      生成されています。いまあなたが見ている画面は、正確には、あなたにしか見えていません。
+      隣の人が開くと、光の色が違います。
+    </p>
+    <div class="obs-actions">
+      <button class="lg-button lg-button--outline" id="reroll" data-lg-gel>別の観測者になる ↻</button>
+      <button class="lg-button lg-button--outline" id="tiltBtn" data-lg-gel hidden>傾きで光を動かす（許可）</button>
+    </div>
+    <span class="dock-cue">▼ 画面下のドックで、別の人の見え方に切り替えられます</span>
+  </div>
+</section>
+
+<!-- ====== 04 SYSTEM — 体系は静かに ====== -->
+<section class="band" id="system" aria-label="体系">
+  <div class="inner">
+    <span class="no">04 — 中身</span>
+    <h2>新しい形のデザインシステムとして</h2>
+    <p class="lg-type-body lede">
+      単なる見た目の研究ではなくあらゆるサービスに応用可能な新しい形のデザインシステムとして、
+      415個のトークン、53個のコンポーネントが用意されています。生成AIを用いたサービスの
+      UI/UXデザインに利用することができるよう全パーツ利用ルールが定まっており、
+      ルール違反は ClaudeCode のチェックで弾けます。
+    </p>
+    <div class="lg-grid-stats">
+      <!-- @include src/molecules/stat/stat.html {"label":"Design tokens","value":"415","delta":"DTCG・全て $description つき","trend":""} -->
+      <!-- @include src/molecules/stat/stat.html {"label":"Components","value":"53","delta":"各フォルダに usage.md","trend":""} -->
+    </div>
+  </div>
+</section>
+
+<!-- ====== 05 HOWTO — 使い方 ====== -->
+<section class="band" id="howto" aria-label="使い方">
+  <div class="inner">
+    <span class="no">05 — 使い方</span>
+    <h2>コピーして、置くだけ。</h2>
+    <p class="lg-type-body lede">
+      npm もビルドツールも要りません。3つのファイルを読み込んで、
+      クラス名を書けば、その要素はガラスになります。
+    </p>
+    <div class="howto-grid">
+      <div class="lg-panel">
+        <span class="step-no">1</span>
+        <p class="lg-type-heading" style="margin:0 0 var(--lg-ref-space-sm)">ファイルを置く</p>
+        <p class="lg-type-caption" style="margin:0; opacity:.75">css/ と js/ をプロジェクトにコピーして、HTML から3行で読み込みます。依存はゼロです。</p>
+      </div>
+      <div class="lg-panel">
+        <span class="step-no">2</span>
+        <p class="lg-type-heading" style="margin:0 0 var(--lg-ref-space-sm)">クラス名を書く</p>
+        <p class="lg-type-caption" style="margin:0; opacity:.75">部品は HTML のクラス名だけで組めます。<code>lg-glass</code> を付けた要素が、屈折するガラスになります。</p>
+      </div>
+      <div class="lg-panel">
+        <span class="step-no">3</span>
+        <p class="lg-type-heading" style="margin:0 0 var(--lg-ref-space-sm)">カタログからコピペ</p>
+        <p class="lg-type-caption" style="margin:0; opacity:.75">53部品の実物とコードはカタログに。部品ごとに「いつ使うか」の文書が付いています。</p>
+      </div>
+    </div>
+    <div class="howto-demo">
+      <pre class="howto-code"><code>&lt;link rel="stylesheet" href="css/tokens.css"&gt;
+&lt;link rel="stylesheet" href="css/liquid-glass.css"&gt;
+&lt;script src="js/liquid-glass.js"&gt;&lt;/script&gt;
+
+&lt;button class="lg-glass lg-button lg-button--primary" data-lg-gel&gt;
+  送信する
+&lt;/button&gt;</code></pre>
+      <div class="howto-result">
+        <span class="tag">→ こうなる</span>
+        <button class="lg-glass lg-button lg-button--primary" data-lg-gel>送信する</button>
+      </div>
+    </div>
+    <div class="actions" style="justify-content:flex-start; margin-top:var(--lg-ref-space-2xl)">
+      <a class="lg-glass lg-button lg-button--primary" data-lg-gel href="unique-glass-ds.zip" download>一式をダウンロード（zip）</a>
+      <a class="lg-glass lg-button" data-lg-gel href="catalog.html">先に部品を眺める</a>
+    </div>
+    <p class="lg-type-caption" style="opacity:.6; margin-top:var(--lg-ref-space-lg)">
+      MIT ライセンス（商用利用自由・無保証）。zip には部品・トークン・ドキュメント・
+      AI 向けの SKILL.md まですべて入っています。AI に組ませる場合は SKILL.md を
+      読ませてください — 部品の選び方やガラスの使いどころまで、判断ルールごと渡せます。
+      カスタマイズして導入したい方は
+      <a href="https://taikihanaoka.com/" style="color:var(--lg-button-accent)">taikihanaoka.com</a>
+      からご連絡ください。
+    </p>
+  </div>
+</section>
+
+<!-- ====== 06 DOORS — 入口（media surface） ====== -->
+<section class="band band--doors" id="doors" data-lg-surface="media" aria-label="入口">
+  <div class="inner">
+    <span class="no" style="opacity:.85">06 — 入口</span>
+    <h2 style="color:var(--lg-ink)">実物を、触ってみてください。</h2>
+    <div class="lp-doors">
+      <a class="lg-glass lg-card" data-lg-gel="0.985" href="catalog.html">
+        <div class="lg-card-body">
+          <div class="lp-door-head"><i data-lg-icon="inbox"></i><span class="lg-type-heading">Components</span><i data-lg-icon="chevron-right" data-lg-icon-class="go"></i></div>
+          <p class="lg-type-caption" style="margin:0">全53部品を一覧で。背景やテーマを切り替えて試せます。</p>
+        </div>
+      </a>
+      <a class="lg-glass lg-card" data-lg-gel="0.985" href="screens.html">
+        <div class="lg-card-body">
+          <div class="lp-door-head"><i data-lg-icon="layout-dashboard"></i><span class="lg-type-heading">Layouts</span><i data-lg-icon="chevron-right" data-lg-icon-class="go"></i></div>
+          <p class="lg-type-caption" style="margin:0">ダッシュボード・一覧・編集など7画面の組み例。スマホ対応。</p>
+        </div>
+      </a>
+      <a class="lg-glass lg-card" data-lg-gel="0.985" href="app.html">
+        <div class="lg-card-body">
+          <div class="lp-door-head"><i data-lg-icon="chart-column"></i><span class="lg-type-heading">Live demo</span><i data-lg-icon="chevron-right" data-lg-icon-class="go"></i></div>
+          <p class="lg-type-caption" style="margin:0">架空の SaaS 管理画面。実戦でどう使うかはこちら。</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="tag">liquid-glass-ds — buildless / 依存ゼロ / Lucide (ISC)</span>
+</footer>
+
+<!-- @include src/pages/_shared/persona-dock.html -->
+
+<script src="../js/lg-icons.js"></script>
+<script src="../js/liquid-glass.js"></script>
+<script>
+document.getElementById('reroll').addEventListener('click', function () {
+  try { localStorage.removeItem('lg-observer-seed'); } catch (_) {}
+  location.reload();
+});
+window.addEventListener('load', function () {
+  /* ペルソナ固定中は「別の観測者になる」（personal シード再抽選）は意味を持たない */
+  if (document.documentElement.hasAttribute('data-lg-seed')) {
+    var rb = document.getElementById('reroll');
+    if (rb) rb.hidden = true;
+  }
+  var s = LiquidGlass.signals();
+  /* iOS のみ: 傾き応答はユーザー操作からの許諾が必要（タッチ端末に限って出す） */
+  var tb = document.getElementById('tiltBtn');
+  if (tb && s.tilt === 'needs-permission' && ('ontouchstart' in window)) {
+    tb.hidden = false;
+    tb.addEventListener('click', function () {
+      LiquidGlass.enableTilt().then(function (r) { if (r === 'granted') tb.hidden = true; });
+    });
+  }
+});
+</script>
+</body>
+</html>

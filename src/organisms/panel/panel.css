@@ -1,0 +1,13 @@
+/* ---------- panel（コンテンツ層・不透明。ガラスの相方） ---------- */
+.lg-panel {
+  border-radius: var(--lg-panel-radius);
+  padding: var(--lg-panel-pad);
+  background: color-mix(in srgb, var(--lg-opaque-bg)
+    calc(100% - var(--lg-panel-lift) * 100%), var(--lg-ref-color-white));
+  border: 1px solid color-mix(in srgb, var(--lg-ink) /* lint: structural */
+    calc(var(--lg-panel-border-alpha) * 100%), transparent);
+  color: var(--lg-ink);
+}
+.lg-panel .lg-concentric {
+  border-radius: calc(var(--lg-panel-radius) - var(--lg-panel-pad));
+}

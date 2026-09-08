@@ -1,0 +1,26 @@
+<!-- 画面レイアウト型の骨格（詳細は docs/02-layout.md、実例は showcase/screens.html） -->
+
+<!-- 基本 / 一覧 / 閲覧 / 編集（shell 内共通の器） -->
+<div class="lg-page">
+  <div class="lg-page-header">
+    <nav class="lg-breadcrumbs">…</nav>
+    <div class="row">
+      <h1 class="lg-type-display">Page title</h1>
+      <div class="actions"><button class="lg-glass lg-button lg-button--primary" data-lg-gel>Primary</button></div>
+    </div>
+  </div>
+  <div class="lg-toolbar">…フィルタ・検索…</div>
+  <div class="lg-grid-stats">…lg-stat×n…</div>
+  <div class="lg-split lg-split--aside-first"><!-- --aside-first: SP でメタ先頭 -->
+    <div class="lg-panel">本文</div>
+    <aside><div class="lg-panel"><dl class="lg-kv">…</dl></div></aside>
+  </div>
+  <div class="lg-layout-form">
+    …lg-form-row×n…
+    <div class="lg-glass lg-actionbar">
+      <span class="hint">未保存の変更があります</span>
+      <button class="lg-button lg-button--quiet" data-lg-gel>Cancel</button>
+      <button class="lg-glass lg-button lg-button--primary" data-lg-gel>Save</button>
+    </div>
+  </div>
+</div>

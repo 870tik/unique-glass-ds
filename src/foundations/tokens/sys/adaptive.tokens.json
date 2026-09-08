@@ -1,0 +1,175 @@
+{
+  "lg": {
+    "adaptive": {
+      "$description": "sys 層 — surface 適応（公理3）。data-lg-surface=\"light|dark|media|text\" がこの束を --lg-ink / --lg-bcomp / --lg-rim / --lg-face-alpha / --lg-clear-dim / --lg-opaque-* に写像する。未宣言時の既定は dark",
+      "dark": {
+        "ink": {
+          "$value": "{lg.ref.color.ink-light}",
+          "$type": "color",
+          "$description": "dark surface のラベル色（明転）"
+        },
+        "bcomp": {
+          "$value": 1.16,
+          "$type": "number",
+          "$description": "dark surface の輝度補償。暗所でガラス越しを持ち上げ可読性を守る"
+        },
+        "rim": {
+          "$value": "{lg.ref.color.white}",
+          "$type": "color",
+          "$description": "dark surface のリム基色"
+        },
+        "face-alpha": {
+          "$value": 0.06,
+          "$type": "number",
+          "$description": "dark surface の面リフト。暗所では最小限（存在はエッジ光で立てる）"
+        },
+        "clear-dim": {
+          "$value": "rgba(0, 0, 0, 0)",
+          "$type": "color",
+          "$description": "dark surface では Clear の dim 不要（透明）"
+        },
+        "opaque-bg": {
+          "$value": "{lg.ref.color.opaque-dark}",
+          "$type": "color",
+          "$description": "dark surface の不透明フォールバック面"
+        },
+        "opaque-ink": {
+          "$value": "{lg.ref.color.ink-light}",
+          "$type": "color",
+          "$description": "dark surface の不透明フォールバック時ラベル"
+        },
+        "danger": {
+          "$value": "#ff6b76",
+          "$type": "color",
+          "$description": "dark surface のエラー色。暗所で沈まない明度。2026-09 チューニングで彩度アップ（くすみ解消）"
+        }
+      },
+      "light": {
+        "ink": {
+          "$value": "{lg.ref.color.ink-dark}",
+          "$type": "color",
+          "$description": "light surface のラベル色（暗転）"
+        },
+        "bcomp": {
+          "$value": 0.97,
+          "$type": "number",
+          "$description": "light surface の輝度補償。眩しさを僅かに抑える"
+        },
+        "rim": {
+          "$value": "{lg.ref.color.white}",
+          "$type": "color",
+          "$description": "light surface のリム基色。光は明所でも白"
+        },
+        "face-alpha": {
+          "$value": 0.22,
+          "$type": "number",
+          "$description": "light surface の面リフト。明所ではやや乳白に寄せて層を分離する"
+        },
+        "clear-dim": {
+          "$value": "{lg.ref.color.dim-35}",
+          "$type": "color",
+          "$description": "light surface の Clear には 35% dim を自動で敷く（HIG 明文・批評条件3）"
+        },
+        "opaque-bg": {
+          "$value": "{lg.ref.color.opaque-light}",
+          "$type": "color",
+          "$description": "light surface の不透明フォールバック面（明るい面 = surface 連動）"
+        },
+        "opaque-ink": {
+          "$value": "{lg.ref.color.ink-dark}",
+          "$type": "color",
+          "$description": "light surface の不透明フォールバック時ラベル"
+        },
+        "danger": {
+          "$value": "#d63a47",
+          "$type": "color",
+          "$description": "light surface のエラー色。白地でコントラストが立つ濃度。2026-09 チューニングで彩度アップ（くすみ解消）"
+        }
+      },
+      "media": {
+        "ink": {
+          "$value": "{lg.ref.color.ink-media}",
+          "$type": "color",
+          "$description": "media surface（写真・映像）のラベル色。高彩度背景に負けない明度"
+        },
+        "bcomp": {
+          "$value": 1.05,
+          "$type": "number",
+          "$description": "media surface の輝度補償。複雑な背景を軽く持ち上げる"
+        },
+        "rim": {
+          "$value": "{lg.ref.color.white}",
+          "$type": "color",
+          "$description": "media surface のリム基色"
+        },
+        "face-alpha": {
+          "$value": 0.08,
+          "$type": "number",
+          "$description": "media surface の面リフト。背景の色を殺さない下限寄り"
+        },
+        "clear-dim": {
+          "$value": "rgba(0, 0, 0, 0)",
+          "$type": "color",
+          "$description": "media surface は Clear の本来の居場所。dim なし"
+        },
+        "opaque-bg": {
+          "$value": "{lg.ref.color.opaque-dark}",
+          "$type": "color",
+          "$description": "media surface の不透明フォールバック面（媒体上は暗面が安全）"
+        },
+        "opaque-ink": {
+          "$value": "{lg.ref.color.ink-light}",
+          "$type": "color",
+          "$description": "media surface の不透明フォールバック時ラベル"
+        },
+        "danger": {
+          "$value": "#ff6b76",
+          "$type": "color",
+          "$description": "media surface のエラー色。2026-09 チューニングで彩度アップ（くすみ解消）"
+        }
+      },
+      "text": {
+        "ink": {
+          "$value": "{lg.ref.color.ink-dark}",
+          "$type": "color",
+          "$description": "text surface（明るい文章面）のラベル色"
+        },
+        "bcomp": {
+          "$value": 1.0,
+          "$type": "number",
+          "$description": "text surface の輝度補償。文字のコントラストを歪めない中立"
+        },
+        "rim": {
+          "$value": "{lg.ref.color.white}",
+          "$type": "color",
+          "$description": "text surface のリム基色"
+        },
+        "face-alpha": {
+          "$value": 0.2,
+          "$type": "number",
+          "$description": "text surface の面リフト。下の文字を沈めてガラス上ラベルを立てる"
+        },
+        "clear-dim": {
+          "$value": "{lg.ref.color.dim-35}",
+          "$type": "color",
+          "$description": "text surface の Clear には 35% dim を自動で敷く（可読性破綻の防止）"
+        },
+        "opaque-bg": {
+          "$value": "{lg.ref.color.opaque-light}",
+          "$type": "color",
+          "$description": "text surface の不透明フォールバック面"
+        },
+        "opaque-ink": {
+          "$value": "{lg.ref.color.ink-dark}",
+          "$type": "color",
+          "$description": "text surface の不透明フォールバック時ラベル"
+        },
+        "danger": {
+          "$value": "#d63a47",
+          "$type": "color",
+          "$description": "text surface のエラー色。2026-09 チューニングで彩度アップ（くすみ解消）"
+        }
+      }
+    }
+  }
+}

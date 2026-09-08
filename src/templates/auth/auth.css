@@ -1,0 +1,17 @@
+/* ---------- auth layout（中央1カラム + ガラスカード） ---------- */
+.lg-layout-auth {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: var(--lg-ref-space-lg);
+  box-sizing: border-box;
+}
+.lg-auth-card {
+  --lg-r: var(--lg-ref-radius-xl);
+  margin: auto; /* 親が grid でも flex でも中央（参照実装の崩れ対策） */
+  width: min(var(--lg-layout-auth-card-width), 100%);
+  padding: var(--lg-ref-space-3xl) var(--lg-ref-space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--lg-ref-space-lg);
+}

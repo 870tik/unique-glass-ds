@@ -1,0 +1,27 @@
+{
+  "lg": {
+    "panel": {
+      "$description": "comp 層 — 不透明パネル（コンテンツ層）。ガラスの相方。surface 連動の面色 + 僅かなリフト",
+      "radius": {
+        "$value": "{lg.ref.radius.lg}",
+        "$type": "dimension",
+        "$description": "パネル外径"
+      },
+      "pad": {
+        "$value": "20px",
+        "$type": "dimension",
+        "$description": "内側パディング"
+      },
+      "lift": {
+        "$value": 0.04,
+        "$type": "number",
+        "$description": "opaque-bg に white を混ぜる率。ページ地からの分離"
+      },
+      "border-alpha": {
+        "$value": 0.08,
+        "$type": "number",
+        "$description": "輪郭ヘアラインの ink 率"
+      }
+    }
+  }
+}

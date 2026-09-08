@@ -1,0 +1,27 @@
+{
+  "lg": {
+    "stat": {
+      "$description": "comp 層 — KPI/統計タイル（コンテンツ層・不透明）。数値 + ラベル + 差分",
+      "pad": {
+        "$value": "18px",
+        "$type": "dimension",
+        "$description": "内側パディング"
+      },
+      "value-size": {
+        "$value": "26px",
+        "$type": "dimension",
+        "$description": "主数値"
+      },
+      "label-size": {
+        "$value": "11px",
+        "$type": "dimension",
+        "$description": "ラベル"
+      },
+      "delta-size": {
+        "$value": "11.5px",
+        "$type": "dimension",
+        "$description": "差分表示"
+      }
+    }
+  }
+}

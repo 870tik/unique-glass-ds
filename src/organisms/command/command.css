@@ -1,0 +1,74 @@
+/* ---------- command（⌘K パレット） ---------- */
+.lg-backdrop--command {
+  place-items: start center;
+  padding-top: 12vh;
+}
+.lg-command {
+  --lg-r: var(--lg-command-radius);
+  width: 100%;
+  max-width: var(--lg-command-width);
+  padding: var(--lg-command-pad);
+  will-change: transform;
+}
+.lg-command-input {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  width: 100%;
+  height: var(--lg-command-input-height);
+  padding: 0 var(--lg-menu-item-pad-x);
+  font-family: inherit;
+  font-size: var(--lg-ref-type-heading-size);
+  color: var(--lg-ink);
+  border-bottom: 1px solid color-mix(in srgb, var(--lg-ink) /* lint: structural */
+    calc(var(--lg-ref-alpha-hairline) * 100%), transparent);
+  border-radius: calc(var(--lg-command-radius) - var(--lg-command-pad))
+                 calc(var(--lg-command-radius) - var(--lg-command-pad)) 0 0;
+}
+.lg-command-input::placeholder {
+  color: color-mix(in srgb, var(--lg-ink)
+    calc(var(--lg-ref-alpha-tab-idle) * 70%), transparent);
+}
+.lg-command-input:focus-visible { outline: none; } /* パレット全体が focus 文脈 */
+.lg-command-list {
+  max-height: var(--lg-command-list-max-height);
+  overflow-y: auto;
+  margin-top: var(--lg-command-pad);
+  display: flex;
+  flex-direction: column;
+  gap: var(--lg-ref-space-2xs);
+}
+.lg-command-item {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--lg-ref-space-sm);
+  width: 100%;
+  min-height: var(--lg-command-item-height);
+  padding: 0 var(--lg-menu-item-pad-x);
+  font-family: inherit;
+  font-size: var(--lg-menu-item-font-size);
+  color: var(--lg-ink);
+  border-radius: calc(var(--lg-command-radius) - var(--lg-command-pad)); /* concentricity */
+  opacity: var(--lg-ref-alpha-tab-idle);
+}
+.lg-command-item:hover,
+.lg-command-item.is-active {
+  background: color-mix(in srgb, var(--lg-ink)
+    calc(var(--lg-ref-alpha-pill) * 100%), transparent);
+  opacity: 1;
+}
+.lg-command-item .hint {
+  font-size: var(--lg-form-row-help-size);
+  opacity: .55;
+  letter-spacing: .08em; /* lint: structural */
+}
+.lg-command-empty {
+  padding: var(--lg-menu-item-pad-x);
+  font-size: var(--lg-menu-item-font-size);
+  color: color-mix(in srgb, var(--lg-ink) 55%, transparent);
+}

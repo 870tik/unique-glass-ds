@@ -1,0 +1,24 @@
+{
+  "lg": {
+    "ref": {
+      "breakpoint": {
+        "$description": "ブレークポイント。CSS の @media はカスタムプロパティを読めないため、CSS 内では同値のリテラルを使い、このトークンを正とする（変更時は両方更新）",
+        "sm": {
+          "$value": 640,
+          "$type": "number",
+          "$description": "1カラム化・余白縮小"
+        },
+        "md": {
+          "$value": 900,
+          "$type": "number",
+          "$description": "shell のサイドバーがオフキャンバス化する境界"
+        },
+        "lg": {
+          "$value": 1200,
+          "$type": "number",
+          "$description": "コンテンツ最大幅の目安"
+        }
+      }
+    }
+  }
+}

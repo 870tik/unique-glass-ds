@@ -1,0 +1,37 @@
+/* ---------- inline banner / alert（コンテンツ層・不透明。toast と違い「留まる」） ---------- */
+.lg-banner {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--lg-ref-space-md);
+  padding: var(--lg-banner-pad-y) var(--lg-banner-pad-x);
+  padding-left: calc(var(--lg-banner-pad-x) + var(--lg-banner-accent-width));
+  border-radius: var(--lg-banner-radius);
+  background: color-mix(in srgb, var(--lg-ink) 6%, transparent);
+  color: var(--lg-ink);
+  font-size: var(--lg-ref-type-body-size);
+  line-height: var(--lg-ref-type-leading-body);
+  overflow: hidden;
+}
+.lg-banner::before {
+  content: "";
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: var(--lg-banner-accent-width);
+  background: currentColor;
+  opacity: 0.75;
+}
+.lg-banner.is-positive::before { background: var(--lg-ref-color-positive); opacity: 1; }
+.lg-banner.is-danger::before { background: var(--lg-danger); opacity: 1; }
+.lg-banner.is-leaving { opacity: 0; transition: opacity var(--lg-ref-duration-fade) ease; }
+.lg-banner-close {
+  appearance: none; border: 0; cursor: pointer;
+  margin-left: auto; flex: none;
+  background: transparent; color: inherit;
+  font-family: inherit; font-size: var(--lg-ref-type-body-size); line-height: 1;
+  opacity: 0.55; padding: var(--lg-ref-space-2xs) var(--lg-ref-space-xs); border-radius: var(--lg-ref-radius-xs);
+}
+.lg-banner-close:hover { opacity: 1; }
+.lg-banner-close:focus-visible {
+  outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+  outline-offset: var(--lg-ref-size-focus-offset);
+}

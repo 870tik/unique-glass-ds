@@ -1,0 +1,32 @@
+{
+  "lg": {
+    "avatar": {
+      "$description": "comp 層 — アバター（コンテンツ層・不透明）。イニシャルフォールバック内蔵",
+      "size": {
+        "$value": "32px",
+        "$type": "dimension",
+        "$description": "標準径"
+      },
+      "size-sm": {
+        "$value": "24px",
+        "$type": "dimension",
+        "$description": "テーブル行内"
+      },
+      "size-lg": {
+        "$value": "44px",
+        "$type": "dimension",
+        "$description": "プロフィール見出し"
+      },
+      "font-size": {
+        "$value": "11px",
+        "$type": "dimension",
+        "$description": "イニシャル文字"
+      },
+      "group-overlap": {
+        "$value": "-8px",
+        "$type": "dimension",
+        "$description": "グループ時の重なり"
+      }
+    }
+  }
+}

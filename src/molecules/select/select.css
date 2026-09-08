@@ -1,0 +1,28 @@
+/* ---------- select（menu を土台にした単一選択。トリガーは塗り = コンテンツ層） ---------- */
+.lg-select { position: relative; display: inline-block; min-width: var(--lg-select-min-width); }
+.lg-select-trigger {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--lg-ref-space-sm);
+  width: 100%;
+  height: var(--lg-field-height);
+  padding: 0 var(--lg-field-padding-x);
+  border-radius: var(--lg-field-radius);
+  font-family: inherit;
+  font-size: var(--lg-field-font-size);
+  color: var(--lg-ink);
+  background: color-mix(in srgb, var(--lg-ink) 7%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--lg-ink) /* lint: structural */
+    calc(var(--lg-ref-alpha-hairline) * 100%), transparent);
+}
+.lg-select-trigger .caret { opacity: .55; font-size: var(--lg-ref-type-micro-size); }
+.lg-select-trigger:focus-visible {
+  outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+  outline-offset: var(--lg-ref-size-focus-offset);
+}
+.lg-select .lg-menu { width: 100%; min-width: 0; }
+.lg-menu-item[aria-selected="true"] { opacity: 1; font-weight: 500; }

@@ -1,0 +1,28 @@
+{
+  "lg": {
+    "ref": {
+      "scale": {
+        "press": {
+          "$value": 0.97,
+          "$type": "number",
+          "$description": "押下時の潰れ量（標準）。押した指の圧の可視化"
+        },
+        "press-small": {
+          "$value": 0.94,
+          "$type": "number",
+          "$description": "小型要素（タブ等）の潰れ量。小さいほど深く潰す"
+        },
+        "modal-enter": {
+          "$value": 0.94,
+          "$type": "number",
+          "$description": "modal 登場開始スケール。ここからバネで 1.0 へ"
+        },
+        "menu-enter": {
+          "$value": 0.65,
+          "$type": "number",
+          "$description": "menu 登場開始スケール。トリガーからの流動モーフに見える下限"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+/* ------------------------------------------------------------
+   phase 7 — 昇格部品: icon-button / kv（description list）/ prose
+   （ショーケースの ad hoc 実装を正式部品化。利用ルールは docs/08）
+   ------------------------------------------------------------ */
+
+/* ---------- icon button（円形・塗り。ガラス上/コンテンツ層 両用の汎用操作子） ---------- */
+.lg-icon-button {
+  flex: none; /* flex 行で潰れて楕円にならない */
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  flex: none;
+  width: var(--lg-icon-button-size);
+  height: var(--lg-icon-button-size);
+  border-radius: var(--lg-ref-radius-pill);
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--lg-ink) 10%, transparent);
+  color: var(--lg-ink);
+  font-family: inherit;
+  font-size: var(--lg-icon-button-font-size);
+  line-height: 1;
+}
+.lg-icon-button:hover { background: color-mix(in srgb, var(--lg-ink) 16%, transparent); }
+.lg-icon-button:focus-visible {
+  outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+  outline-offset: var(--lg-ref-size-focus-offset);
+}

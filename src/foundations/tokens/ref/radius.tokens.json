@@ -1,0 +1,38 @@
+{
+  "lg": {
+    "ref": {
+      "radius": {
+        "xl": {
+          "$value": "28px",
+          "$type": "dimension",
+          "$description": "大型面（nav・modal・標本プレート）の外径"
+        },
+        "lg": {
+          "$value": "24px",
+          "$type": "dimension",
+          "$description": "card の外径。ガラス既定値"
+        },
+        "md": {
+          "$value": "20px",
+          "$type": "dimension",
+          "$description": "field 等の中型部品の外径"
+        },
+        "sm": {
+          "$value": "14px",
+          "$type": "dimension",
+          "$description": "小型部品・チップの外径"
+        },
+        "pill": {
+          "$value": "999px",
+          "$type": "dimension",
+          "$description": "ピル形状。ボタンの既定"
+        },
+        "xs": {
+          "$value": "10px",
+          "$type": "dimension",
+          "$description": "最小部品（tooltip・checkbox 内側等）の外径"
+        }
+      }
+    }
+  }
+}

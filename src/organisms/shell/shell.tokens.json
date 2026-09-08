@@ -1,0 +1,32 @@
+{
+  "lg": {
+    "shell": {
+      "$description": "comp 層 — SaaS アプリレイアウト。sidebar + topbar は『アプリの恒常クローム』としてガラス予算1枚扱い",
+      "sidebar-width": {
+        "$value": "248px",
+        "$type": "dimension",
+        "$description": "サイドバー幅"
+      },
+      "topbar-height": {
+        "$value": "60px",
+        "$type": "dimension",
+        "$description": "トップバー高"
+      },
+      "gap": {
+        "$value": "18px",
+        "$type": "dimension",
+        "$description": "クロームとコンテンツの間隔"
+      },
+      "pad": {
+        "$value": "22px",
+        "$type": "dimension",
+        "$description": "コンテンツ領域のパディング"
+      },
+      "sidebar-width-collapsed": {
+        "$value": "0px",
+        "$type": "dimension",
+        "$description": "モバイル時。サイドバーはオフキャンバスdrawer化"
+      }
+    }
+  }
+}

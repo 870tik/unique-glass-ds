@@ -1,0 +1,43 @@
+{
+  "lg": {
+    "ref": {
+      "duration": {
+        "press": {
+          "$value": "90ms",
+          "$type": "duration",
+          "$description": "押下の潰れ時間。1:1 の即応に見える上限。これより長いと遅延、短いと瞬断"
+        },
+        "release": {
+          "$value": "460ms",
+          "$type": "duration",
+          "$description": "JS 無効時の CSS フォールバック復帰時間（バネの近似）"
+        },
+        "rim-fade": {
+          "$value": "450ms",
+          "$type": "duration",
+          "$description": "リム光の点灯/消灯のなだらかさ。角度は 1:1 直結で、遷移するのは強度のみ（公理4）"
+        },
+        "fade": {
+          "$value": "350ms",
+          "$type": "duration",
+          "$description": "汎用フェード（backdrop・field の相転移など）"
+        },
+        "menu-exit": {
+          "$value": "160ms",
+          "$type": "duration",
+          "$description": "menu / tooltip の退場フェード。入場はバネ、退場は軽く消えるのが公式モーションの非対称"
+        },
+        "toast": {
+          "$value": "4200ms",
+          "$type": "duration",
+          "$description": "toast の自動退場までの滞留時間"
+        },
+        "tooltip-delay": {
+          "$value": "450ms",
+          "$type": "duration",
+          "$description": "tooltip の遅延表示。即出しはノイズ"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+/* ---------- form-row ---------- */
+.lg-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lg-form-row-gap);
+}
+.lg-form-label {
+  font-size: var(--lg-form-row-label-size);
+  color: color-mix(in srgb, var(--lg-ink) 80%, transparent);
+}
+.lg-help {
+  font-size: var(--lg-form-row-help-size);
+  color: color-mix(in srgb, var(--lg-ink) 55%, transparent);
+}
+.lg-form-row.is-error .lg-help,
+.lg-help--error { color: var(--lg-danger); }

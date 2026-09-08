@@ -1,0 +1,52 @@
+{
+  "lg": {
+    "menu": {
+      "$description": "comp 層 — dropdown/popover contract。トリガーからの流動モーフ（バネ入場・フェード退場）。Regular のみ",
+      "min-width": {
+        "$value": "208px",
+        "$type": "dimension",
+        "$description": "メニュー最小幅"
+      },
+      "radius": {
+        "$value": "{lg.ref.radius.md}",
+        "$type": "dimension",
+        "$description": "メニュー外径"
+      },
+      "pad": {
+        "$value": "6px",
+        "$type": "dimension",
+        "$description": "内側パディング。項目 radius = radius − pad（concentricity）"
+      },
+      "item-height": {
+        "$value": "36px",
+        "$type": "dimension",
+        "$description": "項目高"
+      },
+      "item-pad-x": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "項目左右パディング"
+      },
+      "item-font-size": {
+        "$value": "13px",
+        "$type": "dimension",
+        "$description": "項目ラベル"
+      },
+      "enter-scale": {
+        "$value": "{lg.ref.scale.menu-enter}",
+        "$type": "number",
+        "$description": "登場開始スケール。transform-origin はトリガー側"
+      },
+      "exit-duration": {
+        "$value": "{lg.ref.duration.menu-exit}",
+        "$type": "duration",
+        "$description": "退場フェード時間"
+      },
+      "material": {
+        "$value": "regular",
+        "$type": "string",
+        "$description": "contract: menu は Regular のみ"
+      }
+    }
+  }
+}

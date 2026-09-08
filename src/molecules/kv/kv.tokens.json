@@ -1,0 +1,17 @@
+{
+  "lg": {
+    "kv": {
+      "$description": "comp 層 — key-value リスト（Description list。dl/dt/dd）。Detail 画面のメタ情報等。コンテンツ層",
+      "gap": {
+        "$value": "{lg.ref.space.md}",
+        "$type": "dimension",
+        "$description": "行間"
+      },
+      "key-alpha": {
+        "$value": 0.55,
+        "$type": "number",
+        "$description": "キー側の ink 混合率"
+      }
+    }
+  }
+}

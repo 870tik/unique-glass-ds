@@ -1,0 +1,27 @@
+{
+  "lg": {
+    "card": {
+      "$description": "comp 層 — card contract。取れるマテリアル: Regular（テキストを載せるため Clear 禁止）",
+      "radius": {
+        "$value": "{lg.ref.radius.lg}",
+        "$type": "dimension",
+        "$description": "card 外径"
+      },
+      "gap": {
+        "$value": "{lg.ref.gap.card}",
+        "$type": "dimension",
+        "$description": "card パディング。内側 radius = radius − gap（concentricity を calc で強制）"
+      },
+      "material": {
+        "$value": "regular",
+        "$type": "string",
+        "$description": "contract: card は Regular のみ"
+      },
+      "press-scale": {
+        "$value": 0.985,
+        "$type": "number",
+        "$description": "card の押下潰れ。面積が大きいほど浅く潰す"
+      }
+    }
+  }
+}

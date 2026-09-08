@@ -1,0 +1,18 @@
+{
+  "lg": {
+    "ref": {
+      "gap": {
+        "nav": {
+          "$value": "6px",
+          "$type": "dimension",
+          "$description": "nav の内側パディング。concentricity: ピル radius = nav radius − この値"
+        },
+        "card": {
+          "$value": "14px",
+          "$type": "dimension",
+          "$description": "card の内側パディング。concentricity: 内側 radius = card radius − この値"
+        }
+      }
+    }
+  }
+}

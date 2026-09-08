@@ -1,0 +1,14 @@
+<!-- Nav（タブバー）— ガラス。ピル(.lg-nav-pill)は自動生成・gel バネ滑走 -->
+<nav class="lg-glass lg-nav" aria-label="主要タブ">
+  <button class="lg-tab" aria-selected="true" aria-controls="panel-a">Overview</button>
+  <button class="lg-tab" aria-controls="panel-b">Details</button>
+</nav>
+<!-- aria-controls を書くとパネルの hidden / role=tabpanel を自動管理 -->
+<div id="panel-a">…</div>
+<div id="panel-b" hidden>…</div>
+
+<!-- 縦型（サイドバー内） -->
+<nav class="lg-nav lg-nav--vertical" aria-label="メニュー">
+  <button class="lg-tab" aria-selected="true">Dashboard</button>
+  <button class="lg-tab">Invoices</button>
+</nav>

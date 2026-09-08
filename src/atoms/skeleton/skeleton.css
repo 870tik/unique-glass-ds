@@ -1,0 +1,23 @@
+/* ---------- skeleton ---------- */
+.lg-skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--lg-skeleton-radius);
+  background: color-mix(in srgb, var(--lg-ink)
+    calc(var(--lg-skeleton-alpha) * 100%), transparent);
+  min-height: var(--lg-ref-space-md);
+  color: transparent;
+  user-select: none;
+}
+.lg-skeleton::after {
+  content: "";
+  position: absolute; inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent,
+    color-mix(in srgb, var(--lg-ink)
+      calc(var(--lg-skeleton-shine-alpha) * 100%), transparent), transparent);
+  animation: lg-shimmer var(--lg-skeleton-duration) ease-in-out infinite;
+}
+@keyframes lg-shimmer { to { transform: translateX(100%); } }
+.lg-skeleton--text { height: 0.85em; margin: 0.2em 0; } /* lint: structural */
+.lg-skeleton--circle { border-radius: 50%; }

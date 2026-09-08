@@ -1,0 +1,50 @@
+/* ---------- settings layout（サブナビ + セクション群） ---------- */
+.lg-layout-settings {
+  display: grid;
+  grid-template-columns: var(--lg-layout-subnav-width) minmax(0, 1fr);
+  gap: var(--lg-ref-space-2xl);
+  align-items: start;
+}
+.lg-subnav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lg-ref-space-2xs);
+  position: sticky;
+  top: var(--lg-ref-space-lg);
+}
+.lg-subnav a,
+.lg-subnav button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: var(--lg-ref-type-body-size);
+  color: color-mix(in srgb, var(--lg-ink) 65%, transparent);
+  padding: var(--lg-ref-space-sm) var(--lg-ref-space-md);
+  border-radius: var(--lg-ref-radius-sm);
+}
+.lg-subnav a:hover, .lg-subnav button:hover { color: var(--lg-ink); }
+.lg-subnav [aria-current="true"],
+.lg-subnav [aria-current="page"] {
+  color: var(--lg-ink);
+  background: color-mix(in srgb, var(--lg-ink)
+    calc(var(--lg-ref-alpha-pill) * 100%), transparent);
+}
+.lg-subnav a:focus-visible, .lg-subnav button:focus-visible {
+  outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+  outline-offset: var(--lg-ref-size-focus-offset);
+}
+@media (max-width: 900px) {
+  .lg-layout-settings { grid-template-columns: 1fr; gap: var(--lg-ref-space-lg); }
+  .lg-subnav {
+    position: static;
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: var(--lg-ref-space-xs);
+    -webkit-overflow-scrolling: touch;
+  }
+  .lg-subnav a, .lg-subnav button { white-space: nowrap; }
+}

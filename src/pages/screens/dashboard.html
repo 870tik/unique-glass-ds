@@ -1,0 +1,38 @@
+<!-- ============ 基本画面: Dashboard ============ -->
+    <section class="screen is-on lg-page" id="sc-dashboard" data-title="基本（Dashboard）" data-class=".lg-page + .lg-grid-stats + .lg-split">
+      <div class="lg-page-header">
+        <div class="row">
+          <h1 class="lg-type-display" style="margin:0">Overview</h1>
+          <div class="actions">
+            <button class="lg-glass lg-button" data-lg-gel>Export</button>
+            <button class="lg-glass lg-button lg-button--primary" data-lg-gel>New invoice</button>
+          </div>
+        </div>
+      </div>
+      <div class="lg-grid-stats">
+        <!-- @include src/molecules/stat/stat.html {"label":"MRR","value":"¥2.84M","delta":"+4.2%","trend":"up"} -->
+        <!-- @include src/molecules/stat/stat.html {"label":"Customers","value":"312","delta":"+11","trend":"up"} -->
+        <!-- @include src/molecules/stat/stat.html {"label":"Churn","value":"1.8%","delta":"+0.3pt","trend":"down"} -->
+        <!-- @include src/molecules/stat/stat.html {"label":"Open","value":"47","delta":"—","trend":""} -->
+      </div>
+      <div class="lg-split">
+        <div class="lg-panel">
+          <div class="lg-type-heading" data-sc="sc2">Recent activity</div>
+          <table class="lg-table lg-table--compact lg-table--responsive">
+            <thead><tr><th>Invoice</th><th>Status</th><th class="num">Amount</th></tr></thead>
+            <tbody>
+              <tr><td data-th="Invoice" style="font-family:var(--mono)">INV-2094</td><td data-th="Status"><span class="lg-badge is-positive"><span class="lg-dot"></span>Paid</span></td><td data-th="Amount" class="num">¥420,000</td></tr>
+              <tr><td data-th="Invoice" style="font-family:var(--mono)">INV-2093</td><td data-th="Status"><span class="lg-badge">Pending</span></td><td data-th="Amount" class="num">¥168,500</td></tr>
+              <tr><td data-th="Invoice" style="font-family:var(--mono)">INV-2091</td><td data-th="Status"><span class="lg-badge is-danger"><span class="lg-dot"></span>Overdue</span></td><td data-th="Amount" class="num">¥312,400</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="lg-panel">
+          <div class="lg-type-heading" data-sc="sc2">Quick actions</div>
+          <div data-sc="sc3">
+            <button class="lg-glass lg-button" data-lg-gel>Send reminders</button>
+            <button class="lg-glass lg-button" data-lg-gel>Reconcile</button>
+          </div>
+        </div>
+      </div>
+    </section>

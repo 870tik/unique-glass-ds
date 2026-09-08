@@ -1,0 +1,73 @@
+{
+  "lg": {
+    "ref": {
+      "lens": {
+        "falloff-regular": {
+          "$value": 0.45,
+          "$type": "number",
+          "$description": "Regular のレンズ帯幅（短辺比）。エッジから中央へ屈折が減衰する距離"
+        },
+        "falloff-clear": {
+          "$value": 0.26,
+          "$type": "number",
+          "$description": "Clear のレンズ帯幅（短辺比）。エッジに屈折が寄り中央の素通しが広い"
+        },
+        "scale-ratio-regular": {
+          "$value": 0.32,
+          "$type": "number",
+          "$description": "Regular の変位量（短辺比）。scale-min/max で clamp される"
+        },
+        "scale-ratio-clear": {
+          "$value": 0.3,
+          "$type": "number",
+          "$description": "Clear の変位量（短辺比）"
+        },
+        "scale-max-regular": {
+          "$value": 44,
+          "$type": "number",
+          "$description": "Regular の変位上限 px。大型要素で歪みが暴れない天井"
+        },
+        "scale-max-clear": {
+          "$value": 120,
+          "$type": "number",
+          "$description": "Clear の変位上限 px。標本レンズとして強い屈折まで許す"
+        },
+        "scale-min-regular": {
+          "$value": 12,
+          "$type": "number",
+          "$description": "Regular の変位下限 px。小型ボタンでも屈折が読み取れる床"
+        },
+        "scale-min-clear": {
+          "$value": 8,
+          "$type": "number",
+          "$description": "Clear の変位下限 px"
+        },
+        "ca": {
+          "$value": 6,
+          "$type": "number",
+          "$description": "色収差の最大 px。prism 材の署名（v2 独自化 R11）: 分散を隠さず、エッジで光がスペクトルに割れることを素材の第一特徴とする。制御条件は「エッジ帯のみ・構造の上でのみ視認」。Apple 相当の控えめ値は theme apple-quiet（2.5）"
+        },
+        "ca-split-r": {
+          "$value": 0.78,
+          "$type": "number",
+          "$description": "R チャネル変位比。0.86→0.78（prism: スペクトル分離を広げ、虹の帯として読める間隔に）"
+        },
+        "ca-split-b": {
+          "$value": 1.32,
+          "$type": "number",
+          "$description": "B チャネル変位比。1.22→1.32（同上）"
+        },
+        "map-max": {
+          "$value": 384,
+          "$type": "number",
+          "$description": "変位マップの最大解像度（長辺 px）。これ以上は縮小生成して feImage で引き伸ばす。LP 規模のコスト上限"
+        },
+        "organic": {
+          "$value": 0.12,
+          "$type": "number",
+          "$description": "個体差（生命徴・R13）: 変位マップに掛かる有機ノイズの振幅。同一部品でも一枚ごとに屈折の指紋がわずかに異なる（4個体プール）。0 で無効（apple-quiet）"
+        }
+      }
+    }
+  }
+}

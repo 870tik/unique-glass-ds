@@ -1,0 +1,8 @@
+/* ---------- popover（menu 機構 + フォーム内容。選択で閉じない） ---------- */
+.lg-menu--popover {
+  min-width: var(--lg-popover-min-width);
+  padding: var(--lg-popover-pad);
+  display: flex;
+  flex-direction: column;
+  gap: var(--lg-ref-space-md);
+}

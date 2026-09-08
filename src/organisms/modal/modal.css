@@ -1,0 +1,36 @@
+/* modal — backdrop scrim + gel 開閉（JS が transform を駆動） */
+.lg-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--lg-ref-z-backdrop);
+  display: grid;
+  place-items: center;
+  padding: var(--lg-modal-padding);
+  background: var(--lg-modal-scrim);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--lg-ref-duration-fade) ease,
+    visibility 0s linear var(--lg-ref-duration-fade);
+}
+.lg-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity var(--lg-ref-duration-fade) ease;
+}
+.lg-modal {
+  --lg-r: var(--lg-modal-radius);
+  width: 100%;
+  max-width: var(--lg-modal-width);
+  padding: var(--lg-modal-padding);
+  transform: scale(var(--lg-modal-enter-scale));
+  will-change: transform;
+}
+.lg-backdrop.is-open .lg-modal {
+  transform: none;
+}
+html.lg-js .lg-backdrop.is-open .lg-modal {
+  transform: scale(var(--lg-modal-enter-scale)); /* JS Spring が上書きして 1.0 へ */
+}

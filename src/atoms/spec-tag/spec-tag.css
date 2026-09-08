@@ -1,0 +1,16 @@
+/* ---------- spec-tag（観測機器の意匠: 素材が自分の物性を申告する読み出し） ---------- */
+.lg-spec-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lg-ref-space-sm);
+  font-family: var(--lg-ref-type-family-mono);
+  font-size: var(--lg-ref-type-micro-size);
+  letter-spacing: var(--lg-ref-type-tracking-wide);
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--lg-ink) 62%, transparent);
+  border: var(--lg-ref-size-hairline) solid
+    color-mix(in srgb, var(--lg-ink) 22%, transparent);
+  border-radius: var(--lg-ref-radius-xs);
+  padding: var(--lg-ref-space-2xs) var(--lg-ref-space-sm);
+}
+.lg-spec-tag .sep { opacity: 0.4; }

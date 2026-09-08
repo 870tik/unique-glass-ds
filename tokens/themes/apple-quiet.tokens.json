@@ -1,0 +1,125 @@
+{
+  "lg": {
+    "ref": {
+      "lens": {
+        "ca": {
+          "$value": 2.5,
+          "$type": "number",
+          "$description": "Apple 相当の控えめ分散（v1 既定値の保存）"
+        },
+        "ca-split-r": {
+          "$value": 0.86,
+          "$type": "number",
+          "$description": "同上"
+        },
+        "ca-split-b": {
+          "$value": 1.22,
+          "$type": "number",
+          "$description": "同上"
+        },
+        "organic": {
+          "$value": 0,
+          "$type": "number",
+          "$description": "生命徴オフ"
+        }
+      }
+    },
+    "light": {
+      "rim-spec-cool": {
+        "$value": "{lg.ref.color.white}",
+        "$type": "color",
+        "$description": "単色（白）リムへ縮退 = Apple 的ハイライト"
+      },
+      "rim-spec-warm": {
+        "$value": "{lg.ref.color.white}",
+        "$type": "color",
+        "$description": "同上"
+      },
+      "breath-depth": {
+        "$value": 0,
+        "$type": "number",
+        "$description": "呼吸オフ"
+      }
+    },
+    "motion": {
+      "gel": {
+        "optics-press": {
+          "$value": 1,
+          "$type": "number",
+          "$description": "応答する光学オフ"
+        },
+        "optics-hover": {
+          "$value": 1,
+          "$type": "number",
+          "$description": "瞳孔反射オフ"
+        },
+        "hover-scale": {
+          "$value": 1,
+          "$type": "number",
+          "$description": "hover 膨らみオフ"
+        },
+        "wobble-zeta": {
+          "$value": 0.65,
+          "$type": "number",
+          "$description": "揺れを v1 相当に"
+        },
+        "stretch-x": {
+          "$value": 1,
+          "$type": "number",
+          "$description": "squash&stretch オフ（均一スケール）"
+        }
+      }
+    },
+    "observer": {
+      "spectrum-rotation": {
+        "$value": 0,
+        "$type": "number",
+        "$description": "観測者効果オフ"
+      },
+      "angle-range": {
+        "$value": 0,
+        "$type": "number",
+        "$description": "同上"
+      },
+      "ambient-rotation": {
+        "$value": 0,
+        "$type": "number",
+        "$description": "観測者効果オフ"
+      }
+    },
+    "physique": {
+      "motion-default": {
+        "$value": 0.5,
+        "$type": "number",
+        "$description": "体質固定"
+      },
+      "optics-default": {
+        "$value": 0.5,
+        "$type": "number",
+        "$description": "体質固定"
+      }
+    },
+    "signals": {
+      "sun-sync": {
+        "$value": 0,
+        "$type": "number",
+        "$description": "環境信号オフ"
+      },
+      "tilt": {
+        "$value": 0,
+        "$type": "number",
+        "$description": "環境信号オフ"
+      },
+      "battery": {
+        "$value": 0,
+        "$type": "number",
+        "$description": "環境信号オフ"
+      },
+      "affinity": {
+        "$value": 0,
+        "$type": "number",
+        "$description": "環境信号オフ"
+      }
+    }
+  }
+}

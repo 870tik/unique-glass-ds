@@ -1,0 +1,37 @@
+{
+  "lg": {
+    "nav": {
+      "$description": "comp 層 — nav（タブバー）contract。取れるマテリアル: Regular / Clear（media 上のみ Clear 可）",
+      "radius": {
+        "$value": "{lg.ref.radius.xl}",
+        "$type": "dimension",
+        "$description": "nav 外径"
+      },
+      "gap": {
+        "$value": "{lg.ref.gap.nav}",
+        "$type": "dimension",
+        "$description": "nav パディング。ピル radius = radius − gap（concentricity）"
+      },
+      "height": {
+        "$value": "{lg.ref.size.control-height}",
+        "$type": "dimension",
+        "$description": "nav 全体高"
+      },
+      "material": {
+        "$value": "regular | clear(on media)",
+        "$type": "string",
+        "$description": "contract: 標準は Regular。リッチメディア直上に限り Clear 可"
+      },
+      "tab-press-scale": {
+        "$value": "{lg.ref.scale.press-small}",
+        "$type": "number",
+        "$description": "タブの押下潰れ"
+      },
+      "tab-font-size": {
+        "$value": "13px",
+        "$type": "dimension",
+        "$description": "タブラベルサイズ"
+      }
+    }
+  }
+}

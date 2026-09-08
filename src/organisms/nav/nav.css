@@ -1,0 +1,44 @@
+/* nav (tab bar) — アクティブピルは JS Spring で gel 移動 */
+.lg-nav {
+  --lg-r: var(--lg-nav-radius);
+  display: inline-flex;
+  position: relative;
+  padding: var(--lg-nav-gap);
+}
+.lg-nav-pill {
+  position: absolute;
+  top: var(--lg-nav-gap);
+  bottom: var(--lg-nav-gap);
+  left: 0;
+  width: 0;
+  border-radius: calc(var(--lg-nav-radius) - var(--lg-nav-gap)); /* concentricity */
+  background: color-mix(in srgb, var(--lg-ink)
+    calc(var(--lg-ref-alpha-pill) * 100%), transparent);
+  will-change: transform, width;
+  pointer-events: none;
+  z-index: 0;
+}
+.lg-tab {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  font-family: inherit;
+  font-size: var(--lg-nav-tab-font-size);
+  font-weight: var(--lg-button-font-weight);
+  color: var(--lg-ink);
+  opacity: var(--lg-ref-alpha-tab-idle);
+  height: calc(var(--lg-nav-height) - var(--lg-nav-gap) * 2);
+  padding: 0 var(--lg-ref-space-xl);
+  border-radius: calc(var(--lg-nav-radius) - var(--lg-nav-gap));
+  transition: opacity var(--lg-ref-duration-fade) ease;
+  will-change: transform;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.lg-tab[aria-selected="true"] {
+  opacity: 1;
+}

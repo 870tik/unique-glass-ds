@@ -1,0 +1,7 @@
+/* IntersectionObserver が画面外の要素に付与 → 全アニメ休止 */
+.lg-offscreen,
+.lg-offscreen *,
+.lg-offscreen::before,
+.lg-offscreen::after {
+  animation-play-state: paused !important;
+}

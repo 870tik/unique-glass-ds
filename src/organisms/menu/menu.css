@@ -1,0 +1,60 @@
+/* ---------- menu（バネ入場・フェード退場のドロップダウン） ---------- */
+.lg-menu-anchor { position: relative; display: inline-block; }
+.lg-menu {
+  --lg-r: var(--lg-menu-radius);
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: var(--lg-ref-z-menu);
+  min-width: var(--lg-menu-min-width);
+  padding: var(--lg-menu-pad);
+  transform-origin: top left;
+  transform: scale(var(--lg-menu-enter-scale));
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--lg-menu-exit-duration) ease,
+    visibility 0s linear var(--lg-menu-exit-duration);
+}
+.lg-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity var(--lg-menu-exit-duration) ease;
+}
+.lg-menu[data-lg-align="right"] {
+  left: auto; right: 0;
+  transform-origin: top right;
+}
+.lg-menu-item {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--lg-ref-space-sm);
+  width: 100%;
+  height: var(--lg-menu-item-height);
+  padding: 0 var(--lg-menu-item-pad-x);
+  font-family: inherit;
+  font-size: var(--lg-menu-item-font-size);
+  color: var(--lg-ink);
+  border-radius: calc(var(--lg-menu-radius) - var(--lg-menu-pad)); /* concentricity */
+  opacity: var(--lg-ref-alpha-tab-idle);
+}
+.lg-menu-item:hover,
+.lg-menu-item.is-active {
+  background: color-mix(in srgb, var(--lg-ink)
+    calc(var(--lg-ref-alpha-pill) * 100%), transparent);
+  opacity: 1;
+}
+.lg-menu-item.is-danger { color: var(--lg-danger); }
+.lg-menu-sep {
+  height: var(--lg-ref-size-hairline);
+  margin: var(--lg-ref-space-xs) var(--lg-menu-pad);
+  background: color-mix(in srgb, var(--lg-ink)
+    calc(var(--lg-table-border-alpha) * 100%), transparent);
+}

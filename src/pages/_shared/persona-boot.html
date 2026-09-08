@@ -1,0 +1,49 @@
+<!-- persona-boot — ペルソナ切替のホスト役（DS 初期化前に seed / trait を確定）。
+     head 内・liquid-glass.js より前に @include すること。 -->
+<script>
+/* ---- ペルソナ切替（LP のホスト役） ----
+   DS 初期化より前に seed / trait を確定する。属性（年齢・職業）はここで
+   抽象 trait に写像され、DS には trait しか渡らない（R17 境界・R18 補遺） */
+(function () {
+  var el = document.documentElement;
+  if (!el.hasAttribute('data-lg-observer')) return;
+  var OCC = { 'motion-designer': { m: +0.30, o: +0.25 },
+              'accountant':      { m: -0.20, o: -0.10 },
+              'gamer':           { m: +0.40, o: +0.15 },
+              'calligrapher':    { m: -0.30, o: +0.25 } };
+  function mapProfile(p) { /* 初期値の仮説 — 本人設定が常に上書きできる前提 */
+    var occ = OCC[p.occupation] || { m: 0, o: 0 };
+    var calm = Math.max(0, p.age - 40) * 0.006;
+    var c = function (v) { return Math.min(1, Math.max(0, v)); };
+    return { m: c(0.5 + occ.m - calm), o: c(0.5 + occ.o - calm * 0.5) };
+  }
+  window.LG_PERSONAS = {
+    you:    { label: 'あなた', tip: 'personal — ブラウザ固有シード + テンポ学習' },
+    still:  { label: '静', seed: 'still-04', m: 0, o: 0, tip: 'seed still-04 · motion 0 · optics 0' },
+    vivid:  { label: '動', seed: 'vivid-11', m: 1, o: 1, tip: 'seed vivid-11 · motion 1 · optics 1' },
+    designer:     { label: '26・デザイナー', short: 'デザイナー', seed: 'user-2841',
+      profile: { age: 26, occupation: 'motion-designer' }, tip: '写像 → m0.80 / o0.75' },
+    gamer:        { label: '17・ゲーマー', short: 'ゲーマー', seed: 'user-1707',
+      profile: { age: 17, occupation: 'gamer' }, tip: '写像 → m0.90 / o0.65' },
+    accountant:   { label: '52・会計士', short: '会計士', seed: 'user-9130',
+      profile: { age: 52, occupation: 'accountant' }, tip: '写像 → m0.23 / o0.36' },
+    calligrapher: { label: '71・書道家', short: '書道家', seed: 'user-7101',
+      profile: { age: 71, occupation: 'calligrapher' }, tip: '写像 → m0.01 / o0.66（動かないが光学は深い）' },
+    random: { label: 'ランダム ↻', short: '↻', tip: '押すたびに新しい観測者を抽選' }
+  };
+  var key = null, rnd = null;
+  try {
+    key = localStorage.getItem('lg-persona');
+    rnd = JSON.parse(localStorage.getItem('lg-persona-random') || 'null');
+  } catch (_) {}
+  window.LG_ACTIVE = (key && window.LG_PERSONAS[key]) ? key : 'you';
+  if (window.LG_ACTIVE === 'you') return;
+  var p = window.LG_PERSONAS[window.LG_ACTIVE];
+  var t = p.profile ? mapProfile(p.profile) :
+          (window.LG_ACTIVE === 'random' && rnd) ? rnd : { m: p.m, o: p.o };
+  el.removeAttribute('data-lg-observer');
+  el.setAttribute('data-lg-seed', (window.LG_ACTIVE === 'random' && rnd) ? rnd.seed : p.seed);
+  el.setAttribute('data-lg-trait-motion', (+t.m).toFixed(2));
+  el.setAttribute('data-lg-trait-optics', (+t.o).toFixed(2));
+})();
+</script>

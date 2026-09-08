@@ -1,0 +1,16 @@
+/* ---------- toolbar: フィルタ・検索・一括操作の行 ---------- */
+.lg-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--lg-ref-space-sm);
+  flex-wrap: wrap;
+}
+.lg-toolbar .spacer { margin-left: auto; }
+.lg-page > .lg-toolbar {
+  margin-bottom: calc((var(--lg-layout-section-gap) - var(--lg-ref-space-lg)) * -1);
+} /* header ‖ (toolbar+コンテンツ) のグルーピング */
+@media (max-width: 640px) {
+  .lg-toolbar .spacer { margin-left: 0; width: 100%; height: 0; }
+  .lg-toolbar .lg-field--fill,
+  .lg-toolbar .lg-select { width: 100%; }
+}

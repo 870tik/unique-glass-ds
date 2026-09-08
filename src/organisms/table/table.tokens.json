@@ -1,0 +1,37 @@
+{
+  "lg": {
+    "table": {
+      "$description": "comp 層 — データテーブル（コンテンツ層・不透明）。装飾最小限、密度2種",
+      "row-height": {
+        "$value": "44px",
+        "$type": "dimension",
+        "$description": "regular 密度の行高"
+      },
+      "row-height-compact": {
+        "$value": "34px",
+        "$type": "dimension",
+        "$description": "compact 密度の行高"
+      },
+      "pad-x": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "セル左右パディング"
+      },
+      "header-font-size": {
+        "$value": "10.5px",
+        "$type": "dimension",
+        "$description": "ヘッダ行ラベル"
+      },
+      "hover-alpha": {
+        "$value": 0.05,
+        "$type": "number",
+        "$description": "hover 行の ink 塗り率"
+      },
+      "border-alpha": {
+        "$value": 0.07,
+        "$type": "number",
+        "$description": "行罫線の ink 率"
+      }
+    }
+  }
+}

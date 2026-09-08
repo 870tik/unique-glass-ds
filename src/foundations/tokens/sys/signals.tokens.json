@@ -1,0 +1,32 @@
+{
+  "lg": {
+    "signals": {
+      "$description": "sys 層 — 環境信号（R18）。すべて端末ローカルで完結し、許諾が要るもの（傾き/iOS）は明示ジェスチャー経由。0 で個別に無効化",
+      "sun-sync": {
+        "$value": 1,
+        "$type": "number",
+        "$description": "太陽同期: 時刻から太陽方位を近似し、仮想光源の基準角を実際の太陽に合わせる（朝=東/右、昼=天頂、夕=西/左。夜は既定角）。観測者の角度個性はオフセットとして残る"
+      },
+      "tilt": {
+        "$value": 1,
+        "$type": "number",
+        "$description": "傾き応答: DeviceOrientation で端末の傾きに光源が追従（SP の hover 代替）。iOS は LiquidGlass.enableTilt() をユーザー操作から呼ぶ"
+      },
+      "battery": {
+        "$value": 1,
+        "$type": "number",
+        "$description": "バッテリー=元気: 残量20%未満で呼吸が浅く・点灯が省エネに・押下の屈折潰れが浅くなる（生き物の疲労 + 描画コスト配慮）"
+      },
+      "affinity": {
+        "$value": 1,
+        "$type": "number",
+        "$description": "懐き: 訪問日数（localStorage・日単位）で生命徴が開く。初訪は人見知り（呼吸/点灯 50%）→ 通うほど全開"
+      },
+      "affinity-days-max": {
+        "$value": 8,
+        "$type": "number",
+        "$description": "全開までの訪問日数"
+      }
+    }
+  }
+}

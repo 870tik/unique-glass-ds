@@ -1,0 +1,50 @@
+<!-- ============ 編集画面: Edit ============ -->
+    <section class="screen lg-page" id="sc-edit" data-title="編集（Edit）" data-class=".lg-layout-form + .lg-actionbar（sticky）">
+      <div class="lg-page-header">
+        <nav class="lg-breadcrumbs" aria-label="breadcrumbs">
+          <a href="#list">Invoices</a><span class="sep">/</span>
+          <a href="#detail">INV-2094</a><span class="sep">/</span>
+          <span aria-current="page">Edit</span>
+        </nav>
+        <div class="row"><h1 class="lg-type-display" style="margin:0">Edit invoice</h1></div>
+      </div>
+      <div class="lg-layout-form">
+        <div class="lg-form-row">
+          <label class="lg-form-label" for="edCustomer">Customer</label>
+          <div class="lg-select lg-combobox">
+            <div class="lg-glass lg-field"><input class="lg-field-input" id="edCustomer" value="Northwind K.K." autocomplete="off"></div>
+            <div class="lg-glass lg-menu">
+              <button class="lg-menu-item">Northwind K.K.</button>
+              <button class="lg-menu-item">Aperture Design</button>
+              <button class="lg-menu-item">Hoshino Lab</button>
+            </div>
+          </div>
+        </div>
+        <div class="lg-form-row">
+          <label class="lg-form-label" for="edDue">Due date</label>
+          <div class="lg-glass lg-field" data-sc="sc11">
+            <input class="lg-field-input" id="edDue" data-lg-datepicker value="2026-09-30" autocomplete="off">
+          </div>
+        </div>
+        <div class="lg-form-row">
+          <label class="lg-form-label" for="edQty">Quantity</label>
+          <div class="lg-glass lg-field lg-field--number" data-sc="sc12">
+            <button class="lg-step" data-step="-1" aria-label="減らす"><i data-lg-icon="minus"></i></button>
+            <input class="lg-field-input" id="edQty" type="number" value="1" min="1" max="99" step="1">
+            <button class="lg-step" data-step="1" aria-label="増やす"><i data-lg-icon="plus"></i></button>
+          </div>
+        </div>
+        <div class="lg-form-row">
+          <label class="lg-form-label" for="edNote">Note</label>
+          <div class="lg-glass lg-field lg-field--multi">
+            <textarea class="lg-field-input" id="edNote" data-lg-autosize placeholder="請求書に表示するメモ…"></textarea>
+          </div>
+          <span class="lg-help">顧客に表示されます</span>
+        </div>
+        <div class="lg-glass lg-actionbar">
+          <span class="hint">未保存の変更があります</span>
+          <button class="lg-button lg-button--quiet" data-lg-gel>Cancel</button>
+          <button class="lg-glass lg-button lg-button--primary" id="saveEdit" data-lg-gel>Save changes</button>
+        </div>
+      </div>
+    </section>

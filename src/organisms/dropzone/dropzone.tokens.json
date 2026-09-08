@@ -1,0 +1,22 @@
+{
+  "lg": {
+    "dropzone": {
+      "$description": "comp 層 — ファイル投下域（不透明）。drag over の間だけガラス化する = transient の応用",
+      "min-height": {
+        "$value": "130px",
+        "$type": "dimension",
+        "$description": "最小高"
+      },
+      "radius": {
+        "$value": "{lg.ref.radius.lg}",
+        "$type": "dimension",
+        "$description": "角丸"
+      },
+      "border-alpha": {
+        "$value": 0.28,
+        "$type": "number",
+        "$description": "破線境界の ink 混合率"
+      }
+    }
+  }
+}

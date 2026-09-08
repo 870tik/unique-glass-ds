@@ -1,0 +1,28 @@
+/* ---------- chip（塗り部品・選択で ink 反転） ---------- */
+.lg-chip {
+  appearance: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lg-ref-space-xs);
+  height: var(--lg-chip-height);
+  padding: 0 var(--lg-chip-pad-x);
+  border-radius: var(--lg-chip-radius);
+  border: 1px solid color-mix(in srgb, var(--lg-ink) 25%, transparent); /* lint: structural */
+  background: transparent;
+  color: var(--lg-ink);
+  font-family: inherit;
+  font-size: var(--lg-chip-font-size);
+  transition:
+    background var(--lg-ref-duration-fade) ease,
+    color var(--lg-ref-duration-fade) ease;
+}
+.lg-chip[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--lg-ink) 85%, transparent);
+  border-color: transparent;
+  color: var(--lg-opaque-bg);
+}
+.lg-chip:focus-visible {
+  outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+  outline-offset: var(--lg-ref-size-focus-offset);
+}

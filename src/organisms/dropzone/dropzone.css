@@ -1,0 +1,40 @@
+/* ---------- dropzone（drag over の間だけガラス化 = transient の応用） ---------- */
+.lg-dropzone {
+  min-height: var(--lg-dropzone-min-height);
+  border-radius: var(--lg-dropzone-radius);
+  border: 1.5px dashed color-mix(in srgb, var(--lg-ink) /* lint: structural */
+    calc(var(--lg-dropzone-border-alpha) * 100%), transparent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--lg-ref-space-sm);
+  padding: var(--lg-ref-space-xl);
+  color: color-mix(in srgb, var(--lg-ink) 65%, transparent);
+  font-size: var(--lg-ref-type-body-size);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color var(--lg-ref-duration-fade) ease,
+    background var(--lg-ref-duration-fade) ease,
+    box-shadow var(--lg-ref-duration-fade) ease;
+}
+.lg-dropzone.is-over {
+  border-style: solid;
+  border-color: color-mix(in srgb, var(--lg-rim)
+    calc(var(--lg-ref-alpha-rim-mid) * 100%), transparent);
+  background: color-mix(in srgb, var(--lg-ref-color-white) 6%, transparent);
+  -webkit-backdrop-filter: blur(var(--lg-material-regular-thin-blur))
+    saturate(var(--lg-material-regular-saturate));
+  backdrop-filter: blur(var(--lg-material-regular-thin-blur))
+    saturate(var(--lg-material-regular-saturate));
+  box-shadow: 0 0 18px color-mix(in srgb, var(--lg-rim) /* lint: structural */
+    calc(var(--lg-ref-alpha-rim-mid) * 60%), transparent);
+  color: var(--lg-ink);
+}
+.lg-dropzone:focus-visible {
+  outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+  outline-offset: var(--lg-ref-size-focus-offset);
+}
+.lg-dropzone input[type="file"] { display: none; }
+.lg-dropzone .files { font-size: var(--lg-ref-type-caption-size); opacity: 0.8; }

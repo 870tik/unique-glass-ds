@@ -1,0 +1,22 @@
+/* ---------- page header: 径路 + 見出し + アクション ---------- */
+.lg-page-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lg-ref-space-sm);
+}
+.lg-page-header .row {
+  display: flex;
+  align-items: center;
+  gap: var(--lg-ref-space-md);
+  flex-wrap: wrap;
+}
+.lg-page-header .row .actions {
+  margin-left: auto;
+  display: flex;
+  gap: var(--lg-ref-space-sm);
+  align-items: center;
+}
+@media (max-width: 640px) {
+  .lg-page-header .row .actions { margin-left: 0; width: 100%; }
+  .lg-page-header .row .actions .lg-button { flex: 1; }
+}

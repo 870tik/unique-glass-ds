@@ -1,0 +1,24 @@
+/* ---------- avatar（コンテンツ層。イニシャルフォールバック内蔵） ---------- */
+.lg-avatar {
+  flex: none;
+  width: var(--lg-avatar-size);
+  height: var(--lg-avatar-size);
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  overflow: hidden;
+  font-size: var(--lg-avatar-font-size);
+  font-weight: var(--lg-ref-type-weight-medium);
+  letter-spacing: 0.04em; /* lint: structural */
+  background: color-mix(in srgb, var(--lg-ink) 14%, transparent);
+  color: var(--lg-ink);
+}
+.lg-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.lg-avatar--sm { width: var(--lg-avatar-size-sm); height: var(--lg-avatar-size-sm); font-size: calc(var(--lg-avatar-font-size) - 2px); }
+.lg-avatar--lg { width: var(--lg-avatar-size-lg); height: var(--lg-avatar-size-lg); font-size: calc(var(--lg-avatar-font-size) + 3px); }
+.lg-avatar-group { display: inline-flex; }
+.lg-avatar-group .lg-avatar {
+  margin-left: var(--lg-avatar-group-overlap);
+  box-shadow: 0 0 0 2px var(--lg-opaque-bg); /* lint: structural */
+}
+.lg-avatar-group .lg-avatar:first-child { margin-left: 0; }

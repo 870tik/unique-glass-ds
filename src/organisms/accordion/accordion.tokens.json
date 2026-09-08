@@ -1,0 +1,17 @@
+{
+  "lg": {
+    "accordion": {
+      "$description": "comp 層 — 開閉するコンテンツ（不透明）。native details/summary ベース",
+      "pad-y": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "行の上下パディング"
+      },
+      "pad-x": {
+        "$value": "2px",
+        "$type": "dimension",
+        "$description": "左右（panel 内に置く前提で最小）"
+      }
+    }
+  }
+}

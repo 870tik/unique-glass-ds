@@ -1,0 +1,17 @@
+{
+  "lg": {
+    "breadcrumbs": {
+      "$description": "comp 層 — 現在地の径路（塗り・非ガラス）。ナビだが恒常面ではないため塗りで作る",
+      "font-size": {
+        "$value": "12.5px",
+        "$type": "dimension",
+        "$description": "本文よりわずかに小さく"
+      },
+      "sep-alpha": {
+        "$value": 0.35,
+        "$type": "number",
+        "$description": "区切り記号の ink 混合率"
+      }
+    }
+  }
+}

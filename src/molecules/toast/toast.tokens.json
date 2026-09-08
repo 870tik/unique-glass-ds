@@ -1,0 +1,52 @@
+{
+  "lg": {
+    "toast": {
+      "$description": "comp 層 — 通知トースト contract。右下スタック・バネ入場・フェード退場。一時面なのでガラス予算外",
+      "width": {
+        "$value": "320px",
+        "$type": "dimension",
+        "$description": "トースト幅"
+      },
+      "radius": {
+        "$value": "{lg.ref.radius.md}",
+        "$type": "dimension",
+        "$description": "外径"
+      },
+      "pad-y": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "上下パディング"
+      },
+      "pad-x": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "左右パディング"
+      },
+      "gap": {
+        "$value": "10px",
+        "$type": "dimension",
+        "$description": "スタック間隔"
+      },
+      "duration": {
+        "$value": "{lg.ref.duration.toast}",
+        "$type": "duration",
+        "$description": "自動退場までの滞留"
+      },
+      "enter-scale": {
+        "$value": 0.92,
+        "$type": "number",
+        "$description": "登場開始スケール"
+      },
+      "material": {
+        "$value": "regular",
+        "$type": "string",
+        "$description": "contract: Regular のみ"
+      },
+      "action-height": {
+        "$value": "28px",
+        "$type": "dimension",
+        "$description": "トースト内アクションボタンの高さ"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+/* ---------- action bar: 保存/キャンセルの操作クラスタ（ガラス1枚） ---------- */
+.lg-actionbar {
+  --lg-r: var(--lg-ref-radius-pill);
+  position: sticky;
+  bottom: var(--lg-ref-space-lg);
+  z-index: var(--lg-ref-z-menu);
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: var(--lg-layout-actionbar-gap);
+  padding: var(--lg-ref-space-sm);
+}
+.lg-actionbar .hint {
+  font-size: var(--lg-ref-type-caption-size);
+  color: color-mix(in srgb, var(--lg-ink) 60%, transparent);
+  padding-inline: var(--lg-ref-space-md);
+}
+@media (max-width: 640px) {
+  .lg-actionbar {
+    align-self: stretch;
+    bottom: var(--lg-ref-space-sm);
+    justify-content: stretch;
+  }
+  .lg-actionbar .lg-button { flex: 1; }
+  .lg-actionbar .hint { display: none; }
+}

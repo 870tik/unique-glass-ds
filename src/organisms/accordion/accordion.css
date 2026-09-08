@@ -1,0 +1,39 @@
+/* ---------- accordion（native details。コンテンツ層） ---------- */
+.lg-accordion {
+  border-bottom: 1px solid color-mix(in srgb, var(--lg-ink) /* lint: structural */
+    calc(var(--lg-table-border-alpha) * 100%), transparent);
+  color: var(--lg-ink);
+}
+.lg-accordion summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--lg-ref-space-md);
+  padding: var(--lg-accordion-pad-y) var(--lg-accordion-pad-x);
+  font-size: var(--lg-ref-type-body-size);
+  font-weight: var(--lg-ref-type-weight-medium);
+  border-radius: var(--lg-ref-radius-xs);
+}
+.lg-accordion summary::-webkit-details-marker { display: none; }
+.lg-accordion summary::after {
+  content: "";
+  margin-left: auto;
+  width: 7px; height: 7px; /* lint: structural */
+  border-right: 1.5px solid currentColor; /* lint: structural */
+  border-bottom: 1.5px solid currentColor; /* lint: structural */
+  transform: rotate(45deg);
+  opacity: 0.5;
+  transition: transform var(--lg-ref-duration-fade) ease;
+}
+.lg-accordion[open] summary::after { transform: rotate(-135deg); }
+.lg-accordion summary:focus-visible {
+  outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+  outline-offset: var(--lg-ref-size-focus-offset);
+}
+.lg-accordion-body {
+  padding: 0 var(--lg-accordion-pad-x) var(--lg-accordion-pad-y);
+  font-size: var(--lg-ref-type-body-size);
+  line-height: var(--lg-ref-type-leading-body);
+  color: color-mix(in srgb, var(--lg-ink) 80%, transparent);
+}

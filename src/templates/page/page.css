@@ -1,0 +1,21 @@
+/* ------------------------------------------------------------
+   phase 6 — 画面レイアウト型（.lg-page / .lg-layout-*）
+   Web サービスの画面類型を全て SP 対応で。breakpoint は
+   md 900 / sm 640（tokens.ref.breakpoint と同値リテラル）
+   ------------------------------------------------------------ */
+
+/* ---------- page: 全画面共通のコンテンツ容器 ---------- */
+.lg-page {
+  width: 100%;
+  max-width: var(--lg-layout-page-max);
+  margin-inline: auto;
+  padding-inline: var(--lg-layout-page-pad);
+  display: flex;
+  flex-direction: column;
+  gap: var(--lg-layout-section-gap);
+  padding-bottom: var(--lg-ref-space-4xl);
+  color: var(--lg-ink);
+}
+@media (max-width: 640px) {
+  .lg-page { padding-inline: var(--lg-layout-page-pad-sp); gap: var(--lg-ref-space-xl); }
+}

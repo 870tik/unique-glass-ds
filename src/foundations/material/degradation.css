@@ -1,0 +1,37 @@
+/* ------------------------------------------------------------
+   degradation — opaque（物質の固化）。surface 連動を保つ
+   ------------------------------------------------------------ */
+@media (prefers-reduced-transparency: reduce) {
+  .lg-glass {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background: var(--lg-opaque-bg) !important;
+    color: var(--lg-opaque-ink) !important;
+  }
+  .lg-glass::before,
+  .lg-glass::after {
+    display: none;
+  }
+  .lg-button--primary {
+    background: var(--lg-button-accent-solid) !important;
+    color: var(--lg-button-on-accent) !important;
+  }
+  .lg-field-input {
+    color: var(--lg-opaque-ink);
+  }
+}
+/* JS 検出による opaque（backdrop-filter 自体が使えない環境） */
+html.lg-mode-opaque .lg-glass {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  background: var(--lg-opaque-bg) !important;
+  color: var(--lg-opaque-ink) !important;
+}
+html.lg-mode-opaque .lg-glass::before,
+html.lg-mode-opaque .lg-glass::after {
+  display: none;
+}
+html.lg-mode-opaque .lg-button--primary {
+  background: var(--lg-button-accent-solid) !important;
+  color: var(--lg-button-on-accent) !important;
+}

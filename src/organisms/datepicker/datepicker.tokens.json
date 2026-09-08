@@ -1,0 +1,17 @@
+{
+  "lg": {
+    "datepicker": {
+      "$description": "comp 層 — 日付選択（popover 内のカレンダー）。input[data-lg-datepicker] に自動配線",
+      "cell-size": {
+        "$value": "32px",
+        "$type": "dimension",
+        "$description": "日セルの外径"
+      },
+      "pad": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "カレンダーの内側パディング"
+      }
+    }
+  }
+}

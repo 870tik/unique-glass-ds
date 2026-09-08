@@ -1,0 +1,27 @@
+{
+  "lg": {
+    "skeleton": {
+      "$description": "comp 層 — ローディングプレースホルダ（コンテンツ層）。shimmer は reduced-motion で静止",
+      "radius": {
+        "$value": "{lg.ref.radius.xs}",
+        "$type": "dimension",
+        "$description": "角丸"
+      },
+      "duration": {
+        "$value": "1600ms",
+        "$type": "duration",
+        "$description": "shimmer 1周"
+      },
+      "alpha": {
+        "$value": 0.09,
+        "$type": "number",
+        "$description": "ベースの ink 混合率"
+      },
+      "shine-alpha": {
+        "$value": 0.07,
+        "$type": "number",
+        "$description": "shimmer ハイライトの追加分"
+      }
+    }
+  }
+}

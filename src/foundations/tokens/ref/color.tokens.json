@@ -1,0 +1,147 @@
+{
+  "lg": {
+    "ref": {
+      "$description": "生値の層。ここ以外に raw な色・数値を置かない",
+      "color": {
+        "white": {
+          "$value": "#ffffff",
+          "$type": "color",
+          "$description": "リム・面リフト・ハイライトの基底。素材は無色なので、白は「光」の色としてのみ使う"
+        },
+        "black": {
+          "$value": "#000000",
+          "$type": "color",
+          "$description": "dim・scrim・影の基底。黒は「遮光」の色としてのみ使う"
+        },
+        "ink-dark": {
+          "$value": "#22242a",
+          "$type": "color",
+          "$description": "明るい surface（light/text）上のガラスラベル色。純黒ではなく僅かに青みの墨"
+        },
+        "ink-light": {
+          "$value": "#edece7",
+          "$type": "color",
+          "$description": "暗い surface（dark）上のガラスラベル色。純白ではなく紙白"
+        },
+        "ink-media": {
+          "$value": "#f4f3ee",
+          "$type": "color",
+          "$description": "media surface（写真・映像）上のラベル色。彩度の高い背景に負けないよう ink-light より僅かに明るい"
+        },
+        "on-accent": {
+          "$value": "#fdfdff",
+          "$type": "color",
+          "$description": "アクセント（ステンドグラス）背景上のラベル。常に明。surface に依らない"
+        },
+        "accent": {
+          "$value": "#7f8fff",
+          "$type": "color",
+          "$description": "アクセント（ペリウィンクル）。#8fa2ff→#7f8fff（2026-09: 彩度を引き上げ。ガラス合成後に Solid と同族の発色になる値）",
+          "$extensions": {
+            "lg.rule": "1画面1箇所限定"
+          }
+        },
+        "accent-deep": {
+          "$value": "#5e73f7",
+          "$type": "color",
+          "$description": "アクセントの深い側（グラデ下段）。#7488f0→#5e73f7（同上）"
+        },
+        "accent-solid": {
+          "$value": "#5b6ef0",
+          "$type": "color",
+          "$description": "不透明フォールバック時のアクセント。#5a6ccc→#5b6ef0（同上）"
+        },
+        "opaque-dark": {
+          "$value": "#15171d",
+          "$type": "color",
+          "$description": "reduced-transparency / 非対応環境での不透明ガラス面（暗 surface 用）"
+        },
+        "opaque-light": {
+          "$value": "#f2f1ec",
+          "$type": "color",
+          "$description": "reduced-transparency / 非対応環境での不透明ガラス面（明 surface 用）。surface 連動フォールバックの明側"
+        },
+        "scrim": {
+          "$value": "rgba(0, 0, 0, 0.45)",
+          "$type": "color",
+          "$description": "modal backdrop の遮光。コンテンツ層を沈めてガラス1枚に集中させる"
+        },
+        "dim-35": {
+          "$value": "rgba(0, 0, 0, 0.35)",
+          "$type": "color",
+          "$description": "Clear バリアントを明 surface に置いた時に自動で敷く dim 層。35% は Apple HIG の明文値"
+        },
+        "shadow-ambient": {
+          "$value": "rgba(0, 0, 0, 0.30)",
+          "$type": "color",
+          "$description": "浮遊ガラスの環境影の色。広く柔らかい方"
+        },
+        "shadow-contact": {
+          "$value": "rgba(0, 0, 0, 0.16)",
+          "$type": "color",
+          "$description": "接地寄りの影の色。輪郭を締める方"
+        },
+        "light-key": {
+          "$value": "rgba(153, 192, 255, 0.12)",
+          "$type": "color",
+          "$description": "対角2光源の寒色キー（左上）。baseline でレンズを失った時もエッジ反射を残すための inset 光"
+        },
+        "light-fill": {
+          "$value": "rgba(229, 253, 190, 0.12)",
+          "$type": "color",
+          "$description": "対角2光源の暖色フィル（右下）。key と対で素材の厚みを示す"
+        },
+        "positive": {
+          "$value": "#43cf8c",
+          "$type": "color",
+          "$description": "成功・正の状態色。#5fb98a→#43cf8c（同上・鮮明な緑へ）"
+        },
+        "chart-1": {
+          "$value": "#8fa2ff",
+          "$type": "color",
+          "$description": "カテゴリカル1。アクセントと同系（主系列に使う）"
+        },
+        "chart-2": {
+          "$value": "#6fc7b4",
+          "$type": "color",
+          "$description": "カテゴリカル2。ティール"
+        },
+        "chart-3": {
+          "$value": "#e0aa72",
+          "$type": "color",
+          "$description": "カテゴリカル3。アンバー"
+        },
+        "chart-4": {
+          "$value": "#d98bb6",
+          "$type": "color",
+          "$description": "カテゴリカル4。ローズ"
+        },
+        "chart-5": {
+          "$value": "#7ab8e8",
+          "$type": "color",
+          "$description": "カテゴリカル5。スカイ"
+        },
+        "chart-6": {
+          "$value": "#a5cc7a",
+          "$type": "color",
+          "$description": "カテゴリカル6。リーフ。7系列以上は集約を検討する"
+        },
+        "warning": {
+          "$value": "#f0ad4a",
+          "$type": "color",
+          "$description": "警告の状態色。#e0b56f→#f0ad4a（同上・明快なアンバーへ）"
+        },
+        "spectrum-cool": {
+          "$value": "#8fd0ff",
+          "$type": "color",
+          "$description": "リム光の寒色端（分光の青側）。prism 材のハイライトは白一色ではなくスペクトルに割れる（公理4改定）"
+        },
+        "spectrum-warm": {
+          "$value": "#ffb37a",
+          "$type": "color",
+          "$description": "リム光の暖色端（分光の赤側）。同上"
+        }
+      }
+    }
+  }
+}

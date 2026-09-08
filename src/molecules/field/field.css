@@ -1,0 +1,33 @@
+/* text field — transient ガラス化: 静止時は不透明寄り、focus で相転移 */
+.lg-field {
+  --lg-r: var(--lg-field-radius);
+  display: flex;
+  align-items: center;
+  height: var(--lg-field-height);
+  transition:
+    background var(--lg-ref-duration-fade) ease,
+    color var(--lg-ref-duration-fade) ease;
+}
+.lg-field:not(:focus-within) {
+  background: color-mix(in srgb, var(--lg-opaque-bg)
+    calc(var(--lg-field-rest-opacity) * 100%), transparent);
+}
+.lg-field:focus-within {
+  --lg-li: var(--lg-light-hover-intensity);
+}
+.lg-field-input {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  padding: 0 var(--lg-field-padding-x);
+  font-family: inherit;
+  font-size: var(--lg-field-font-size);
+  color: var(--lg-ink);
+  border-radius: inherit;
+}
+.lg-field-input::placeholder {
+  color: color-mix(in srgb, var(--lg-ink)
+    calc(var(--lg-ref-alpha-tab-idle) * 70%), transparent);
+}

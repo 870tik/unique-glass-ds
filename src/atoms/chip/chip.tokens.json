@@ -1,0 +1,27 @@
+{
+  "lg": {
+    "chip": {
+      "$description": "comp 層 — filter chip contract。選択状態は ink 塗り反転。ガラスではなく塗り部品",
+      "height": {
+        "$value": "30px",
+        "$type": "dimension",
+        "$description": "チップ高"
+      },
+      "pad-x": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "左右パディング"
+      },
+      "font-size": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "ラベル"
+      },
+      "radius": {
+        "$value": "{lg.ref.radius.pill}",
+        "$type": "dimension",
+        "$description": "ピル形状"
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "$description": "studio-dark theme overlay — dark-lens 探索（03_explorations/motion/dark-lens.html）のチューニングをコアの上書きとして移植。#0d0e11 世界観 / ペリウィンクル光 / 深い影。コア ref/sys の上書きのみを定義し、構造・comp 層には触れない。JS が読む値（saturate 等）を効かせるには data-lg-theme を html 要素に付与すること",
+  "lg": {
+    "ref": {
+      "color": {
+        "white": {
+          "$value": "#edefff",
+          "$type": "color",
+          "$description": "光の基底を寒色白へ転調。面リフト・conic リムの母色がすべて冷える（dark-lens の「暗部で立つのは寒色」の帰結）"
+        },
+        "accent": {
+          "$value": "#97a3ff",
+          "$type": "color",
+          "$description": "ステンドグラスをペリウィンクルへ。dark-lens の --peri。1画面1箇所規律はコアのまま"
+        },
+        "accent-deep": {
+          "$value": "#5f6fe0",
+          "$type": "color",
+          "$description": "primary グラデーション下端。dark-lens の --peri-deep"
+        },
+        "accent-solid": {
+          "$value": "#5866d6",
+          "$type": "color",
+          "$description": "opaque フォールバック時の primary。ペリウィンクルを保ちつつ on-accent とのコントラストを確保する濃度"
+        },
+        "light-key": {
+          "$value": "rgba(151, 163, 255, 0.14)",
+          "$type": "color",
+          "$description": "対角光源の寒色キーをペリウィンクルへ強化。baseline でも暗部でエッジが立つ"
+        },
+        "light-fill": {
+          "$value": "rgba(195, 202, 255, 0.10)",
+          "$type": "color",
+          "$description": "暖色フィルを廃し寒色ペール（--peri-pale 系）へ。スタジオダークは寒色単一光源系"
+        },
+        "shadow-ambient": {
+          "$value": "rgba(0, 0, 0, 0.55)",
+          "$type": "color",
+          "$description": "環境影を深く。黒地では影が濃くないとガラスが浮かない（dark-lens の 0.85 系を可読側に丸め）"
+        },
+        "shadow-contact": {
+          "$value": "rgba(0, 0, 0, 0.35)",
+          "$type": "color",
+          "$description": "接地影も同様に深く"
+        },
+        "scrim": {
+          "$value": "rgba(0, 0, 0, 0.55)",
+          "$type": "color",
+          "$description": "modal scrim を深く。黒地の上でも modal 背後が確実に沈む"
+        },
+        "opaque-dark": {
+          "$value": "#14161f",
+          "$type": "color",
+          "$description": "不透明フォールバック面に僅かな青みを乗せ、テーマの世界観を固化状態でも保つ"
+        }
+      },
+      "saturate": {
+        "regular": {
+          "$value": 1.45,
+          "$type": "number",
+          "$description": "背景彩度リフトをテーマ上限の 1.45 へ（批評指示レンジ 1.3–1.45 の上端）。暗所の光を拾う量を増やす"
+        }
+      }
+    },
+    "material": {
+      "regular": {
+        "shadow": {
+          "$value": [
+            { "inset": false, "offsetX": "0px", "offsetY": "24px", "blur": "50px", "spread": "-18px", "color": "{lg.ref.color.shadow-ambient}" },
+            { "inset": false, "offsetX": "0px", "offsetY": "4px", "blur": "14px", "spread": "-6px", "color": "{lg.ref.color.shadow-contact}" }
+          ],
+          "$type": "shadow",
+          "$description": "影のジオメトリを dark-lens の深い落ち方（24/50/-18 + 4/14/-6）へ。色は同テーマの shadow-* を参照"
+        }
+      }
+    },
+    "adaptive": {
+      "dark": {
+        "rim": {
+          "$value": "#c3caff",
+          "$type": "color",
+          "$description": "dark surface のリム基色をペリウィンクルペール（dark-lens --peri-pale）へ。白リムは黒地で嘘になる、が批評の学び"
+        },
+        "bcomp": {
+          "$value": 1.1,
+          "$type": "number",
+          "$description": "輝度補償を 1.16 → 1.10 へ。テーマの背景自体が発光を含むため補償は控えめでよい"
+        },
+        "face-alpha": {
+          "$value": 0.055,
+          "$type": "number",
+          "$description": "面リフトを僅かに下げる（0.06 → 0.055）。存在証明をリム光と屈折側へ寄せる dark-lens の立て方"
+        }
+      },
+      "media": {
+        "rim": {
+          "$value": "#c3caff",
+          "$type": "color",
+          "$description": "スタジオダークの media（発光シーン・映像）でもリムはペリウィンクルペールで統一"
+        }
+      }
+    }
+  }
+}

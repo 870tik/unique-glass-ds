@@ -1,0 +1,51 @@
+/* ---------- datepicker（popover 内カレンダー。JS が生成） ---------- */
+.lg-datepicker {
+  padding: var(--lg-datepicker-pad);
+  color: var(--lg-ink);
+  user-select: none;
+}
+.lg-datepicker-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--lg-ref-space-sm);
+  padding: 0 var(--lg-ref-space-xs) var(--lg-ref-space-sm);
+  font-size: var(--lg-ref-type-body-size);
+  font-weight: var(--lg-ref-type-weight-medium);
+}
+.lg-datepicker-grid {
+  display: grid;
+  grid-template-columns: repeat(7, var(--lg-datepicker-cell-size));
+}
+.lg-datepicker-grid .dow {
+  display: grid;
+  place-items: center;
+  height: calc(var(--lg-datepicker-cell-size) - 6px);
+  font-size: var(--lg-ref-type-micro-size);
+  letter-spacing: 0.06em; /* lint: structural */
+  color: color-mix(in srgb, var(--lg-ink) 45%, transparent);
+}
+.lg-datepicker-grid .day {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  width: var(--lg-datepicker-cell-size);
+  height: var(--lg-datepicker-cell-size);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--lg-ink);
+  font-family: inherit;
+  font-size: var(--lg-ref-type-caption-size);
+  font-variant-numeric: tabular-nums;
+}
+.lg-datepicker-grid .day:hover { background: color-mix(in srgb, var(--lg-ink) 12%, transparent); }
+.lg-datepicker-grid .day.is-out { opacity: 0.3; }
+.lg-datepicker-grid .day.is-today { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--lg-ink) 40%, transparent); } /* lint: structural */
+.lg-datepicker-grid .day[aria-selected="true"] {
+  background: color-mix(in srgb, var(--lg-ink) 85%, transparent);
+  color: var(--lg-opaque-bg);
+}
+.lg-datepicker-grid .day:focus-visible {
+  outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+  outline-offset: -2px; /* lint: structural */
+}

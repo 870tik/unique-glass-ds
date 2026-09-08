@@ -1,0 +1,30 @@
+/* ============================================================
+   phase 3 — SaaS components
+   ガラス（機能レイヤー）: shell / sidebar / topbar / menu / select /
+   command / toast / tooltip / 一時ガラス操作子（switch 等）
+   不透明（コンテンツ層）: panel / table / stat / form-row
+   ============================================================ */
+
+/* ---------- material phases（厚相/薄相。屈折レシピは regular と共有） ---------- */
+.lg-glass[data-lg-phase="thick"] {
+  --lg-face-scale: var(--lg-material-regular-thick-face-scale);
+  -webkit-backdrop-filter:
+    blur(var(--lg-material-regular-thick-blur))
+    saturate(var(--lg-material-regular-saturate))
+    brightness(var(--lg-bcomp));
+  backdrop-filter:
+    blur(var(--lg-material-regular-thick-blur))
+    saturate(var(--lg-material-regular-saturate))
+    brightness(var(--lg-bcomp));
+}
+.lg-glass[data-lg-phase="thin"] {
+  --lg-face-scale: var(--lg-material-regular-thin-face-scale);
+  -webkit-backdrop-filter:
+    blur(var(--lg-material-regular-thin-blur))
+    saturate(var(--lg-material-regular-saturate))
+    brightness(var(--lg-bcomp));
+  backdrop-filter:
+    blur(var(--lg-material-regular-thin-blur))
+    saturate(var(--lg-material-regular-saturate))
+    brightness(var(--lg-bcomp));
+}

@@ -1,0 +1,10 @@
+/* ============================================================
+   liquid-glass.css — material + components (phase 1: colorless core)
+   requires: css/tokens.css (generated) before this file.
+   色・数値の由来はすべて tokens/liquid-glass.tokens.json の $description。
+   このファイルに rgba/hex の直値を書かない。
+   ============================================================ */
+
+/* virtual light source — inherits:true 必須（擬似要素へ継承させる） */
+@property --lg-la { syntax: "<angle>"; inherits: true; initial-value: 215deg; }
+@property --lg-li { syntax: "<number>"; inherits: true; initial-value: 0; }

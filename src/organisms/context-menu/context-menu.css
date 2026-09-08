@@ -1,0 +1,7 @@
+/* ---------- context menu（カーソル位置に開く。JS が座標を与える） ---------- */
+.lg-menu--context {
+  position: fixed;
+  top: 0; left: 0;
+  z-index: var(--lg-ref-z-menu);
+  transform-origin: top left;
+}

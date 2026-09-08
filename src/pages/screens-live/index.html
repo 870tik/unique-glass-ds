@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ja" data-lg-surface="dark" data-lg-observer="personal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unique Glass DS — screen layouts</title>
+<!-- @include src/pages/_shared/persona-boot.html -->
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/liquid-glass.css">
+<link rel="stylesheet" href="../css/themes/studio-dark.css">
+<style>
+:root { --mono: var(--lg-ref-type-family-mono); }
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; min-height: 100vh;
+  background: color-mix(in srgb, var(--lg-ref-color-opaque-dark) 88%, var(--lg-ref-color-black));
+}
+body {
+  font-family: -apple-system, "Helvetica Neue", "Hiragino Sans", sans-serif;
+  color: var(--lg-adaptive-dark-ink);
+}
+.app-bg {
+  position: fixed; inset: 0; z-index: -1; overflow: hidden;
+  background:
+    radial-gradient(52vw 42vh at 78% 6%,
+      color-mix(in srgb, var(--lg-ref-color-accent) 14%, transparent), transparent 70%),
+    radial-gradient(40vw 50vh at 8% 96%,
+      color-mix(in srgb, var(--lg-ref-color-accent-deep) 9%, transparent), transparent 72%);
+}
+.app-bg .grid {
+  position: absolute; inset: -60px;
+  background:
+    linear-gradient(color-mix(in srgb, var(--lg-adaptive-dark-ink) 6%, transparent) 1px, transparent 1px) 0 0 / 100% 56px,
+    linear-gradient(90deg, color-mix(in srgb, var(--lg-adaptive-dark-ink) 6%, transparent) 1px, transparent 1px) 0 0 / 56px 100%;
+  mask-image: radial-gradient(80% 70% at 50% 30%, #000 30%, transparent 100%);
+}
+@media (prefers-reduced-transparency: reduce) { .app-bg { display: none; } }
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 8px 16px; font-family: var(--mono);
+  font-size: 12px; letter-spacing: .12em;
+}
+.brand .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--lg-button-accent);
+  box-shadow: 0 0 10px var(--lg-button-accent);
+}
+.tag { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; opacity: .55; }
+.screen { display: none; }
+.screen.is-on { display: flex; flex-direction: column; } /* .lg-page の flex+gap を殺さない */
+.standalone { display: none; }
+body.is-standalone .lg-shell { display: none; }
+body.is-standalone #sc-create.is-on { display: flex; }
+body.is-standalone #sc-auth.is-on { display: grid; }
+/* auth: 無地の上にガラスは立たない（02-layout）— カード背後に光の構造を敷く */
+#sc-auth { position: relative; }
+#sc-auth::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(46vw 42vh at 50% 44%,
+      color-mix(in srgb, var(--lg-ref-color-accent) 13%, transparent), transparent 70%),
+    repeating-linear-gradient(0deg, transparent 0 55px,
+      color-mix(in srgb, var(--lg-adaptive-dark-ink) 5%, transparent) 55px 56px);
+}
+
+/* ---- demo scaffolding: 任意寸法はここに集約（利用ルール docs/08 の例外規定） ---- */
+[data-sc="sc1"] { margin-top:auto;padding:8px; }
+[data-sc="sc2"] { margin-bottom:12px; }
+[data-sc="sc3"] { display:flex;flex-direction:column;gap:8px; }
+[data-sc="sc4"] { width:220px; }
+[data-sc="sc5"] { min-width:150px; }
+[data-sc="sc6"] { display:flex;justify-content:flex-end;padding-top:12px; }
+[data-sc="sc7"] { margin-top:16px; }
+[data-sc="sc8"] { display:flex;flex-direction:column;gap:14px; }
+[data-sc="sc9"] { display:flex;align-items:center;gap:10px; }
+[data-sc="sc10"] { font-size:13.5px; }
+[data-sc="sc11"] { max-width:220px; }
+[data-sc="sc12"] { width:150px; }
+[data-sc="sc13"] { display:flex;flex-direction:column;gap:16px;min-width:0; }
+[data-sc="sc14"] { display:flex;flex-direction:column;gap:16px; }
+[data-sc="sc15"] { max-width:320px; }
+[data-sc="sc16"] { width:180px; }
+[data-sc="sc17"] { margin-top:4px; }
+.lg-topbar .lg-type-heading { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+</style>
+</head>
+<body>
+<div class="app-bg" data-lg-animate aria-hidden="true"><div class="grid"></div></div>
+
+<div class="lg-shell">
+  <aside class="lg-glass lg-sidebar" data-lg-phase="thick" aria-label="画面タイプ">
+    <div class="brand"><span class="dot"></span>SCREEN TYPES</div>
+    <nav class="lg-nav lg-nav--vertical" id="screenNav" aria-label="画面切替">
+      <button class="lg-tab" data-screen="dashboard" aria-selected="true">基本（Dashboard）</button>
+      <button class="lg-tab" data-screen="list">一覧（List）</button>
+      <button class="lg-tab" data-screen="detail">閲覧（Detail）</button>
+      <button class="lg-tab" data-screen="edit">編集（Edit）</button>
+      <button class="lg-tab" data-screen="create">新規（Create）</button>
+      <button class="lg-tab" data-screen="settings">設定（Settings）</button>
+      <button class="lg-tab" data-screen="auth">認証（Auth）</button>
+    </nav>
+  </aside>
+
+  <header class="lg-glass lg-topbar" data-lg-phase="thin">
+    <button class="lg-shell-menu-btn" aria-label="メニューを開く"><i data-lg-icon="menu"></i></button>
+    <span class="lg-type-heading" id="screenTitle">基本（Dashboard）</span>
+  </header>
+
+  <main class="lg-shell-content">
+
+    <!-- @include src/pages/screens/dashboard.html -->
+
+    <!-- @include src/pages/screens/list.html -->
+
+    <!-- @include src/pages/screens/detail.html -->
+
+    <!-- @include src/pages/screens/edit.html -->
+
+    <!-- @include src/pages/screens/settings.html -->
+
+      </main>
+</div>
+
+<!-- @include src/pages/screens/create.html -->
+
+    <!-- @include src/pages/screens/auth.html -->
+
+    
+<script src="../js/lg-icons.js"></script>
+<script src="../js/liquid-glass.js"></script>
+<script>
+(function () {
+  var LG = window.LiquidGlass;
+
+  var screens = Array.prototype.slice.call(document.querySelectorAll('.screen, .standalone'));
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('#screenNav .lg-tab'));
+  function show(id) {
+    var sec = document.getElementById('sc-' + id) || document.getElementById('sc-dashboard');
+    id = sec.id.replace(/^sc-/, '');
+    var standalone = sec.classList.contains('standalone');
+    document.body.classList.toggle('is-standalone', standalone);
+    screens.forEach(function (s) { s.classList.toggle('is-on', s === sec); });
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', String(t.dataset.screen === id)); });
+    document.getElementById('screenTitle').textContent = sec.dataset.title;
+    if (history.replaceState) history.replaceState(null, '', '#' + id);
+    requestAnimationFrame(function () {
+      sec.querySelectorAll('.lg-glass').forEach(LG.lens);
+      sec.querySelectorAll('.lg-nav, .lg-segmented, .lg-switch').forEach(function (n) {
+        if (n._lgRelayout) n._lgRelayout();
+      });
+    });
+    document.querySelector('.lg-shell').classList.remove('is-nav-open');
+  }
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { show(t.dataset.screen); });
+  });
+  document.querySelectorAll('[data-back]').forEach(function (b) {
+    b.addEventListener('click', function () { show('dashboard'); });
+  });
+  document.getElementById('saveEdit').addEventListener('click', function () {
+    LG.toast('変更を保存しました', { positive: true });
+  });
+  show((location.hash || '#dashboard').slice(1));
+})();
+</script>
+</body>
+</html>

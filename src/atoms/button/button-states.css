@@ -1,0 +1,43 @@
+/* ---------- button states ---------- */
+.lg-button:disabled,
+.lg-button.is-disabled {
+  pointer-events: none;
+  opacity: var(--lg-field-disabled-opacity);
+}
+/* loading: スピナーのみ表示。ラベルは透明化し、ボタン寸法は保つ */
+.lg-button.is-loading {
+  pointer-events: none;
+  position: relative;
+  color: transparent; /* ラベル・アイコン（currentColor）を不可視化 */
+}
+.lg-button.is-loading::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: calc(var(--lg-progress-spinner-size) - 4px);
+  height: calc(var(--lg-progress-spinner-size) - 4px);
+  border-radius: 50%;
+  border: var(--lg-progress-spinner-width) solid
+    color-mix(in srgb, var(--lg-ink) 25%, transparent);
+  border-top-color: var(--lg-ink);
+  animation: lg-spin var(--lg-progress-duration) linear infinite;
+}
+/* 塗り様式（tinted/solid）× tone ではスピナーを on-accent に。
+   outline/quiet はトーン色のスピナー */
+.lg-button--accent.is-loading::before,
+.lg-button--primary.is-loading::before,
+.lg-button--solid.is-loading::before,
+.lg-button--danger.is-loading::before,
+.lg-button--success.is-loading::before,
+.lg-button--warning.is-loading::before {
+  border-color: color-mix(in srgb, var(--lg-button-on-accent) 30%, transparent);
+  border-top-color: var(--lg-button-on-accent);
+}
+.lg-button--outline.is-loading::before,
+.lg-button--quiet.is-loading::before {
+  border-color: color-mix(in srgb, var(--lg-btn-tone, var(--lg-ink)) 30%, transparent);
+  border-top-color: var(--lg-btn-tone, var(--lg-ink));
+}
+
+/* status のトーン定義は button.css の variant matrix（tone 変数方式）に統合済み */

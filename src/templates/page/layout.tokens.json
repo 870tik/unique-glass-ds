@@ -1,0 +1,57 @@
+{
+  "lg": {
+    "layout": {
+      "$description": "comp 層 — 画面レイアウト型。Web サービスの画面類型（基本/一覧/閲覧/編集/新規/設定/認証）を .lg-page + .lg-layout-* で組む。全型 SP 対応（md 900 / sm 640）",
+      "page-max": {
+        "$value": "1200px",
+        "$type": "dimension",
+        "$description": "コンテンツの最大幅。これ以上は左右余白で受ける"
+      },
+      "page-pad": {
+        "$value": "{lg.ref.space.2xl}",
+        "$type": "dimension",
+        "$description": "ページ左右パディング（デスクトップ）"
+      },
+      "page-pad-sp": {
+        "$value": "{lg.ref.space.lg}",
+        "$type": "dimension",
+        "$description": "ページ左右パディング（sm 以下）"
+      },
+      "form-max": {
+        "$value": "640px",
+        "$type": "dimension",
+        "$description": "編集/新規フォームの1カラム最大幅。可読性の上限"
+      },
+      "split-aside": {
+        "$value": "320px",
+        "$type": "dimension",
+        "$description": "Detail 画面のメタ情報サイドの幅。md 以下で1カラム化"
+      },
+      "subnav-width": {
+        "$value": "200px",
+        "$type": "dimension",
+        "$description": "Settings のサブナビ幅。md 以下で横スクロールタブ化"
+      },
+      "auth-card-width": {
+        "$value": "400px",
+        "$type": "dimension",
+        "$description": "認証カードの幅"
+      },
+      "actionbar-gap": {
+        "$value": "{lg.ref.space.sm}",
+        "$type": "dimension",
+        "$description": "アクションバー内のボタン間隔"
+      },
+      "section-gap": {
+        "$value": "{lg.ref.space.3xl}",
+        "$type": "dimension",
+        "$description": "ページ内セクション間の標準 gap（= space.3xl 32。foundation のセクション間定義と一致）。toolbar 直下のみ lg(16) に詰めてグルーピングする"
+      },
+      "stats-min": {
+        "$value": "180px",
+        "$type": "dimension",
+        "$description": "統計グリッドの最小カラム幅（auto-fit の下限）"
+      }
+    }
+  }
+}

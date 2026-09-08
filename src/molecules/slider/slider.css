@@ -1,0 +1,55 @@
+/* ---------- slider（ドラッグ中のみノブがガラス化。値は 1:1） ---------- */
+input[type="range"].lg-slider {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: var(--lg-slider-knob-size);
+  background: transparent;
+  cursor: pointer;
+  --lg-slider-val: 50%;
+}
+.lg-slider::-webkit-slider-runnable-track {
+  height: var(--lg-slider-track-height);
+  border-radius: var(--lg-ref-radius-pill);
+  background: linear-gradient(to right,
+    color-mix(in srgb, var(--lg-ink) 80%, transparent) var(--lg-slider-val),
+    color-mix(in srgb, var(--lg-ink) 18%, transparent) var(--lg-slider-val));
+}
+.lg-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: var(--lg-slider-knob-size);
+  height: var(--lg-slider-knob-size);
+  margin-top: calc((var(--lg-slider-track-height) - var(--lg-slider-knob-size)) / 2);
+  border-radius: 50%;
+  background: var(--lg-ink);
+  transition: box-shadow var(--lg-ref-duration-fade) ease;
+}
+.lg-slider:active::-webkit-slider-thumb {
+  background: color-mix(in srgb, var(--lg-ref-color-white) 40%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--lg-rim)
+      calc(var(--lg-ref-alpha-rim-mid) * 100%), transparent),
+    0 0 14px color-mix(in srgb, var(--lg-rim)
+      calc(var(--lg-ref-alpha-rim-side) * 100%), transparent);
+}
+.lg-slider::-moz-range-track {
+  height: var(--lg-slider-track-height);
+  border-radius: var(--lg-ref-radius-pill);
+  background: color-mix(in srgb, var(--lg-ink) 18%, transparent);
+}
+.lg-slider::-moz-range-progress {
+  height: var(--lg-slider-track-height);
+  border-radius: var(--lg-ref-radius-pill);
+  background: color-mix(in srgb, var(--lg-ink) 80%, transparent);
+}
+.lg-slider::-moz-range-thumb {
+  width: var(--lg-slider-knob-size);
+  height: var(--lg-slider-knob-size);
+  border: 0;
+  border-radius: 50%;
+  background: var(--lg-ink);
+}
+.lg-slider:focus-visible {
+  outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+  outline-offset: var(--lg-ref-size-focus-offset);
+}

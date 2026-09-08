@@ -1,0 +1,21 @@
+/* ---------- kv（description list。dl/dt/dd。コンテンツ層） ---------- */
+.lg-kv {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lg-kv-gap);
+  margin: 0;
+  font-size: var(--lg-ref-type-body-size);
+  color: var(--lg-ink);
+}
+.lg-kv > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--lg-ref-space-md);
+}
+.lg-kv dt {
+  color: color-mix(in srgb, var(--lg-ink)
+    calc(var(--lg-kv-key-alpha) * 100%), transparent);
+}
+.lg-kv dd { margin: 0; text-align: right; }
+.lg-kv dd.strong { font-weight: var(--lg-ref-type-weight-semibold); }

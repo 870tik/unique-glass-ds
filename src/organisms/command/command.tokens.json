@@ -1,0 +1,47 @@
+{
+  "lg": {
+    "command": {
+      "$description": "comp 層 — ⌘K コマンドパレット contract。scrim + 大きめ Regular ガラス。SaaS の旗艦要素",
+      "width": {
+        "$value": "560px",
+        "$type": "dimension",
+        "$description": "パレット幅（max-width）"
+      },
+      "radius": {
+        "$value": "{lg.ref.radius.xl}",
+        "$type": "dimension",
+        "$description": "パレット外径"
+      },
+      "pad": {
+        "$value": "8px",
+        "$type": "dimension",
+        "$description": "内側パディング。項目 radius = radius − pad（concentricity）"
+      },
+      "input-height": {
+        "$value": "54px",
+        "$type": "dimension",
+        "$description": "検索入力の高さ"
+      },
+      "item-height": {
+        "$value": "44px",
+        "$type": "dimension",
+        "$description": "結果項目高"
+      },
+      "list-max-height": {
+        "$value": "320px",
+        "$type": "dimension",
+        "$description": "結果リストの最大高（超過はスクロール）"
+      },
+      "enter-scale": {
+        "$value": "{lg.ref.scale.modal-enter}",
+        "$type": "number",
+        "$description": "登場開始スケール（modal と同族）"
+      },
+      "material": {
+        "$value": "regular",
+        "$type": "string",
+        "$description": "contract: Regular のみ"
+      }
+    }
+  }
+}

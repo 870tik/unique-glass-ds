@@ -1,0 +1,13 @@
+/* ---------- segmented（lg-nav の小型版。ピル機構共有・塗り容器） ---------- */
+.lg-segmented {
+  --lg-nav-radius: var(--lg-segmented-radius);
+  --lg-nav-gap: var(--lg-segmented-gap);
+  --lg-nav-height: var(--lg-segmented-height);
+  --lg-nav-tab-font-size: var(--lg-segmented-font-size);
+  display: inline-flex;
+  position: relative;
+  padding: var(--lg-segmented-gap);
+  border-radius: var(--lg-segmented-radius);
+  background: color-mix(in srgb, var(--lg-ink) 7%, transparent);
+}
+.lg-segmented .lg-tab { padding: 0 var(--lg-ref-space-md); }

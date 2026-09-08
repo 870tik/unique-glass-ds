@@ -1,0 +1,8 @@
+/* ---------- prose（コンテンツ層の読みものコンテナ） ---------- */
+.lg-prose {
+  font-size: var(--lg-ref-type-body-size);
+  line-height: var(--lg-ref-type-leading-body);
+  color: var(--lg-ink);
+}
+.lg-prose p { margin: 0 0 1em; } /* lint: structural */
+.lg-prose p:last-child { margin-bottom: 0; }

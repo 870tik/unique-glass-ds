@@ -1,0 +1,24 @@
+/* ---------- breadcrumbs（塗り） ---------- */
+.lg-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--lg-ref-space-sm);
+  font-size: var(--lg-breadcrumbs-font-size);
+  color: var(--lg-ink);
+}
+.lg-breadcrumbs a {
+  color: color-mix(in srgb, var(--lg-ink) 65%, transparent);
+  text-decoration: none;
+  border-radius: var(--lg-ref-radius-xs);
+}
+.lg-breadcrumbs a:hover { color: var(--lg-ink); }
+.lg-breadcrumbs a:focus-visible {
+  outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+  outline-offset: var(--lg-ref-size-focus-offset);
+}
+.lg-breadcrumbs .sep {
+  color: color-mix(in srgb, var(--lg-ink)
+    calc(var(--lg-breadcrumbs-sep-alpha) * 100%), transparent);
+  user-select: none;
+}
+.lg-breadcrumbs [aria-current="page"] { color: var(--lg-ink); }

@@ -1,0 +1,11 @@
+/* ---------- spinner ---------- */
+.lg-spinner {
+  width: var(--lg-progress-spinner-size);
+  height: var(--lg-progress-spinner-size);
+  border-radius: 50%;
+  border: var(--lg-progress-spinner-width) solid
+    color-mix(in srgb, var(--lg-ink) 20%, transparent);
+  border-top-color: var(--lg-ink);
+  animation: lg-spin var(--lg-progress-duration) linear infinite;
+}
+@keyframes lg-spin { to { transform: rotate(360deg); } }

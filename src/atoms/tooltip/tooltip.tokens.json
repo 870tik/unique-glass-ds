@@ -1,0 +1,42 @@
+{
+  "lg": {
+    "tooltip": {
+      "$description": "comp 層 — tooltip contract。小さく薄いガラス。遅延表示・位置固定（ポインタ追従しない）",
+      "radius": {
+        "$value": "{lg.ref.radius.xs}",
+        "$type": "dimension",
+        "$description": "外径"
+      },
+      "pad-y": {
+        "$value": "6px",
+        "$type": "dimension",
+        "$description": "上下パディング"
+      },
+      "pad-x": {
+        "$value": "10px",
+        "$type": "dimension",
+        "$description": "左右パディング"
+      },
+      "font-size": {
+        "$value": "11.5px",
+        "$type": "dimension",
+        "$description": "ラベルサイズ"
+      },
+      "max-width": {
+        "$value": "240px",
+        "$type": "dimension",
+        "$description": "最大幅"
+      },
+      "delay": {
+        "$value": "{lg.ref.duration.tooltip-delay}",
+        "$type": "duration",
+        "$description": "表示遅延"
+      },
+      "material": {
+        "$value": "regular-thin (baseline blur only)",
+        "$type": "string",
+        "$description": "contract: 小型・多数出現のためレンズは張らず薄相 baseline のみ"
+      }
+    }
+  }
+}

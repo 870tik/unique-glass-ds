@@ -1,0 +1,81 @@
+<!-- persona-dock — 8ペルソナの切替ドック（塗り面 = ガラス予算外）。
+     body 末尾・スクリプト群の手前に @include。persona-boot とセットで使う。
+     切替は localStorage 保存 → リロード（gel/lens 定数は初期化時に確定するため） -->
+<style>
+/* ====== ペルソナドック — DS の actionbar コンポーネント（ガラスの操作クラスタ）を
+   ページ固定に転用。チップは lg-chip ====== */
+.persona-dock {
+  position: fixed; bottom: var(--lg-ref-space-md); left: 50%; transform: translateX(-50%);
+  align-self: auto;
+  z-index: var(--lg-ref-z-toast);
+  max-width: min(94vw, 760px); overflow-x: auto; scrollbar-width: none;
+  gap: var(--lg-ref-space-xs);
+  padding: var(--lg-ref-space-xs) var(--lg-ref-space-sm);
+}
+.persona-dock::-webkit-scrollbar { display: none; }
+.persona-dock .tag { white-space: nowrap; padding-inline: var(--lg-ref-space-xs); opacity: .5; }
+.persona-dock .lg-chip { white-space: nowrap; flex: none; }
+@media (max-width: 700px) {
+  /* 横スクロールはスクロールを想起させにくい — 折り返して全チップを見せる */
+  .persona-dock {
+    flex-wrap: wrap; justify-content: center;
+    gap: 4px;
+    overflow: visible;
+    left: var(--lg-ref-space-sm); right: var(--lg-ref-space-sm);
+    transform: none;
+    max-width: none;
+    border-radius: var(--lg-ref-radius-xl);
+  }
+  .persona-dock .hint { display: none; }
+}
+</style>
+<nav class="lg-glass lg-actionbar persona-dock" id="personaDock" data-lg-surface="dark" aria-label="ペルソナ切替" hidden>
+  <span class="hint">persona</span>
+  <!-- chips は LG_PERSONAS から生成 -->
+</nav>
+<script>
+/* ---- ペルソナドック: 切替は保存 → リロード（gel/lens 定数は初期化時に確定するため） ---- */
+(function () {
+  var dock = document.getElementById('personaDock');
+  var P = window.LG_PERSONAS;
+  if (!dock || !P) return;
+  Object.keys(P).forEach(function (k) {
+    var b = document.createElement('button');
+    b.className = 'lg-chip';
+    b.dataset.persona = k;
+    b.setAttribute('data-lg-tooltip', P[k].tip);
+    b.setAttribute('aria-pressed', String(k === window.LG_ACTIVE));
+    var narrow = matchMedia('(max-width: 700px)').matches;
+    b.textContent = (narrow && P[k].short) ? P[k].short : P[k].label;
+    dock.appendChild(b);
+  });
+  dock.hidden = false;
+  dock.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-persona]');
+    if (!b) return;
+    var k = b.dataset.persona;
+    try {
+      if (k === 'random') { /* 押すたび新しい観測者を抽選 */
+        localStorage.setItem('lg-persona-random', JSON.stringify({
+          seed: 'dice-' + Math.floor(Math.random() * 1e6),
+          m: +Math.random().toFixed(2), o: +Math.random().toFixed(2)
+        }));
+      }
+      if (k === 'you') localStorage.removeItem('lg-persona');
+      else localStorage.setItem('lg-persona', k);
+      sessionStorage.setItem('lg-scroll', String(Math.round(scrollY)));
+    } catch (_) {}
+    location.reload();
+  });
+  /* 切替後も同じ帯から見比べられるように（smooth スクロールは一時停止） */
+  try {
+    var sy = +sessionStorage.getItem('lg-scroll');
+    if (sy) {
+      document.documentElement.style.scrollBehavior = 'auto';
+      scrollTo(0, sy);
+      document.documentElement.style.removeProperty('scroll-behavior');
+      sessionStorage.removeItem('lg-scroll');
+    }
+  } catch (_) {}
+})();
+</script>

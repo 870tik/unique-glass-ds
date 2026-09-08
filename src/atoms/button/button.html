@@ -1,0 +1,25 @@
+<!-- Button — 2軸マトリクス（様式 × 意味色）。詳細は docs/04
+     様式: 既定 = tinted（ガラス。tone があればステンドグラス）/ --solid / --outline / --quiet
+     意味色: なし = neutral / --accent(= --primary) / --danger / --warning / --success -->
+
+<!-- 様式: tinted（既定・ガラス） -->
+<button class="lg-glass lg-button" data-lg-gel>Neutral</button>
+<button class="lg-glass lg-button lg-button--primary" data-lg-gel>Primary</button><!-- accent の別名・1画面1箇所 -->
+<button class="lg-glass lg-button lg-button--danger" data-lg-gel>Delete</button>
+<button class="lg-glass lg-button lg-button--warning" data-lg-gel>Proceed anyway</button>
+<button class="lg-glass lg-button lg-button--success" data-lg-gel>Approved</button>
+
+<!-- 様式: solid（不透明・非ガラス。ガラス上の強ボタン） -->
+<button class="lg-button lg-button--solid" data-lg-gel>Neutral</button>
+<button class="lg-button lg-button--solid lg-button--danger" data-lg-gel>Delete</button>
+
+<!-- 様式: outline（線だけ・非ガラス） -->
+<button class="lg-button lg-button--outline" data-lg-gel>Neutral</button>
+<button class="lg-button lg-button--outline lg-button--success" data-lg-gel>Approve</button>
+
+<!-- 様式: quiet（最弱・非ガラス） -->
+<button class="lg-button lg-button--quiet" data-lg-gel>Cancel</button>
+
+<!-- 状態（全様式共通） -->
+<button class="lg-glass lg-button" disabled>Disabled</button>
+<button class="lg-glass lg-button is-loading">Saving…</button><!-- スピナーのみ表示 -->

@@ -1,0 +1,54 @@
+{
+  "lg": {
+    "ref": {
+      "space": {
+        "$description": "余白スケール。コンポーネント間・セクション間の gap/padding はこの8段から選ぶ。中間値を発明しない",
+        "xs": {
+          "$value": "4px",
+          "$type": "dimension",
+          "$description": "最小。アイコンとラベルの間隔"
+        },
+        "sm": {
+          "$value": "8px",
+          "$type": "dimension",
+          "$description": "同グループ内の部品間"
+        },
+        "md": {
+          "$value": "12px",
+          "$type": "dimension",
+          "$description": "部品間の標準 gap"
+        },
+        "lg": {
+          "$value": "16px",
+          "$type": "dimension",
+          "$description": "カード/パネル間"
+        },
+        "xl": {
+          "$value": "20px",
+          "$type": "dimension",
+          "$description": "パネル内の主要ブロック間"
+        },
+        "2xl": {
+          "$value": "24px",
+          "$type": "dimension",
+          "$description": "セクション内の余白"
+        },
+        "3xl": {
+          "$value": "32px",
+          "$type": "dimension",
+          "$description": "セクション間"
+        },
+        "4xl": {
+          "$value": "48px",
+          "$type": "dimension",
+          "$description": "ページブロック間・ヒーロー余白"
+        },
+        "2xs": {
+          "$value": "2px",
+          "$type": "dimension",
+          "$description": "最小構造間隔。縦ナビの項目間・密なリスト内など"
+        }
+      }
+    }
+  }
+}

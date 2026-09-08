@@ -1,0 +1,62 @@
+{
+  "lg": {
+    "field": {
+      "$description": "comp 層 — text field contract。transient ガラス化の実装例: 静止時はほぼ不透明、focus でガラスに相転移（公理6の例外規定）",
+      "radius": {
+        "$value": "{lg.ref.radius.md}",
+        "$type": "dimension",
+        "$description": "field 外径"
+      },
+      "height": {
+        "$value": "{lg.ref.size.field-height}",
+        "$type": "dimension",
+        "$description": "field 高"
+      },
+      "padding-x": {
+        "$value": "18px",
+        "$type": "dimension",
+        "$description": "field 左右パディング"
+      },
+      "font-size": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "入力テキストサイズ"
+      },
+      "rest-opacity": {
+        "$value": 0.85,
+        "$type": "number",
+        "$description": "静止時の面の不透明度（opaque-bg との mix）。focus で face-alpha のガラス面に遷移する"
+      },
+      "material": {
+        "$value": "regular (transient)",
+        "$type": "string",
+        "$description": "contract: focus 中のみ Regular として振る舞う一時ガラス"
+      },
+      "disabled-opacity": {
+        "$value": 0.45,
+        "$type": "number",
+        "$description": "disabled 状態の field 全体不透明度"
+      },
+      "icon-size": {
+        "$value": "15px",
+        "$type": "dimension",
+        "$description": "input-group の prefix/suffix アイコンサイズ"
+      },
+      "multi-min-height": {
+        "$value": "96px",
+        "$type": "dimension",
+        "$description": "textarea の最小高。autosize の下限"
+      },
+      "fill-alpha": {
+        "$value": 0.09,
+        "$type": "number",
+        "$description": "ガラス上に置く塗りフィールド（.lg-field--fill）の ink 混合率。glass on glass 回避用"
+      },
+      "step-size": {
+        "$value": "26px",
+        "$type": "dimension",
+        "$description": "number input のステッパーボタン径"
+      }
+    }
+  }
+}

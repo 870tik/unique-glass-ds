@@ -1,0 +1,6 @@
+{
+  "name": "lg-video-capture",
+  "private": true,
+  "description": "開発専用: ショーケースのインタラクション録画（DS 本体は依存ゼロのまま）",
+  "dependencies": { "puppeteer-core": "^23.0.0" }
+}

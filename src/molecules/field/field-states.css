@@ -1,0 +1,11 @@
+/* ---------- field 状態（error / disabled） ---------- */
+.lg-form-row.is-error .lg-field,
+.lg-field.is-error {
+  box-shadow:
+    inset 0 0 0 1px var(--lg-danger),
+    var(--lg-material-regular-shadow);
+}
+.lg-field:has(.lg-field-input:disabled) {
+  opacity: var(--lg-field-disabled-opacity);
+  pointer-events: none;
+}

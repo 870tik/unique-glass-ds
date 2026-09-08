@@ -1,0 +1,29 @@
+{
+  "lg": {
+    "ref": {
+      "z": {
+        "$description": "重なりの階層。ガラスの一時面はこの4段のみ。新しい層が必要になったら段を足す前に設計を疑う",
+        "menu": {
+          "$value": 80,
+          "$type": "number",
+          "$description": "ドロップダウン・ポップオーバー（アンカー相対の一時面）"
+        },
+        "backdrop": {
+          "$value": 100,
+          "$type": "number",
+          "$description": "scrim を伴う面（modal / command）"
+        },
+        "toast": {
+          "$value": 140,
+          "$type": "number",
+          "$description": "通知スタック。backdrop より上（モーダル中も通知は見える）"
+        },
+        "tooltip": {
+          "$value": 160,
+          "$type": "number",
+          "$description": "最前面。すべての一時面の上に出る"
+        }
+      }
+    }
+  }
+}

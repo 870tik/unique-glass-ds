@@ -1,0 +1,18 @@
+{
+  "lg": {
+    "ref": {
+      "spring": {
+        "k": {
+          "$value": 440,
+          "$type": "number",
+          "$description": "gel バネの剛性。復帰の速さと弾みの源"
+        },
+        "zeta": {
+          "$value": 0.65,
+          "$type": "number",
+          "$description": "gel バネの減衰比。1 未満 = わずかにオーバーシュートする gel の性格"
+        }
+      }
+    }
+  }
+}

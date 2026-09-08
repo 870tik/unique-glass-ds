@@ -1,0 +1,40 @@
+<!-- ============ 新規作成: Create（focus layout・シェルなし） ============ -->
+<div class="standalone lg-layout-focus" id="sc-create" data-title="新規（Create）" data-class=".lg-layout-focus + .lg-stepper">
+  <header class="lg-glass lg-focus-bar" data-lg-phase="thin">
+    <button class="lg-icon-button" data-back aria-label="戻る"><i data-lg-icon="arrow-left"></i></button>
+    <span class="lg-type-heading">New invoice</span>
+    <span class="tag">step 2 / 4</span>
+  </header>
+  <ol class="lg-stepper">
+    <li class="is-done"><span class="dot"><i data-lg-icon="check"></i></span>顧客</li>
+    <li class="is-current"><span class="dot">2</span>明細</li>
+    <li><span class="dot">3</span>支払い条件</li>
+    <li><span class="dot">4</span>確認</li>
+  </ol>
+  <div class="lg-layout-form">
+    <div class="lg-form-row">
+      <label class="lg-form-label" for="crItem">Item</label>
+      <div class="lg-glass lg-field"><input class="lg-field-input" id="crItem" placeholder="Design system retainer"></div>
+    </div>
+    <div class="lg-form-row">
+      <label class="lg-form-label" for="crAmount">Amount</label>
+      <div class="lg-glass lg-field lg-field--number" data-sc="sc16">
+        <button class="lg-step" data-step="-10000" aria-label="減らす"><i data-lg-icon="minus"></i></button>
+        <input class="lg-field-input" id="crAmount" type="number" value="360000" min="0" step="10000">
+        <button class="lg-step" data-step="10000" aria-label="増やす"><i data-lg-icon="plus"></i></button>
+      </div>
+    </div>
+    <div class="lg-form-row">
+      <span class="lg-form-label">Attachments</span>
+      <div class="lg-dropzone">
+        <input type="file" multiple aria-hidden="true">
+        <i data-lg-icon="upload" data-lg-icon-class="lg-icon--lg"></i><span>見積書などをドロップ</span>
+        <span class="files"></span>
+      </div>
+    </div>
+    <div class="lg-glass lg-actionbar">
+      <button class="lg-button lg-button--quiet" data-back data-lg-gel>Back</button>
+      <button class="lg-glass lg-button lg-button--primary" data-lg-gel>Next</button>
+    </div>
+  </div>
+</div>

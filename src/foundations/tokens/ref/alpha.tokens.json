@@ -1,0 +1,58 @@
+{
+  "lg": {
+    "ref": {
+      "alpha": {
+        "rim-peak": {
+          "$value": 0.85,
+          "$type": "number",
+          "$description": "リム光の最大強度（光源直下）。conic のピーク。--lg-li と乗算される。C 案の 0.55 は inherits:false バグで未検証の値だったため、実描画基準で 0.85 に再調整"
+        },
+        "rim-mid": {
+          "$value": 0.5,
+          "$type": "number",
+          "$description": "リム光の中間強度。ピークの肩"
+        },
+        "rim-side": {
+          "$value": 0.62,
+          "$type": "number",
+          "$description": "リム光の第二反射。ピークの反対側の弱い回り込み"
+        },
+        "bloom": {
+          "$value": 0.14,
+          "$type": "number",
+          "$description": "リム光源の面内ブルーム強度。光がガラス内で僅かに滲む表現"
+        },
+        "hairline": {
+          "$value": 0.14,
+          "$type": "number",
+          "$description": "常時表示の輪郭ヘアライン強度。非点灯時のガラスの存在の下限"
+        },
+        "hairline-top": {
+          "$value": 0.1,
+          "$type": "number",
+          "$description": "上辺 1px のハイライト強度。天面が受ける環境光"
+        },
+        "accent-hi": {
+          "$value": 0.8,
+          "$type": "number",
+          "$description": "ステンドグラス上段の不透明度。0.5→0.68→0.8（2026-09: ガラス越しの灰みを消し発色を立てる。透け感はエッジ屈折とグラデ下段が担保）"
+        },
+        "accent-lo": {
+          "$value": 0.6,
+          "$type": "number",
+          "$description": "ステンドグラス下段の不透明度。0.32→0.5→0.6（同上）"
+        },
+        "pill": {
+          "$value": 0.16,
+          "$type": "number",
+          "$description": "nav アクティブピルの塗り強度。ink との mix なので surface に自動追従する"
+        },
+        "tab-idle": {
+          "$value": 0.72,
+          "$type": "number",
+          "$description": "非アクティブタブのラベル不透明度"
+        }
+      }
+    }
+  }
+}

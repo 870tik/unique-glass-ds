@@ -1,0 +1,73 @@
+/* ------------------------------------------------------------
+   a11y 縮退（prefers-reduced-* / opaque モード）— 全部品の縮退を一元管理
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .lg-glass,
+  .lg-glass::before,
+  .lg-glass::after,
+  .lg-button,
+  .lg-tab,
+  .lg-nav-pill,
+  .lg-field,
+  .lg-backdrop,
+  .lg-modal {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+/* ---------- phase 3 preferences ---------- */
+@media (prefers-reduced-transparency: reduce) {
+  .lg-tooltip {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background: var(--lg-opaque-bg) !important;
+    color: var(--lg-opaque-ink) !important;
+  }
+  .lg-switch input:active + .lg-switch-track .lg-switch-knob,
+  .lg-slider:active::-webkit-slider-thumb {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+html.lg-mode-opaque .lg-tooltip {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  background: var(--lg-opaque-bg) !important;
+  color: var(--lg-opaque-ink) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lg-menu,
+  .lg-menu-item,
+  .lg-toast,
+  .lg-tooltip,
+  .lg-switch-track,
+  .lg-switch-knob,
+  .lg-check-box,
+  .lg-chip,
+  .lg-table tbody tr {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+/* ---------- phase 4 preferences ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .lg-spinner,
+  .lg-button.is-loading::before { animation-duration: calc(var(--lg-progress-duration) * 3); }
+  .lg-skeleton::after,
+  .lg-progress.is-indeterminate::before { animation: none !important; }
+  .lg-banner { transition: none !important; }
+}
+/* ---------- phase 5 preferences ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .lg-shell .lg-sidebar,
+  .lg-shell::after,
+  .lg-dropzone,
+  .lg-accordion summary::after { transition: none !important; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .lg-dropzone.is-over {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background: var(--lg-opaque-bg) !important;
+  }
+}

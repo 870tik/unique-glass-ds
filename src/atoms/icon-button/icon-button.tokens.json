@@ -1,0 +1,17 @@
+{
+  "lg": {
+    "icon-button": {
+      "$description": "comp 層 — 円形アイコンボタン（塗り）。ガラス上・コンテンツ層どちらでも使える汎用操作子",
+      "size": {
+        "$value": "{lg.ref.size.icon-button}",
+        "$type": "dimension",
+        "$description": "外径"
+      },
+      "font-size": {
+        "$value": "{lg.ref.size.icon}",
+        "$type": "dimension",
+        "$description": "グリフサイズ"
+      }
+    }
+  }
+}

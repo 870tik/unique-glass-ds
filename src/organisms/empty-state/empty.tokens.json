@@ -1,0 +1,22 @@
+{
+  "lg": {
+    "empty": {
+      "$description": "comp 層 — 空状態（不透明）。アイコン+見出し+補足+アクションの定型",
+      "pad-y": {
+        "$value": "{lg.ref.space.4xl}",
+        "$type": "dimension",
+        "$description": "上下余白"
+      },
+      "icon-size": {
+        "$value": "34px",
+        "$type": "dimension",
+        "$description": "アイコン/グリフのサイズ"
+      },
+      "max-width": {
+        "$value": "340px",
+        "$type": "dimension",
+        "$description": "本文の最大幅"
+      }
+    }
+  }
+}

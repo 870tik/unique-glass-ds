@@ -1,0 +1,22 @@
+/* ---------- empty state（コンテンツ層） ---------- */
+.lg-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--lg-ref-space-md);
+  padding: var(--lg-empty-pad-y) var(--lg-ref-space-2xl);
+  color: var(--lg-ink);
+}
+.lg-empty .glyph {
+  font-size: var(--lg-empty-icon-size);
+  line-height: 1;
+  opacity: 0.4;
+}
+.lg-empty p {
+  margin: 0;
+  max-width: var(--lg-empty-max-width);
+  font-size: var(--lg-ref-type-body-size);
+  line-height: var(--lg-ref-type-leading-body);
+  color: color-mix(in srgb, var(--lg-ink) 65%, transparent);
+}

@@ -1,0 +1,58 @@
+{
+  "lg": {
+    "ref": {
+      "size": {
+        "rim-width": {
+          "$value": "1.5px",
+          "$type": "dimension",
+          "$description": "リム光の線幅。ガラスの厚みの見え。1.25px は 1x 描画で消えるため 1.5px が下限"
+        },
+        "focus-width": {
+          "$value": "2px",
+          "$type": "dimension",
+          "$description": "focus-visible リングの線幅"
+        },
+        "focus-offset": {
+          "$value": "2px",
+          "$type": "dimension",
+          "$description": "focus-visible リングのオフセット"
+        },
+        "control-height": {
+          "$value": "52px",
+          "$type": "dimension",
+          "$description": "標準操作子（button / nav）の高さ"
+        },
+        "field-height": {
+          "$value": "48px",
+          "$type": "dimension",
+          "$description": "text field の高さ"
+        },
+        "icon": {
+          "$value": "15px",
+          "$type": "dimension",
+          "$description": "標準アイコンサイズ（本文・field 内）"
+        },
+        "icon-lg": {
+          "$value": "18px",
+          "$type": "dimension",
+          "$description": "topbar・empty state 等の大アイコン"
+        },
+        "hairline": {
+          "$value": "1px",
+          "$type": "dimension",
+          "$description": "区切り線・ヘアラインの太さ"
+        },
+        "icon-button": {
+          "$value": "34px",
+          "$type": "dimension",
+          "$description": "円形アイコンボタン（.lg-icon-button / .lg-shell-menu-btn）の外径"
+        },
+        "icon-stroke": {
+          "$value": "1.5px",
+          "$type": "dimension",
+          "$description": "アイコンの線幅。全アイコンで統一（Lucide の既定 2px をシステム基準に上書き）"
+        }
+      }
+    }
+  }
+}

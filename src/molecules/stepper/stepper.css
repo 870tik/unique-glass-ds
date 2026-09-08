@@ -1,0 +1,50 @@
+/* ---------- stepper（ウィザード進行。塗り） ---------- */
+.lg-stepper {
+  display: flex;
+  align-items: flex-start;
+  list-style: none;
+  margin: 0; padding: 0;
+  color: var(--lg-ink);
+}
+.lg-stepper li {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--lg-ref-space-sm);
+  position: relative;
+  font-size: var(--lg-ref-type-caption-size);
+  color: color-mix(in srgb, var(--lg-ink) 55%, transparent);
+}
+.lg-stepper .dot {
+  width: var(--lg-stepper-dot-size);
+  height: var(--lg-stepper-dot-size);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: var(--lg-ref-type-micro-size);
+  font-variant-numeric: tabular-nums;
+  background: color-mix(in srgb, var(--lg-ink) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--lg-ink) 25%, transparent); /* lint: structural */
+}
+.lg-stepper li:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--lg-stepper-dot-size) / 2);
+  right: calc(50% + var(--lg-stepper-dot-size) / 2 + var(--lg-ref-space-xs));
+  left: calc(-50% + var(--lg-stepper-dot-size) / 2 + var(--lg-ref-space-xs));
+  height: var(--lg-ref-size-hairline);
+  background: color-mix(in srgb, var(--lg-ink)
+    calc(var(--lg-stepper-line-alpha) * 100%), transparent);
+}
+.lg-stepper li.is-done { color: color-mix(in srgb, var(--lg-ink) 75%, transparent); }
+.lg-stepper li.is-done .dot {
+  background: color-mix(in srgb, var(--lg-ink) 85%, transparent);
+  border-color: transparent;
+  color: var(--lg-opaque-bg);
+}
+.lg-stepper li.is-current { color: var(--lg-ink); font-weight: var(--lg-ref-type-weight-medium); }
+.lg-stepper li.is-current .dot {
+  border-color: var(--lg-ink);
+  background: color-mix(in srgb, var(--lg-ink) 16%, transparent);
+}

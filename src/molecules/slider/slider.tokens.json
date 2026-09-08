@@ -1,0 +1,22 @@
+{
+  "lg": {
+    "slider": {
+      "$description": "comp 層 — slider contract。ドラッグ中のみノブがガラス化（公式明文の例）。値は 1:1 追従・遅延なし",
+      "track-height": {
+        "$value": "4px",
+        "$type": "dimension",
+        "$description": "トラック高"
+      },
+      "knob-size": {
+        "$value": "18px",
+        "$type": "dimension",
+        "$description": "ノブ径"
+      },
+      "material": {
+        "$value": "transient (drag only)",
+        "$type": "string",
+        "$description": "contract: ガラス化はドラッグ中のノブのみ"
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "lg": {
+    "topbar": {
+      "$description": "comp 層 — topbar contract。取れるマテリアル: regular-thin のみ",
+      "pad-x": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "左右パディング"
+      },
+      "material": {
+        "$value": "regular-thin",
+        "$type": "string",
+        "$description": "contract: ツールバーは薄相固定"
+      }
+    }
+  }
+}

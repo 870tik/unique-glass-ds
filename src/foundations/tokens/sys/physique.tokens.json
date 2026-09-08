@@ -1,0 +1,107 @@
+{
+  "lg": {
+    "physique": {
+      "$description": "sys 層 — 体質 Physique（R17）。動き・光学の2軸の trait（0〜1）が、各性質を min/max の間で確定する。trait 0.5 = 現行既定。ソースは (a) ホストが渡す抽象 trait（data-lg-trait-* / API。生の個人データは受けない）(b) 端末内の操作テンポ学習（personal のみ・翌訪問反映）(c) OS 信号。検索履歴等の外部データは扱わない（プライバシー境界）",
+      "motion-default": {
+        "$value": 0.5,
+        "$type": "number",
+        "$description": "動き trait の既定（still 0 ↔ lively 1）"
+      },
+      "optics-default": {
+        "$value": 0.5,
+        "$type": "number",
+        "$description": "光学 trait の既定（quiet 0 ↔ dramatic 1）"
+      },
+      "wobble-zeta-min": {
+        "$value": 0.6,
+        "$type": "number",
+        "$description": "still 側: ほぼ揺れない"
+      },
+      "wobble-zeta-max": {
+        "$value": 0.24,
+        "$type": "number",
+        "$description": "lively 側: よく揺れる（減衰比は逆向き）"
+      },
+      "squash-y-min": {
+        "$value": 0.95,
+        "$type": "number",
+        "$description": "still 側の潰れ"
+      },
+      "squash-y-max": {
+        "$value": 0.85,
+        "$type": "number",
+        "$description": "lively 側の潰れ"
+      },
+      "stretch-x-min": {
+        "$value": 1.02,
+        "$type": "number",
+        "$description": "still 側の伸び"
+      },
+      "stretch-x-max": {
+        "$value": 1.1,
+        "$type": "number",
+        "$description": "lively 側の伸び"
+      },
+      "hover-scale-min": {
+        "$value": 1.01,
+        "$type": "number",
+        "$description": "still 側の hover 膨らみ"
+      },
+      "hover-scale-max": {
+        "$value": 1.05,
+        "$type": "number",
+        "$description": "lively 側"
+      },
+      "breath-depth-min": {
+        "$value": 0.12,
+        "$type": "number",
+        "$description": "still 側の呼吸の深さ"
+      },
+      "breath-depth-max": {
+        "$value": 0.48,
+        "$type": "number",
+        "$description": "lively 側"
+      },
+      "optics-press-min": {
+        "$value": 0.45,
+        "$type": "number",
+        "$description": "quiet 側: 押下時の屈折潰れが浅い"
+      },
+      "optics-press-max": {
+        "$value": 0.15,
+        "$type": "number",
+        "$description": "dramatic 側: 深く潰れる"
+      },
+      "ca-min": {
+        "$value": 3,
+        "$type": "number",
+        "$description": "quiet 側の分散 px"
+      },
+      "ca-max": {
+        "$value": 9,
+        "$type": "number",
+        "$description": "dramatic 側"
+      },
+      "organic-min": {
+        "$value": 0.04,
+        "$type": "number",
+        "$description": "quiet 側の個体差ノイズ"
+      },
+      "organic-max": {
+        "$value": 0.2,
+        "$type": "number",
+        "$description": "dramatic 側"
+      },
+      "hover-int-min": {
+        "$value": 0.6,
+        "$type": "number",
+        "$description": "quiet 側のリム点灯強度"
+      },
+      "hover-int-max": {
+        "$value": 1.0,
+        "$type": "number",
+        "$description": "dramatic 側"
+      }
+    }
+  }
+}

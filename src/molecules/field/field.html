@@ -1,0 +1,25 @@
+<!-- Field — transient ガラス（rest 85% → focus 100%） -->
+<div class="lg-glass lg-field">
+  <input class="lg-field-input" type="text" aria-label="…">
+</div>
+
+<!-- affix（prefix / suffix） -->
+<div class="lg-glass lg-field">
+  <span class="lg-field-affix" aria-hidden="true"><i data-lg-icon="search"></i></span>
+  <input class="lg-field-input" placeholder="Search…" aria-label="検索">
+</div>
+
+<!-- textarea（autosize） -->
+<div class="lg-glass lg-field lg-field--multi">
+  <textarea class="lg-field-input" data-lg-autosize aria-label="…"></textarea>
+</div>
+
+<!-- エラー / 無効 -->
+<div class="lg-glass lg-field is-error"><input class="lg-field-input" aria-label="…"></div>
+<div class="lg-glass lg-field"><input class="lg-field-input" disabled aria-label="…"></div>
+
+<!-- ガラスの上に置く塗り相（.lg-glass 併用禁止 = glass on glass 回避） -->
+<div class="lg-field lg-field--fill">
+  <span class="lg-field-affix" aria-hidden="true"><i data-lg-icon="search"></i></span>
+  <input class="lg-field-input" type="search" placeholder="Search…" aria-label="検索">
+</div>

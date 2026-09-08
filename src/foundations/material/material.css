@@ -1,0 +1,169 @@
+/* ------------------------------------------------------------
+   material — .lg-glass（既定 Regular / data-lg-variant="clear"）
+   baseline（blur+saturate+bcomp）は stylesheet で常時有効 = FOUC なし。
+   lens モードでは JS が inline backdrop-filter で上書きする。
+   ------------------------------------------------------------ */
+.lg-glass {
+  position: relative;
+  isolation: isolate;
+  border-radius: var(--lg-r, var(--lg-ref-radius-lg));
+  color: var(--lg-ink);
+  /* --lg-face-scale は素材の厚相/薄相（regular-thick / regular-thin）用の乗数。既定 1 */
+  background: color-mix(in srgb,
+    var(--lg-ref-color-white)
+    calc(var(--lg-face-alpha) * var(--lg-face-scale, 1) * 100%), transparent);
+  -webkit-backdrop-filter:
+    blur(var(--lg-material-regular-blur))
+    saturate(var(--lg-material-regular-saturate))
+    brightness(var(--lg-bcomp));
+  backdrop-filter:
+    blur(var(--lg-material-regular-blur))
+    saturate(var(--lg-material-regular-saturate))
+    brightness(var(--lg-bcomp));
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb,
+      var(--lg-rim) calc(var(--lg-ref-alpha-hairline-top) * 100%), transparent),
+    inset 0 0 0 1px color-mix(in srgb,
+      var(--lg-rim) calc(var(--lg-ref-alpha-hairline) * 100%), transparent),
+    inset 1.5px 1.5px 1px -1px var(--lg-light-key),
+    inset -1.5px -1.5px 1px -1px var(--lg-light-fill),
+    var(--lg-material-regular-shadow);
+  transition: color var(--lg-ref-duration-fade) ease;
+}
+.lg-glass[data-lg-variant="clear"] {
+  --lg-face-alpha: var(--lg-material-clear-face-alpha);
+  /* Clear は非適応: ラベルは反転せず常に明。明 surface は ::after の 35% dim が受ける */
+  color: var(--lg-material-clear-ink);
+  -webkit-backdrop-filter:
+    blur(var(--lg-material-clear-blur))
+    saturate(var(--lg-material-clear-saturate));
+  backdrop-filter:
+    blur(var(--lg-material-clear-blur))
+    saturate(var(--lg-material-clear-saturate));
+}
+
+/* lit rim — 光源角 --lg-la に 1:1、強度 --lg-li のみ遷移（公理4） */
+.lg-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  padding: var(--lg-light-rim-width);
+  pointer-events: none;
+  /* prism: ハイライトは分光する（寒色端 → 白ピーク → 暖色端）。
+     quiet テーマでは spec-cool/warm が白に上書きされ単色リムに縮退 */
+  background: conic-gradient(from calc(var(--lg-la) - 72deg),
+    transparent 0deg,
+    color-mix(in srgb, var(--lg-light-rim-spec-cool)
+      calc(var(--lg-light-rim-mid) * var(--lg-li) * 100%), transparent) 46deg,
+    color-mix(in srgb, var(--lg-rim)
+      calc(var(--lg-light-rim-peak) * var(--lg-li) * 100%), transparent) 70deg,
+    color-mix(in srgb, var(--lg-light-rim-spec-warm)
+      calc(var(--lg-light-rim-side) * var(--lg-li) * 100%), transparent) 96deg,
+    transparent 148deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); /* lint: structural */
+  -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); /* lint: structural */
+          mask-composite: exclude;
+  transition: --lg-li var(--lg-light-fade) ease;
+}
+
+/* in-pane bloom + Clear 用 dim 層（明 surface では 35% dark を自動で敷く） */
+.lg-glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image: radial-gradient(120% 90% at
+      calc(50% + 44% * cos(var(--lg-la) - 90deg))
+      calc(50% + 44% * sin(var(--lg-la) - 90deg)),
+    color-mix(in srgb, var(--lg-rim)
+      calc(var(--lg-light-bloom) * var(--lg-li) * 100%), transparent),
+    transparent 55%);
+  transition: --lg-li var(--lg-light-fade) ease;
+}
+.lg-glass[data-lg-variant="clear"]::after {
+  background-color: var(--lg-clear-dim);
+}
+
+/* ---------- 状態の光学（Prism v2）----------
+   状態は色通知（ステンドグラス・badge）への「重ね掛け」として光学にも現れる。
+   rest では発現しない（公理4: 光は操作への応答）。
+   - primary: 最重要のガラスは最もよく光を割る（点灯強度と分光を強調）
+   - error/danger・warning・success: 単色収差 — 分光が状態色1色に収束する
+     （虹 = 中立、単色 = 状態がある、という信号設計） */
+.lg-button--primary {
+  --lg-light-hover-intensity: var(--lg-light-press-intensity);
+}
+.lg-glass.is-error,
+.lg-field.is-error,
+.lg-button--danger {
+  --lg-light-rim-spec-cool: var(--lg-danger);
+  --lg-light-rim-spec-warm: var(--lg-danger);
+  --lg-rim: var(--lg-danger);
+}
+.lg-glass.is-warning,
+.lg-field.is-warning,
+.lg-button--warning {
+  --lg-light-rim-spec-cool: var(--lg-ref-color-warning);
+  --lg-light-rim-spec-warm: var(--lg-ref-color-warning);
+  --lg-rim: var(--lg-ref-color-warning);
+}
+.lg-glass.is-success,
+.lg-field.is-success,
+.lg-button--success {
+  --lg-light-rim-spec-cool: var(--lg-ref-color-positive);
+  --lg-light-rim-spec-warm: var(--lg-ref-color-positive);
+  --lg-rim: var(--lg-ref-color-positive);
+}
+.lg-field.is-error:focus-within {
+  --lg-li: var(--lg-light-press-intensity); /* エラー入力はフォーカスで明確に赤点灯 */
+}
+
+/* lighting: hover / focus / press のみ点灯。自律周回は存在しない。
+   touch では :hover が次のタップまで貼り付くため、hover 点灯はホバー可能な
+   入力に限定する — SP の点灯経路は :active（触れている間だけ）のみ */
+@media (hover: hover) and (pointer: fine) {
+  .lg-glass:hover {
+    --lg-li: var(--lg-light-hover-intensity);
+  }
+}
+.lg-glass:focus-visible,
+.lg-glass:has(:focus-visible) {
+  --lg-li: var(--lg-light-hover-intensity);
+}
+/* タッチの経路（R16補遺）: hover を持たない SP では押した瞬間に分光リムが点灯する */
+.lg-glass:active {
+  --lg-li: var(--lg-light-press-intensity);
+}
+
+/* gel — CSS フォールバック（JS 有効時は html.lg-js で無効化し Spring が駆動） */
+html:not(.lg-js) [data-lg-gel] {
+  transition: transform var(--lg-motion-gel-release-duration) var(--lg-motion-gel-release-easing);
+}
+html:not(.lg-js) [data-lg-gel]:active {
+  transform: scale(var(--lg-motion-gel-press-scale));
+  transition: transform var(--lg-motion-gel-press-duration) var(--lg-motion-gel-press-easing);
+}
+[data-lg-gel] {
+  will-change: transform;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* focus-visible — 全操作系必須。リングは ink = surface に自動追従 */
+.lg-glass:focus-visible,
+.lg-button:focus-visible,
+.lg-tab:focus-visible,
+.lg-card[tabindex]:focus-visible,
+.lg-field:has(.lg-field-input:focus-visible) {
+  outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+  outline-offset: var(--lg-ref-size-focus-offset);
+}
+.lg-field-input:focus-visible {
+  outline: none; /* リングは wrapper 側に出す */
+}

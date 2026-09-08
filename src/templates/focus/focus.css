@@ -1,0 +1,20 @@
+/* ---------- focus layout（新規作成/ウィザード。ナビを消し集中させる） ---------- */
+.lg-layout-focus {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--lg-ref-space-2xl);
+  padding: var(--lg-ref-space-lg);
+  box-sizing: border-box;
+}
+.lg-focus-bar {
+  --lg-r: var(--lg-ref-radius-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--lg-ref-space-md);
+  height: var(--lg-shell-topbar-height);
+  padding-inline: var(--lg-ref-space-lg);
+}
+.lg-focus-bar .lg-type-heading { margin-right: auto; }
+.lg-layout-focus .lg-layout-form { flex: 1; }
+.lg-layout-focus .lg-stepper { max-width: var(--lg-layout-form-max); margin-inline: auto; width: 100%; }

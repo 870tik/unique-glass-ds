@@ -1,0 +1,53 @@
+<!-- ============ 閲覧画面: Detail ============ -->
+    <section class="screen lg-page" id="sc-detail" data-title="閲覧（Detail）" data-class=".lg-page-header + .lg-split（md↓で1カラム）">
+      <div class="lg-page-header">
+        <nav class="lg-breadcrumbs" aria-label="breadcrumbs">
+          <a href="#list">Invoices</a><span class="sep">/</span>
+          <span aria-current="page">INV-2094</span>
+        </nav>
+        <div class="row">
+          <h1 class="lg-type-display" style="margin:0">INV-2094 — Northwind K.K.</h1>
+          <span class="lg-badge is-positive"><span class="lg-dot"></span>Paid</span>
+          <div class="actions">
+            <button class="lg-glass lg-button lg-button--primary" data-lg-gel>Download PDF</button>
+            <div class="lg-menu-anchor">
+              <button class="lg-icon-button" aria-label="その他"><i data-lg-icon="ellipsis"></i></button>
+              <div class="lg-glass lg-menu" data-lg-align="right">
+                <button class="lg-menu-item">Duplicate</button>
+                <button class="lg-menu-item is-danger">Void invoice</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lg-split lg-split--aside-first">
+        <div class="lg-panel lg-prose">
+          <div class="lg-type-heading" data-sc="sc2">Line items</div>
+          <table class="lg-table lg-table--compact lg-table--responsive">
+            <thead><tr><th>Item</th><th class="num">Qty</th><th class="num">Amount</th></tr></thead>
+            <tbody>
+              <tr><td data-th="Item">Design system retainer</td><td data-th="Qty" class="num">1</td><td data-th="Amount" class="num">¥360,000</td></tr>
+              <tr><td data-th="Item">Motion prototype</td><td data-th="Qty" class="num">2</td><td data-th="Amount" class="num">¥60,000</td></tr>
+            </tbody>
+          </table>
+          <p data-sc="sc7">お支払いありがとうございました。次回の請求書は 10 月 1 日に発行されます。</p>
+        </div>
+        <aside data-sc="sc8">
+          <div class="lg-panel">
+            <div class="lg-type-label" data-sc="sc2">Meta</div>
+            <dl class="lg-kv">
+              <div><dt>Issued</dt><dd>2026-09-01</dd></div>
+              <div><dt>Due</dt><dd>2026-09-30</dd></div>
+              <div><dt>Total</dt><dd class="strong">¥420,000</dd></div>
+            </dl>
+          </div>
+          <div class="lg-panel">
+            <div class="lg-type-label" data-sc="sc2">Customer</div>
+            <div data-sc="sc9">
+              <span class="lg-avatar">NK</span>
+              <div><div data-sc="sc10">Northwind K.K.</div><div class="lg-type-caption">billing@northwind.jp</div></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>

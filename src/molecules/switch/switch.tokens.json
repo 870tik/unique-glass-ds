@@ -1,0 +1,27 @@
+{
+  "lg": {
+    "switch": {
+      "$description": "comp 層 — switch contract。公式例外『操作子は操作中だけガラス化』の実装。rest は塗り、操作中ノブがガラス化して光る。ノブ移動は gel バネ",
+      "width": {
+        "$value": "44px",
+        "$type": "dimension",
+        "$description": "トラック幅"
+      },
+      "height": {
+        "$value": "26px",
+        "$type": "dimension",
+        "$description": "トラック高。ノブ径 = height − gap×2（concentricity）"
+      },
+      "gap": {
+        "$value": "3px",
+        "$type": "dimension",
+        "$description": "トラックとノブの間隔"
+      },
+      "material": {
+        "$value": "transient (knob only)",
+        "$type": "string",
+        "$description": "contract: ガラス化するのは操作中のノブのみ"
+      }
+    }
+  }
+}

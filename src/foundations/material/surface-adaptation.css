@@ -1,0 +1,45 @@
+/* ------------------------------------------------------------
+   surface adaptation API — data-lg-surface="light|dark|media|text"
+   ガラス個体または祖先に宣言。既定は dark。
+   ------------------------------------------------------------ */
+:root,
+[data-lg-surface="dark"] {
+  --lg-ink:        var(--lg-adaptive-dark-ink);
+  --lg-bcomp:      var(--lg-adaptive-dark-bcomp);
+  --lg-rim:        var(--lg-adaptive-dark-rim);
+  --lg-face-alpha: var(--lg-adaptive-dark-face-alpha);
+  --lg-clear-dim:  var(--lg-adaptive-dark-clear-dim);
+  --lg-opaque-bg:  var(--lg-adaptive-dark-opaque-bg);
+  --lg-opaque-ink: var(--lg-adaptive-dark-opaque-ink);
+  --lg-danger:     var(--lg-adaptive-dark-danger);
+}
+[data-lg-surface="light"] {
+  --lg-ink:        var(--lg-adaptive-light-ink);
+  --lg-bcomp:      var(--lg-adaptive-light-bcomp);
+  --lg-rim:        var(--lg-adaptive-light-rim);
+  --lg-face-alpha: var(--lg-adaptive-light-face-alpha);
+  --lg-clear-dim:  var(--lg-adaptive-light-clear-dim);
+  --lg-opaque-bg:  var(--lg-adaptive-light-opaque-bg);
+  --lg-opaque-ink: var(--lg-adaptive-light-opaque-ink);
+  --lg-danger:     var(--lg-adaptive-light-danger);
+}
+[data-lg-surface="media"] {
+  --lg-ink:        var(--lg-adaptive-media-ink);
+  --lg-bcomp:      var(--lg-adaptive-media-bcomp);
+  --lg-rim:        var(--lg-adaptive-media-rim);
+  --lg-face-alpha: var(--lg-adaptive-media-face-alpha);
+  --lg-clear-dim:  var(--lg-adaptive-media-clear-dim);
+  --lg-opaque-bg:  var(--lg-adaptive-media-opaque-bg);
+  --lg-opaque-ink: var(--lg-adaptive-media-opaque-ink);
+  --lg-danger:     var(--lg-adaptive-media-danger);
+}
+[data-lg-surface="text"] {
+  --lg-ink:        var(--lg-adaptive-text-ink);
+  --lg-bcomp:      var(--lg-adaptive-text-bcomp);
+  --lg-rim:        var(--lg-adaptive-text-rim);
+  --lg-face-alpha: var(--lg-adaptive-text-face-alpha);
+  --lg-clear-dim:  var(--lg-adaptive-text-clear-dim);
+  --lg-opaque-bg:  var(--lg-adaptive-text-opaque-bg);
+  --lg-opaque-ink: var(--lg-adaptive-text-opaque-ink);
+  --lg-danger:     var(--lg-adaptive-text-danger);
+}

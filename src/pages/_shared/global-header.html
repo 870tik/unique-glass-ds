@@ -1,0 +1,77 @@
+<!-- ============ global header — 全ショーケース共通（参照合成で注入） ============
+     ガラス1枚の恒常クローム。taikihanaoka.com への帰路を常設し、
+     700px 以下ではリンク列をハンバーガーメニューに畳む。 -->
+<style>
+.gh {
+  --lg-r: var(--lg-ref-radius-xl);
+  position: sticky; top: var(--lg-ref-space-md); z-index: var(--lg-ref-z-menu);
+  display: flex; align-items: center; gap: var(--lg-ref-space-md);
+  margin: var(--lg-ref-space-lg); /* 全幅（左右は共通ガター分だけ内側） */
+  padding: var(--lg-ref-space-md) var(--lg-ref-space-xl);
+}
+.gh-brand {
+  display: flex; align-items: center; gap: var(--lg-ref-space-sm);
+  font-family: var(--lg-ref-type-family-mono); font-size: 12px; letter-spacing: .12em;
+  margin-right: auto; color: var(--lg-ink); text-decoration: none; white-space: nowrap;
+}
+.gh-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lg-button-accent); box-shadow: 0 0 10px var(--lg-button-accent); }
+.gh-links { display: flex; gap: 2px; align-items: center; }
+.gh-link {
+  color: color-mix(in srgb, var(--lg-ink) 75%, transparent); text-decoration: none;
+  font-size: var(--lg-ref-type-body-size);
+  padding: var(--lg-ref-space-xs) var(--lg-ref-space-sm);
+  border-radius: var(--lg-ref-radius-xs); white-space: nowrap;
+}
+.gh-link:hover { color: var(--lg-ink); }
+.gh a:focus-visible { outline: var(--lg-ref-size-focus-width) solid var(--lg-ink); outline-offset: var(--lg-ref-size-focus-offset); }
+.gh-ext { opacity: .7; font-family: var(--lg-ref-type-family-mono); font-size: var(--lg-ref-type-caption-size); letter-spacing: .08em; }
+.gh-burger { display: none; }
+/* ドロップダウンは DS の menu コンポーネント（.lg-menu / .lg-menu-item）に委譲。
+   開閉は is-open、右寄せは data-lg-align="right" — 追加はリンク装飾の打ち消しと
+   バネ配線なしでも開くための transform 解除だけ */
+.gh-menu .lg-menu-item { text-decoration: none; }
+.gh-menu.is-open { transform: none; }
+@media (max-width: 700px) {
+  .gh { margin: var(--lg-ref-space-md); padding-inline: var(--lg-ref-space-lg); }
+  .gh-links { display: none; }
+  .gh-burger {
+    display: grid; place-items: center; appearance: none; border: 0; cursor: pointer;
+    width: var(--lg-ref-size-icon-button); height: var(--lg-ref-size-icon-button); border-radius: 50%;
+    background: color-mix(in srgb, var(--lg-ink) 10%, transparent); color: var(--lg-ink);
+  }
+}
+</style>
+<nav class="lg-glass gh" data-lg-phase="thin" aria-label="グローバルナビゲーション">
+  <a class="gh-brand" href="index.html"><span class="gh-dot"></span>UNIQUE GLASS DS</a>
+  <span class="gh-links">
+    <a class="gh-link" href="catalog.html">コンポーネント</a>
+    <a class="gh-link" href="screens.html">レイアウト</a>
+    <a class="gh-link" href="app.html">デモ</a>
+    <a class="gh-link gh-ext" href="https://taikihanaoka.com/">taikihanaoka.com ↗</a>
+  </span>
+  <button class="gh-burger" id="ghBurger" aria-expanded="false" aria-controls="ghMenu" aria-label="メニュー"><i data-lg-icon="menu"></i></button>
+  <div class="lg-glass lg-menu gh-menu" id="ghMenu" data-lg-align="right">
+    <a class="lg-menu-item" href="index.html">ホーム</a>
+    <a class="lg-menu-item" href="catalog.html">コンポーネント</a>
+    <a class="lg-menu-item" href="screens.html">レイアウト</a>
+    <a class="lg-menu-item" href="app.html">デモ</a>
+    <div class="lg-menu-sep"></div>
+    <a class="lg-menu-item gh-ext" href="https://taikihanaoka.com/">taikihanaoka.com ↗</a>
+  </div>
+</nav>
+<script>
+(function () {
+  var b = document.getElementById('ghBurger'), m = document.getElementById('ghMenu');
+  if (!b || !m) return;
+  b.addEventListener('click', function () {
+    var open = m.classList.toggle('is-open');
+    b.setAttribute('aria-expanded', String(open));
+  });
+  document.addEventListener('click', function (e) {
+    if (m.classList.contains('is-open') && !e.target.closest('.gh')) {
+      m.classList.remove('is-open');
+      b.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>

@@ -1,0 +1,64 @@
+/* ---------- switch（操作中のみノブがガラス化。移動は gel バネ） ---------- */
+.lg-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lg-ref-space-sm);
+  cursor: pointer;
+  color: var(--lg-ink);
+  font-size: var(--lg-menu-item-font-size);
+  -webkit-user-select: none;
+  user-select: none;
+}
+.lg-switch input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.lg-switch-track {
+  flex: none;
+  width: var(--lg-switch-width);
+  height: var(--lg-switch-height);
+  border-radius: var(--lg-ref-radius-pill);
+  background: color-mix(in srgb, var(--lg-ink)
+    calc(var(--lg-ref-alpha-pill) * 100%), transparent);
+  position: relative;
+  transition: background var(--lg-ref-duration-fade) ease;
+}
+.lg-switch input:checked + .lg-switch-track {
+  background: color-mix(in srgb, var(--lg-ink) 85%, transparent);
+}
+.lg-switch-knob {
+  position: absolute;
+  top: var(--lg-switch-gap);
+  left: var(--lg-switch-gap);
+  width: calc(var(--lg-switch-height) - var(--lg-switch-gap) * 2);  /* concentricity */
+  height: calc(var(--lg-switch-height) - var(--lg-switch-gap) * 2);
+  border-radius: 50%;
+  background: var(--lg-ink);
+  will-change: transform;
+  transition: background var(--lg-ref-duration-fade) ease;
+}
+.lg-switch input:checked + .lg-switch-track .lg-switch-knob {
+  background: var(--lg-opaque-bg);
+}
+html:not(.lg-js) .lg-switch input:checked + .lg-switch-track .lg-switch-knob {
+  transform: translateX(calc(var(--lg-switch-width) - var(--lg-switch-height)));
+}
+/* 操作中 = transient ガラス化（公式例外） */
+.lg-switch input:active + .lg-switch-track .lg-switch-knob {
+  background: color-mix(in srgb, var(--lg-ref-color-white) 34%, transparent);
+  -webkit-backdrop-filter: blur(var(--lg-material-regular-thin-blur));
+  backdrop-filter: blur(var(--lg-material-regular-thin-blur));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--lg-rim)
+      calc(var(--lg-ref-alpha-rim-mid) * 100%), transparent),
+    0 0 12px color-mix(in srgb, var(--lg-rim)
+      calc(var(--lg-ref-alpha-rim-mid) * 100%), transparent);
+}
+.lg-switch:has(input:focus-visible) .lg-switch-track {
+  outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+  outline-offset: var(--lg-ref-size-focus-offset);
+}

@@ -1,0 +1,96 @@
+/* ------------------------------------------------------------
+   components（comp 層）
+   ------------------------------------------------------------ */
+
+/* button */
+a.lg-button { text-decoration: none; } /* アンカー利用時（LP の CTA 等） */
+.lg-button {
+  --lg-r: var(--lg-button-radius);
+  border-radius: var(--lg-button-radius); /* 非ガラス variant（--quiet/--solid）でも角丸を保証 */
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--lg-button-height);
+  padding: 0 var(--lg-button-padding-x);
+  font-family: inherit;
+  font-size: var(--lg-button-font-size);
+  font-weight: var(--lg-button-font-weight);
+  letter-spacing: 0.01em; /* lint: structural */
+  line-height: 1;
+  color: var(--lg-ink);
+}
+/* ============================================================
+   variant matrix — 2軸で整理（docs/04）
+   tone（意味色）: --accent(=--primary) / --danger / --warning / --success
+     → --lg-btn-tone 系の変数を設定するだけ
+   emphasis（様式）: 既定 = tinted（ガラス+ステンドグラス）/
+     --solid / --outline / --quiet → トーン変数を消費して描画
+   ============================================================ */
+
+/* ---- tone 軸: 変数の設定 + 既定様式（tinted）の描画 ---- */
+.lg-button--accent,
+.lg-button--primary, /* alias: 1画面1箇所ルールの担い手 */
+.lg-button--danger,
+.lg-button--warning,
+.lg-button--success {
+  background: linear-gradient(
+    color-mix(in srgb, var(--lg-btn-tone)
+      calc(var(--lg-ref-alpha-accent-hi) * 100%), transparent),
+    color-mix(in srgb, var(--lg-btn-tone-deep)
+      calc(var(--lg-ref-alpha-accent-lo) * 100%), transparent));
+  color: var(--lg-button-on-accent);
+}
+.lg-button--accent,
+.lg-button--primary {
+  --lg-btn-tone: var(--lg-button-accent);
+  --lg-btn-tone-deep: var(--lg-button-accent-deep);
+  --lg-btn-tone-solid: var(--lg-button-accent-solid);
+}
+.lg-button--danger {
+  --lg-btn-tone: var(--lg-danger);
+  --lg-btn-tone-deep: var(--lg-danger);
+  --lg-btn-tone-solid: var(--lg-danger);
+}
+.lg-button--warning {
+  --lg-btn-tone: var(--lg-ref-color-warning);
+  --lg-btn-tone-deep: var(--lg-ref-color-warning);
+  --lg-btn-tone-solid: var(--lg-ref-color-warning);
+}
+.lg-button--success {
+  --lg-btn-tone: var(--lg-ref-color-positive);
+  --lg-btn-tone-deep: var(--lg-ref-color-positive);
+  --lg-btn-tone-solid: var(--lg-ref-color-positive);
+}
+
+/* ---- emphasis 軸: トーン変数を消費（tone 未指定時は ink に縮退） ---- */
+/* solid — 不透明。ガラス上に置く非ガラスの強ボタン */
+.lg-button--solid {
+  background: var(--lg-btn-tone-solid,
+    color-mix(in srgb, var(--lg-ink) 85%, transparent));
+  color: var(--lg-btn-on, var(--lg-button-on-accent));
+}
+.lg-button--solid:not([class*="--accent"]):not([class*="--primary"]):not([class*="--danger"]):not([class*="--warning"]):not([class*="--success"]) {
+  color: var(--lg-opaque-bg); /* neutral solid = ink 面 + 反転文字 */
+}
+/* outline — fill なし。線と文字にトーン */
+.lg-button--outline {
+  background: transparent;
+  color: var(--lg-btn-tone, var(--lg-ink));
+  box-shadow: inset 0 0 0 var(--lg-ref-size-hairline)
+    color-mix(in srgb, var(--lg-btn-tone, var(--lg-ink)) 45%, transparent);
+}
+.lg-button--outline:hover {
+  background: color-mix(in srgb, var(--lg-btn-tone, var(--lg-ink)) 10%, transparent);
+}
+/* quiet — 最弱。塗りは ink の気配だけ、文字にトーン */
+.lg-button--quiet {
+  background: color-mix(in srgb, var(--lg-ink) 10%, transparent);
+  color: var(--lg-btn-tone, var(--lg-ink));
+}
+html:not(.lg-js) .lg-button--solid,
+html:not(.lg-js) .lg-button--quiet {
+  transition: transform var(--lg-motion-gel-release-duration) var(--lg-motion-gel-release-easing);
+}

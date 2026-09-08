@@ -1,0 +1,37 @@
+{
+  "lg": {
+    "modal": {
+      "$description": "comp 層 — modal contract。取れるマテリアル: Regular。開閉は gel バネ、backdrop は scrim",
+      "radius": {
+        "$value": "{lg.ref.radius.xl}",
+        "$type": "dimension",
+        "$description": "modal 外径"
+      },
+      "padding": {
+        "$value": "24px",
+        "$type": "dimension",
+        "$description": "modal パディング"
+      },
+      "width": {
+        "$value": "420px",
+        "$type": "dimension",
+        "$description": "modal 標準幅（max-width として使う）"
+      },
+      "scrim": {
+        "$value": "{lg.ref.color.scrim}",
+        "$type": "color",
+        "$description": "backdrop の遮光色"
+      },
+      "enter-scale": {
+        "$value": "{lg.ref.scale.modal-enter}",
+        "$type": "number",
+        "$description": "登場開始スケール。ここからバネで 1.0 へ"
+      },
+      "material": {
+        "$value": "regular",
+        "$type": "string",
+        "$description": "contract: modal は Regular のみ。scrim の上なので実効 surface は dark 寄り"
+      }
+    }
+  }
+}

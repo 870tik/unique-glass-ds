@@ -1,0 +1,16 @@
+<!-- ページの最小骨格 — 読み込み順は tokens → 部品 CSS →（テーマ）→ icons → 本体 JS -->
+<!doctype html>
+<html lang="ja" data-lg-surface="dark"><!-- テーマは html に data-lg-theme="studio-dark" -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/liquid-glass.css">
+  <script src="js/lg-icons.js" defer></script>
+  <script src="js/liquid-glass.js" defer></script>
+</head>
+<body>
+  <!-- surface はセクション単位で宣言。1ページに複数共存可 -->
+  <section data-lg-surface="dark">…</section>
+</body>
+</html>

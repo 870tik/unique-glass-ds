@@ -1,0 +1,2311 @@
+{
+  "lg": {
+    "ref": {
+      "alpha": {
+        "rim-peak": {
+          "$value": 0.85,
+          "$type": "number",
+          "$description": "リム光の最大強度（光源直下）。conic のピーク。--lg-li と乗算される。C 案の 0.55 は inherits:false バグで未検証の値だったため、実描画基準で 0.85 に再調整"
+        },
+        "rim-mid": {
+          "$value": 0.5,
+          "$type": "number",
+          "$description": "リム光の中間強度。ピークの肩"
+        },
+        "rim-side": {
+          "$value": 0.62,
+          "$type": "number",
+          "$description": "リム光の第二反射。ピークの反対側の弱い回り込み"
+        },
+        "bloom": {
+          "$value": 0.14,
+          "$type": "number",
+          "$description": "リム光源の面内ブルーム強度。光がガラス内で僅かに滲む表現"
+        },
+        "hairline": {
+          "$value": 0.14,
+          "$type": "number",
+          "$description": "常時表示の輪郭ヘアライン強度。非点灯時のガラスの存在の下限"
+        },
+        "hairline-top": {
+          "$value": 0.1,
+          "$type": "number",
+          "$description": "上辺 1px のハイライト強度。天面が受ける環境光"
+        },
+        "accent-hi": {
+          "$value": 0.8,
+          "$type": "number",
+          "$description": "ステンドグラス上段の不透明度。0.5→0.68→0.8（2026-09: ガラス越しの灰みを消し発色を立てる。透け感はエッジ屈折とグラデ下段が担保）"
+        },
+        "accent-lo": {
+          "$value": 0.6,
+          "$type": "number",
+          "$description": "ステンドグラス下段の不透明度。0.32→0.5→0.6（同上）"
+        },
+        "pill": {
+          "$value": 0.16,
+          "$type": "number",
+          "$description": "nav アクティブピルの塗り強度。ink との mix なので surface に自動追従する"
+        },
+        "tab-idle": {
+          "$value": 0.72,
+          "$type": "number",
+          "$description": "非アクティブタブのラベル不透明度"
+        }
+      },
+      "angle": {
+        "light": {
+          "$value": "215deg",
+          "$type": "string",
+          "$description": "仮想光源の既定角度（左上やや上）。@property の initial-value と同値に保つこと（initial-value は var 参照不可のため二重定義）"
+        }
+      },
+      "blur": {
+        "baseline-regular": {
+          "$value": "20px",
+          "$type": "dimension",
+          "$description": "baseline（非 Chromium）での Regular の backdrop blur。lens 非対応時の素材の本体"
+        },
+        "baseline-clear": {
+          "$value": "6px",
+          "$type": "dimension",
+          "$description": "baseline での Clear の backdrop blur。高透過を保つため弱い"
+        },
+        "chain-regular": {
+          "$value": "1.5px",
+          "$type": "dimension",
+          "$description": "lens モードで屈折の後段に足す微小 blur。Regular のすりの薄さ"
+        },
+        "chain-clear": {
+          "$value": "0px",
+          "$type": "dimension",
+          "$description": "lens モードでの Clear の後段 blur。素通しなのでゼロ"
+        },
+        "baseline-thick": {
+          "$value": "28px",
+          "$type": "dimension",
+          "$description": "厚いガラス（sidebar 等の大型恒常クローム）の baseline blur。公式「大きい要素ほど厚いガラス」の帰結"
+        },
+        "baseline-thin": {
+          "$value": "12px",
+          "$type": "dimension",
+          "$description": "薄いガラス（topbar・tooltip）の baseline blur。ツールバーは背後の文脈を読ませたい"
+        }
+      },
+      "breakpoint": {
+        "$description": "ブレークポイント。CSS の @media はカスタムプロパティを読めないため、CSS 内では同値のリテラルを使い、このトークンを正とする（変更時は両方更新）",
+        "sm": {
+          "$value": 640,
+          "$type": "number",
+          "$description": "1カラム化・余白縮小"
+        },
+        "md": {
+          "$value": 900,
+          "$type": "number",
+          "$description": "shell のサイドバーがオフキャンバス化する境界"
+        },
+        "lg": {
+          "$value": 1200,
+          "$type": "number",
+          "$description": "コンテンツ最大幅の目安"
+        }
+      },
+      "$description": "生値の層。ここ以外に raw な色・数値を置かない",
+      "color": {
+        "white": {
+          "$value": "#ffffff",
+          "$type": "color",
+          "$description": "リム・面リフト・ハイライトの基底。素材は無色なので、白は「光」の色としてのみ使う"
+        },
+        "black": {
+          "$value": "#000000",
+          "$type": "color",
+          "$description": "dim・scrim・影の基底。黒は「遮光」の色としてのみ使う"
+        },
+        "ink-dark": {
+          "$value": "#22242a",
+          "$type": "color",
+          "$description": "明るい surface（light/text）上のガラスラベル色。純黒ではなく僅かに青みの墨"
+        },
+        "ink-light": {
+          "$value": "#edece7",
+          "$type": "color",
+          "$description": "暗い surface（dark）上のガラスラベル色。純白ではなく紙白"
+        },
+        "ink-media": {
+          "$value": "#f4f3ee",
+          "$type": "color",
+          "$description": "media surface（写真・映像）上のラベル色。彩度の高い背景に負けないよう ink-light より僅かに明るい"
+        },
+        "on-accent": {
+          "$value": "#fdfdff",
+          "$type": "color",
+          "$description": "アクセント（ステンドグラス）背景上のラベル。常に明。surface に依らない"
+        },
+        "accent": {
+          "$value": "#7f8fff",
+          "$type": "color",
+          "$description": "アクセント（ペリウィンクル）。#8fa2ff→#7f8fff（2026-09: 彩度を引き上げ。ガラス合成後に Solid と同族の発色になる値）",
+          "$extensions": {
+            "lg.rule": "1画面1箇所限定"
+          }
+        },
+        "accent-deep": {
+          "$value": "#5e73f7",
+          "$type": "color",
+          "$description": "アクセントの深い側（グラデ下段）。#7488f0→#5e73f7（同上）"
+        },
+        "accent-solid": {
+          "$value": "#5b6ef0",
+          "$type": "color",
+          "$description": "不透明フォールバック時のアクセント。#5a6ccc→#5b6ef0（同上）"
+        },
+        "opaque-dark": {
+          "$value": "#15171d",
+          "$type": "color",
+          "$description": "reduced-transparency / 非対応環境での不透明ガラス面（暗 surface 用）"
+        },
+        "opaque-light": {
+          "$value": "#f2f1ec",
+          "$type": "color",
+          "$description": "reduced-transparency / 非対応環境での不透明ガラス面（明 surface 用）。surface 連動フォールバックの明側"
+        },
+        "scrim": {
+          "$value": "rgba(0, 0, 0, 0.45)",
+          "$type": "color",
+          "$description": "modal backdrop の遮光。コンテンツ層を沈めてガラス1枚に集中させる"
+        },
+        "dim-35": {
+          "$value": "rgba(0, 0, 0, 0.35)",
+          "$type": "color",
+          "$description": "Clear バリアントを明 surface に置いた時に自動で敷く dim 層。35% は Apple HIG の明文値"
+        },
+        "shadow-ambient": {
+          "$value": "rgba(0, 0, 0, 0.30)",
+          "$type": "color",
+          "$description": "浮遊ガラスの環境影の色。広く柔らかい方"
+        },
+        "shadow-contact": {
+          "$value": "rgba(0, 0, 0, 0.16)",
+          "$type": "color",
+          "$description": "接地寄りの影の色。輪郭を締める方"
+        },
+        "light-key": {
+          "$value": "rgba(153, 192, 255, 0.12)",
+          "$type": "color",
+          "$description": "対角2光源の寒色キー（左上）。baseline でレンズを失った時もエッジ反射を残すための inset 光"
+        },
+        "light-fill": {
+          "$value": "rgba(229, 253, 190, 0.12)",
+          "$type": "color",
+          "$description": "対角2光源の暖色フィル（右下）。key と対で素材の厚みを示す"
+        },
+        "positive": {
+          "$value": "#43cf8c",
+          "$type": "color",
+          "$description": "成功・正の状態色。#5fb98a→#43cf8c（同上・鮮明な緑へ）"
+        },
+        "chart-1": {
+          "$value": "#8fa2ff",
+          "$type": "color",
+          "$description": "カテゴリカル1。アクセントと同系（主系列に使う）"
+        },
+        "chart-2": {
+          "$value": "#6fc7b4",
+          "$type": "color",
+          "$description": "カテゴリカル2。ティール"
+        },
+        "chart-3": {
+          "$value": "#e0aa72",
+          "$type": "color",
+          "$description": "カテゴリカル3。アンバー"
+        },
+        "chart-4": {
+          "$value": "#d98bb6",
+          "$type": "color",
+          "$description": "カテゴリカル4。ローズ"
+        },
+        "chart-5": {
+          "$value": "#7ab8e8",
+          "$type": "color",
+          "$description": "カテゴリカル5。スカイ"
+        },
+        "chart-6": {
+          "$value": "#a5cc7a",
+          "$type": "color",
+          "$description": "カテゴリカル6。リーフ。7系列以上は集約を検討する"
+        },
+        "warning": {
+          "$value": "#f0ad4a",
+          "$type": "color",
+          "$description": "警告の状態色。#e0b56f→#f0ad4a（同上・明快なアンバーへ）"
+        },
+        "spectrum-cool": {
+          "$value": "#8fd0ff",
+          "$type": "color",
+          "$description": "リム光の寒色端（分光の青側）。prism 材のハイライトは白一色ではなくスペクトルに割れる（公理4改定）"
+        },
+        "spectrum-warm": {
+          "$value": "#ffb37a",
+          "$type": "color",
+          "$description": "リム光の暖色端（分光の赤側）。同上"
+        }
+      },
+      "duration": {
+        "press": {
+          "$value": "90ms",
+          "$type": "duration",
+          "$description": "押下の潰れ時間。1:1 の即応に見える上限。これより長いと遅延、短いと瞬断"
+        },
+        "release": {
+          "$value": "460ms",
+          "$type": "duration",
+          "$description": "JS 無効時の CSS フォールバック復帰時間（バネの近似）"
+        },
+        "rim-fade": {
+          "$value": "450ms",
+          "$type": "duration",
+          "$description": "リム光の点灯/消灯のなだらかさ。角度は 1:1 直結で、遷移するのは強度のみ（公理4）"
+        },
+        "fade": {
+          "$value": "350ms",
+          "$type": "duration",
+          "$description": "汎用フェード（backdrop・field の相転移など）"
+        },
+        "menu-exit": {
+          "$value": "160ms",
+          "$type": "duration",
+          "$description": "menu / tooltip の退場フェード。入場はバネ、退場は軽く消えるのが公式モーションの非対称"
+        },
+        "toast": {
+          "$value": "4200ms",
+          "$type": "duration",
+          "$description": "toast の自動退場までの滞留時間"
+        },
+        "tooltip-delay": {
+          "$value": "450ms",
+          "$type": "duration",
+          "$description": "tooltip の遅延表示。即出しはノイズ"
+        }
+      },
+      "easing": {
+        "press": {
+          "$value": [
+            0.25,
+            0.6,
+            0.35,
+            1
+          ],
+          "$type": "cubicBezier",
+          "$description": "押下カーブ。速く入って弾まない"
+        },
+        "gel-release": {
+          "$value": [
+            0.34,
+            1.72,
+            0.4,
+            1
+          ],
+          "$type": "cubicBezier",
+          "$description": "JS 無効時の復帰カーブ。バネのオーバーシュートの CSS 近似"
+        }
+      },
+      "gap": {
+        "nav": {
+          "$value": "6px",
+          "$type": "dimension",
+          "$description": "nav の内側パディング。concentricity: ピル radius = nav radius − この値"
+        },
+        "card": {
+          "$value": "14px",
+          "$type": "dimension",
+          "$description": "card の内側パディング。concentricity: 内側 radius = card radius − この値"
+        }
+      },
+      "lens": {
+        "falloff-regular": {
+          "$value": 0.45,
+          "$type": "number",
+          "$description": "Regular のレンズ帯幅（短辺比）。エッジから中央へ屈折が減衰する距離"
+        },
+        "falloff-clear": {
+          "$value": 0.26,
+          "$type": "number",
+          "$description": "Clear のレンズ帯幅（短辺比）。エッジに屈折が寄り中央の素通しが広い"
+        },
+        "scale-ratio-regular": {
+          "$value": 0.32,
+          "$type": "number",
+          "$description": "Regular の変位量（短辺比）。scale-min/max で clamp される"
+        },
+        "scale-ratio-clear": {
+          "$value": 0.3,
+          "$type": "number",
+          "$description": "Clear の変位量（短辺比）"
+        },
+        "scale-max-regular": {
+          "$value": 44,
+          "$type": "number",
+          "$description": "Regular の変位上限 px。大型要素で歪みが暴れない天井"
+        },
+        "scale-max-clear": {
+          "$value": 120,
+          "$type": "number",
+          "$description": "Clear の変位上限 px。標本レンズとして強い屈折まで許す"
+        },
+        "scale-min-regular": {
+          "$value": 12,
+          "$type": "number",
+          "$description": "Regular の変位下限 px。小型ボタンでも屈折が読み取れる床"
+        },
+        "scale-min-clear": {
+          "$value": 8,
+          "$type": "number",
+          "$description": "Clear の変位下限 px"
+        },
+        "ca": {
+          "$value": 6,
+          "$type": "number",
+          "$description": "色収差の最大 px。prism 材の署名（v2 独自化 R11）: 分散を隠さず、エッジで光がスペクトルに割れることを素材の第一特徴とする。制御条件は「エッジ帯のみ・構造の上でのみ視認」。Apple 相当の控えめ値は theme apple-quiet（2.5）"
+        },
+        "ca-split-r": {
+          "$value": 0.78,
+          "$type": "number",
+          "$description": "R チャネル変位比。0.86→0.78（prism: スペクトル分離を広げ、虹の帯として読める間隔に）"
+        },
+        "ca-split-b": {
+          "$value": 1.32,
+          "$type": "number",
+          "$description": "B チャネル変位比。1.22→1.32（同上）"
+        },
+        "map-max": {
+          "$value": 384,
+          "$type": "number",
+          "$description": "変位マップの最大解像度（長辺 px）。これ以上は縮小生成して feImage で引き伸ばす。LP 規模のコスト上限"
+        },
+        "organic": {
+          "$value": 0.12,
+          "$type": "number",
+          "$description": "個体差（生命徴・R13）: 変位マップに掛かる有機ノイズの振幅。同一部品でも一枚ごとに屈折の指紋がわずかに異なる（4個体プール）。0 で無効（apple-quiet）"
+        }
+      },
+      "radius": {
+        "xl": {
+          "$value": "28px",
+          "$type": "dimension",
+          "$description": "大型面（nav・modal・標本プレート）の外径"
+        },
+        "lg": {
+          "$value": "24px",
+          "$type": "dimension",
+          "$description": "card の外径。ガラス既定値"
+        },
+        "md": {
+          "$value": "20px",
+          "$type": "dimension",
+          "$description": "field 等の中型部品の外径"
+        },
+        "sm": {
+          "$value": "14px",
+          "$type": "dimension",
+          "$description": "小型部品・チップの外径"
+        },
+        "pill": {
+          "$value": "999px",
+          "$type": "dimension",
+          "$description": "ピル形状。ボタンの既定"
+        },
+        "xs": {
+          "$value": "10px",
+          "$type": "dimension",
+          "$description": "最小部品（tooltip・checkbox 内側等）の外径"
+        }
+      },
+      "saturate": {
+        "regular": {
+          "$value": 1.4,
+          "$type": "number",
+          "$description": "Regular の背景彩度リフト。集光の帰結（公理2）。SVG チェーン内 feColorMatrix と baseline CSS の両方がこの単一値を参照する"
+        },
+        "clear": {
+          "$value": 1.2,
+          "$type": "number",
+          "$description": "Clear の背景彩度リフト。素通しに近いので控えめ"
+        }
+      },
+      "scale": {
+        "press": {
+          "$value": 0.97,
+          "$type": "number",
+          "$description": "押下時の潰れ量（標準）。押した指の圧の可視化"
+        },
+        "press-small": {
+          "$value": 0.94,
+          "$type": "number",
+          "$description": "小型要素（タブ等）の潰れ量。小さいほど深く潰す"
+        },
+        "modal-enter": {
+          "$value": 0.94,
+          "$type": "number",
+          "$description": "modal 登場開始スケール。ここからバネで 1.0 へ"
+        },
+        "menu-enter": {
+          "$value": 0.65,
+          "$type": "number",
+          "$description": "menu 登場開始スケール。トリガーからの流動モーフに見える下限"
+        }
+      },
+      "size": {
+        "rim-width": {
+          "$value": "1.5px",
+          "$type": "dimension",
+          "$description": "リム光の線幅。ガラスの厚みの見え。1.25px は 1x 描画で消えるため 1.5px が下限"
+        },
+        "focus-width": {
+          "$value": "2px",
+          "$type": "dimension",
+          "$description": "focus-visible リングの線幅"
+        },
+        "focus-offset": {
+          "$value": "2px",
+          "$type": "dimension",
+          "$description": "focus-visible リングのオフセット"
+        },
+        "control-height": {
+          "$value": "52px",
+          "$type": "dimension",
+          "$description": "標準操作子（button / nav）の高さ"
+        },
+        "field-height": {
+          "$value": "48px",
+          "$type": "dimension",
+          "$description": "text field の高さ"
+        },
+        "icon": {
+          "$value": "15px",
+          "$type": "dimension",
+          "$description": "標準アイコンサイズ（本文・field 内）"
+        },
+        "icon-lg": {
+          "$value": "18px",
+          "$type": "dimension",
+          "$description": "topbar・empty state 等の大アイコン"
+        },
+        "hairline": {
+          "$value": "1px",
+          "$type": "dimension",
+          "$description": "区切り線・ヘアラインの太さ"
+        },
+        "icon-button": {
+          "$value": "34px",
+          "$type": "dimension",
+          "$description": "円形アイコンボタン（.lg-icon-button / .lg-shell-menu-btn）の外径"
+        },
+        "icon-stroke": {
+          "$value": "1.5px",
+          "$type": "dimension",
+          "$description": "アイコンの線幅。全アイコンで統一（Lucide の既定 2px をシステム基準に上書き）"
+        }
+      },
+      "space": {
+        "$description": "余白スケール。コンポーネント間・セクション間の gap/padding はこの8段から選ぶ。中間値を発明しない",
+        "xs": {
+          "$value": "4px",
+          "$type": "dimension",
+          "$description": "最小。アイコンとラベルの間隔"
+        },
+        "sm": {
+          "$value": "8px",
+          "$type": "dimension",
+          "$description": "同グループ内の部品間"
+        },
+        "md": {
+          "$value": "12px",
+          "$type": "dimension",
+          "$description": "部品間の標準 gap"
+        },
+        "lg": {
+          "$value": "16px",
+          "$type": "dimension",
+          "$description": "カード/パネル間"
+        },
+        "xl": {
+          "$value": "20px",
+          "$type": "dimension",
+          "$description": "パネル内の主要ブロック間"
+        },
+        "2xl": {
+          "$value": "24px",
+          "$type": "dimension",
+          "$description": "セクション内の余白"
+        },
+        "3xl": {
+          "$value": "32px",
+          "$type": "dimension",
+          "$description": "セクション間"
+        },
+        "4xl": {
+          "$value": "48px",
+          "$type": "dimension",
+          "$description": "ページブロック間・ヒーロー余白"
+        },
+        "2xs": {
+          "$value": "2px",
+          "$type": "dimension",
+          "$description": "最小構造間隔。縦ナビの項目間・密なリスト内など"
+        }
+      },
+      "spring": {
+        "k": {
+          "$value": 440,
+          "$type": "number",
+          "$description": "gel バネの剛性。復帰の速さと弾みの源"
+        },
+        "zeta": {
+          "$value": 0.65,
+          "$type": "number",
+          "$description": "gel バネの減衰比。1 未満 = わずかにオーバーシュートする gel の性格"
+        }
+      },
+      "type": {
+        "$description": "タイポグラフィスケール。部品ローカルの font-size はこの段階に揃える。利用は .lg-type-* ユーティリティか var 参照",
+        "display-size": {
+          "$value": "24px",
+          "$type": "dimension",
+          "$description": "ページ見出し（h1）。SaaS では控えめに1画面1回"
+        },
+        "title-size": {
+          "$value": "19px",
+          "$type": "dimension",
+          "$description": "セクション見出し（h2）"
+        },
+        "heading-size": {
+          "$value": "15px",
+          "$type": "dimension",
+          "$description": "パネル見出し・モーダルタイトル（h3/h4）"
+        },
+        "body-size": {
+          "$value": "13.5px",
+          "$type": "dimension",
+          "$description": "本文・テーブル・メニューの基準サイズ"
+        },
+        "caption-size": {
+          "$value": "11.5px",
+          "$type": "dimension",
+          "$description": "補足・ヘルプ・delta 表示"
+        },
+        "micro-size": {
+          "$value": "10px",
+          "$type": "dimension",
+          "$description": "uppercase ラベル・タグ。tracking-wide と併用"
+        },
+        "weight-regular": {
+          "$value": 400,
+          "$type": "fontWeight",
+          "$description": "本文"
+        },
+        "weight-medium": {
+          "$value": 500,
+          "$type": "fontWeight",
+          "$description": "ボタン・強調ラベル"
+        },
+        "weight-semibold": {
+          "$value": 650,
+          "$type": "fontWeight",
+          "$description": "見出し・KPI 数値"
+        },
+        "leading-tight": {
+          "$value": 1.3,
+          "$type": "number",
+          "$description": "見出し・数値の行送り"
+        },
+        "leading-body": {
+          "$value": 1.7,
+          "$type": "number",
+          "$description": "本文の行送り"
+        },
+        "tracking-wide": {
+          "$value": "0.14em",
+          "$type": "dimension",
+          "$description": "uppercase の技術ラベル用トラッキング（micro/caption と併用）"
+        },
+        "family-mono": {
+          "$value": "'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace",
+          "$type": "fontFamily",
+          "$description": "計測の声（R15）: spec-tag・ラベル・数表・目盛り。IBM Plex Mono（OFL・同梱）"
+        },
+        "family-display": {
+          "$value": "'Space Grotesk', -apple-system, 'Helvetica Neue', 'Hiragino Sans', sans-serif",
+          "$type": "fontFamily",
+          "$description": "声（R15）: 見出し・数値・巨大アウトラインの Latin 顔。幾何学×技術の Space Grotesk（OFL・assets/fonts 同梱）。和文はシステムへフォールバック"
+        }
+      },
+      "z": {
+        "$description": "重なりの階層。ガラスの一時面はこの4段のみ。新しい層が必要になったら段を足す前に設計を疑う",
+        "menu": {
+          "$value": 80,
+          "$type": "number",
+          "$description": "ドロップダウン・ポップオーバー（アンカー相対の一時面）"
+        },
+        "backdrop": {
+          "$value": 100,
+          "$type": "number",
+          "$description": "scrim を伴う面（modal / command）"
+        },
+        "toast": {
+          "$value": 140,
+          "$type": "number",
+          "$description": "通知スタック。backdrop より上（モーダル中も通知は見える）"
+        },
+        "tooltip": {
+          "$value": 160,
+          "$type": "number",
+          "$description": "最前面。すべての一時面の上に出る"
+        }
+      }
+    },
+    "adaptive": {
+      "$description": "sys 層 — surface 適応（公理3）。data-lg-surface=\"light|dark|media|text\" がこの束を --lg-ink / --lg-bcomp / --lg-rim / --lg-face-alpha / --lg-clear-dim / --lg-opaque-* に写像する。未宣言時の既定は dark",
+      "dark": {
+        "ink": {
+          "$value": "{lg.ref.color.ink-light}",
+          "$type": "color",
+          "$description": "dark surface のラベル色（明転）"
+        },
+        "bcomp": {
+          "$value": 1.16,
+          "$type": "number",
+          "$description": "dark surface の輝度補償。暗所でガラス越しを持ち上げ可読性を守る"
+        },
+        "rim": {
+          "$value": "{lg.ref.color.white}",
+          "$type": "color",
+          "$description": "dark surface のリム基色"
+        },
+        "face-alpha": {
+          "$value": 0.06,
+          "$type": "number",
+          "$description": "dark surface の面リフト。暗所では最小限（存在はエッジ光で立てる）"
+        },
+        "clear-dim": {
+          "$value": "rgba(0, 0, 0, 0)",
+          "$type": "color",
+          "$description": "dark surface では Clear の dim 不要（透明）"
+        },
+        "opaque-bg": {
+          "$value": "{lg.ref.color.opaque-dark}",
+          "$type": "color",
+          "$description": "dark surface の不透明フォールバック面"
+        },
+        "opaque-ink": {
+          "$value": "{lg.ref.color.ink-light}",
+          "$type": "color",
+          "$description": "dark surface の不透明フォールバック時ラベル"
+        },
+        "danger": {
+          "$value": "#ff6b76",
+          "$type": "color",
+          "$description": "dark surface のエラー色。暗所で沈まない明度。2026-09 チューニングで彩度アップ（くすみ解消）"
+        }
+      },
+      "light": {
+        "ink": {
+          "$value": "{lg.ref.color.ink-dark}",
+          "$type": "color",
+          "$description": "light surface のラベル色（暗転）"
+        },
+        "bcomp": {
+          "$value": 0.97,
+          "$type": "number",
+          "$description": "light surface の輝度補償。眩しさを僅かに抑える"
+        },
+        "rim": {
+          "$value": "{lg.ref.color.white}",
+          "$type": "color",
+          "$description": "light surface のリム基色。光は明所でも白"
+        },
+        "face-alpha": {
+          "$value": 0.22,
+          "$type": "number",
+          "$description": "light surface の面リフト。明所ではやや乳白に寄せて層を分離する"
+        },
+        "clear-dim": {
+          "$value": "{lg.ref.color.dim-35}",
+          "$type": "color",
+          "$description": "light surface の Clear には 35% dim を自動で敷く（HIG 明文・批評条件3）"
+        },
+        "opaque-bg": {
+          "$value": "{lg.ref.color.opaque-light}",
+          "$type": "color",
+          "$description": "light surface の不透明フォールバック面（明るい面 = surface 連動）"
+        },
+        "opaque-ink": {
+          "$value": "{lg.ref.color.ink-dark}",
+          "$type": "color",
+          "$description": "light surface の不透明フォールバック時ラベル"
+        },
+        "danger": {
+          "$value": "#d63a47",
+          "$type": "color",
+          "$description": "light surface のエラー色。白地でコントラストが立つ濃度。2026-09 チューニングで彩度アップ（くすみ解消）"
+        }
+      },
+      "media": {
+        "ink": {
+          "$value": "{lg.ref.color.ink-media}",
+          "$type": "color",
+          "$description": "media surface（写真・映像）のラベル色。高彩度背景に負けない明度"
+        },
+        "bcomp": {
+          "$value": 1.05,
+          "$type": "number",
+          "$description": "media surface の輝度補償。複雑な背景を軽く持ち上げる"
+        },
+        "rim": {
+          "$value": "{lg.ref.color.white}",
+          "$type": "color",
+          "$description": "media surface のリム基色"
+        },
+        "face-alpha": {
+          "$value": 0.08,
+          "$type": "number",
+          "$description": "media surface の面リフト。背景の色を殺さない下限寄り"
+        },
+        "clear-dim": {
+          "$value": "rgba(0, 0, 0, 0)",
+          "$type": "color",
+          "$description": "media surface は Clear の本来の居場所。dim なし"
+        },
+        "opaque-bg": {
+          "$value": "{lg.ref.color.opaque-dark}",
+          "$type": "color",
+          "$description": "media surface の不透明フォールバック面（媒体上は暗面が安全）"
+        },
+        "opaque-ink": {
+          "$value": "{lg.ref.color.ink-light}",
+          "$type": "color",
+          "$description": "media surface の不透明フォールバック時ラベル"
+        },
+        "danger": {
+          "$value": "#ff6b76",
+          "$type": "color",
+          "$description": "media surface のエラー色。2026-09 チューニングで彩度アップ（くすみ解消）"
+        }
+      },
+      "text": {
+        "ink": {
+          "$value": "{lg.ref.color.ink-dark}",
+          "$type": "color",
+          "$description": "text surface（明るい文章面）のラベル色"
+        },
+        "bcomp": {
+          "$value": 1,
+          "$type": "number",
+          "$description": "text surface の輝度補償。文字のコントラストを歪めない中立"
+        },
+        "rim": {
+          "$value": "{lg.ref.color.white}",
+          "$type": "color",
+          "$description": "text surface のリム基色"
+        },
+        "face-alpha": {
+          "$value": 0.2,
+          "$type": "number",
+          "$description": "text surface の面リフト。下の文字を沈めてガラス上ラベルを立てる"
+        },
+        "clear-dim": {
+          "$value": "{lg.ref.color.dim-35}",
+          "$type": "color",
+          "$description": "text surface の Clear には 35% dim を自動で敷く（可読性破綻の防止）"
+        },
+        "opaque-bg": {
+          "$value": "{lg.ref.color.opaque-light}",
+          "$type": "color",
+          "$description": "text surface の不透明フォールバック面"
+        },
+        "opaque-ink": {
+          "$value": "{lg.ref.color.ink-dark}",
+          "$type": "color",
+          "$description": "text surface の不透明フォールバック時ラベル"
+        },
+        "danger": {
+          "$value": "#d63a47",
+          "$type": "color",
+          "$description": "text surface のエラー色。2026-09 チューニングで彩度アップ（くすみ解消）"
+        }
+      }
+    },
+    "light": {
+      "$description": "sys 層 — 仮想光源。角度 --lg-la と強度 --lg-li の2変数でリムとブルームを駆動（公理4）。角度はポインタ 1:1、遷移するのは強度のみ",
+      "angle": {
+        "$value": "{lg.ref.angle.light}",
+        "$type": "string",
+        "$description": "非操作時の光源角度。JS がポインタ角で上書きする"
+      },
+      "rim-width": {
+        "$value": "{lg.ref.size.rim-width}",
+        "$type": "dimension",
+        "$description": "リムの線幅"
+      },
+      "rim-peak": {
+        "$value": "{lg.ref.alpha.rim-peak}",
+        "$type": "number",
+        "$description": "リムのピーク強度係数"
+      },
+      "rim-mid": {
+        "$value": "{lg.ref.alpha.rim-mid}",
+        "$type": "number",
+        "$description": "リムの肩の強度係数"
+      },
+      "rim-side": {
+        "$value": "{lg.ref.alpha.rim-side}",
+        "$type": "number",
+        "$description": "リムの第二反射の強度係数"
+      },
+      "bloom": {
+        "$value": "{lg.ref.alpha.bloom}",
+        "$type": "number",
+        "$description": "面内ブルームの強度係数"
+      },
+      "hover-intensity": {
+        "$value": 0.8,
+        "$type": "number",
+        "$description": "hover / focus 時の --lg-li。触れると光る"
+      },
+      "press-intensity": {
+        "$value": 1,
+        "$type": "number",
+        "$description": "押下時の --lg-li。最大点灯"
+      },
+      "fade": {
+        "$value": "{lg.ref.duration.rim-fade}",
+        "$type": "duration",
+        "$description": "点灯/消灯の遷移時間"
+      },
+      "key": {
+        "$value": "{lg.ref.color.light-key}",
+        "$type": "color",
+        "$description": "対角2光源・寒色キー（inset 左上）"
+      },
+      "fill": {
+        "$value": "{lg.ref.color.light-fill}",
+        "$type": "color",
+        "$description": "対角2光源・暖色フィル（inset 右下）"
+      },
+      "rim-spec-cool": {
+        "$value": "{lg.ref.color.spectrum-cool}",
+        "$type": "color",
+        "$description": "リムの入射側（回り込みの先端）の分光色。quiet テーマでは白に上書きされ単色リムに縮退"
+      },
+      "rim-spec-warm": {
+        "$value": "{lg.ref.color.spectrum-warm}",
+        "$type": "color",
+        "$description": "リムの射出側の分光色。同上"
+      },
+      "breath-depth": {
+        "$value": 0.3,
+        "$type": "number",
+        "$description": "注視の呼吸（生命徴・R13、公理4の唯一の例外）: focus-visible で注視されている間だけ、リム強度が base×(1−depth)〜base をゆっくり往復する。0 で無効"
+      },
+      "breath-period": {
+        "$value": "3600ms",
+        "$type": "duration",
+        "$description": "呼吸の1周期。ヒトの安静呼吸（3〜4秒）に合わせる"
+      }
+    },
+    "material": {
+      "$description": "sys 層 — 素材レシピ。Regular = 適応する標準相 / Clear = 高透過・非適応相（明 surface では 35% dim 必須）",
+      "regular": {
+        "blur": {
+          "$value": "{lg.ref.blur.baseline-regular}",
+          "$type": "dimension",
+          "$description": "Regular の baseline backdrop blur。lens モードでは chain-blur に置き換わる"
+        },
+        "chain-blur": {
+          "$value": "{lg.ref.blur.chain-regular}",
+          "$type": "dimension",
+          "$description": "Regular の lens モード後段 blur"
+        },
+        "saturate": {
+          "$value": "{lg.ref.saturate.regular}",
+          "$type": "number",
+          "$description": "Regular の彩度リフト。JS がこの CSS 変数を読んで SVG チェーンにも配る（単一ソース）"
+        },
+        "falloff-ratio": {
+          "$value": "{lg.ref.lens.falloff-regular}",
+          "$type": "number",
+          "$description": "Regular のレンズ帯幅。JS の variant lookup table が参照"
+        },
+        "scale-ratio": {
+          "$value": "{lg.ref.lens.scale-ratio-regular}",
+          "$type": "number",
+          "$description": "Regular の変位量比"
+        },
+        "scale-max": {
+          "$value": "{lg.ref.lens.scale-max-regular}",
+          "$type": "number",
+          "$description": "Regular の変位上限"
+        },
+        "scale-min": {
+          "$value": "{lg.ref.lens.scale-min-regular}",
+          "$type": "number",
+          "$description": "Regular の変位下限"
+        },
+        "ca": {
+          "$value": "{lg.ref.lens.ca}",
+          "$type": "number",
+          "$description": "Regular の色収差オフセット"
+        },
+        "shadow": {
+          "$value": [
+            {
+              "inset": false,
+              "offsetX": "0px",
+              "offsetY": "18px",
+              "blur": "44px",
+              "spread": "-12px",
+              "color": "{lg.ref.color.shadow-ambient}"
+            },
+            {
+              "inset": false,
+              "offsetX": "0px",
+              "offsetY": "2px",
+              "blur": "8px",
+              "spread": "0px",
+              "color": "{lg.ref.color.shadow-contact}"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "浮遊ガラスの二重影。環境影 + 接地影"
+        }
+      },
+      "clear": {
+        "blur": {
+          "$value": "{lg.ref.blur.baseline-clear}",
+          "$type": "dimension",
+          "$description": "Clear の baseline backdrop blur"
+        },
+        "chain-blur": {
+          "$value": "{lg.ref.blur.chain-clear}",
+          "$type": "dimension",
+          "$description": "Clear の lens モード後段 blur（ゼロ = 素通し）"
+        },
+        "saturate": {
+          "$value": "{lg.ref.saturate.clear}",
+          "$type": "number",
+          "$description": "Clear の彩度リフト"
+        },
+        "falloff-ratio": {
+          "$value": "{lg.ref.lens.falloff-clear}",
+          "$type": "number",
+          "$description": "Clear のレンズ帯幅"
+        },
+        "scale-ratio": {
+          "$value": "{lg.ref.lens.scale-ratio-clear}",
+          "$type": "number",
+          "$description": "Clear の変位量比"
+        },
+        "scale-max": {
+          "$value": "{lg.ref.lens.scale-max-clear}",
+          "$type": "number",
+          "$description": "Clear の変位上限"
+        },
+        "scale-min": {
+          "$value": "{lg.ref.lens.scale-min-clear}",
+          "$type": "number",
+          "$description": "Clear の変位下限"
+        },
+        "ca": {
+          "$value": "{lg.ref.lens.ca}",
+          "$type": "number",
+          "$description": "Clear の色収差オフセット（Regular と共通）"
+        },
+        "face-alpha": {
+          "$value": 0.03,
+          "$type": "number",
+          "$description": "Clear の面リフト。surface 適応（adaptive.*.face-alpha）を上書きしてほぼ透明にする"
+        },
+        "ink": {
+          "$value": "{lg.ref.color.ink-light}",
+          "$type": "color",
+          "$description": "Clear のラベル色。Clear は非適応なので明暗反転せず常に明。明 surface では 35% dim 層がコントラストを保証する"
+        },
+        "shadow": {
+          "$value": "{lg.material.regular.shadow}",
+          "$type": "shadow",
+          "$description": "Clear の影は Regular と共通"
+        }
+      },
+      "regular-thick": {
+        "$description": "sys 層 — Regular の厚相。大型の恒常クローム（sidebar）用。屈折レシピは regular と共有し、blur と面リフトのみ厚くする",
+        "blur": {
+          "$value": "{lg.ref.blur.baseline-thick}",
+          "$type": "dimension",
+          "$description": "厚相の baseline blur"
+        },
+        "face-scale": {
+          "$value": 1.8,
+          "$type": "number",
+          "$description": "surface の face-alpha に掛ける倍率。面を濃くして大面積の可読性を守る"
+        }
+      },
+      "regular-thin": {
+        "$description": "sys 層 — Regular の薄相。topbar・tooltip 用。背後のコンテンツ文脈を保つ",
+        "blur": {
+          "$value": "{lg.ref.blur.baseline-thin}",
+          "$type": "dimension",
+          "$description": "薄相の baseline blur"
+        },
+        "face-scale": {
+          "$value": 0.75,
+          "$type": "number",
+          "$description": "surface の face-alpha に掛ける倍率。薄相は面も薄く"
+        }
+      }
+    },
+    "motion": {
+      "$description": "sys 層 — gel の物理（公理5）。変形に慣性、追従に慣性なし",
+      "gel": {
+        "k": {
+          "$value": "{lg.ref.spring.k}",
+          "$type": "number",
+          "$description": "復帰バネの剛性。JS Spring クラスの既定"
+        },
+        "zeta": {
+          "$value": "{lg.ref.spring.zeta}",
+          "$type": "number",
+          "$description": "復帰バネの減衰比の既定"
+        },
+        "press-scale": {
+          "$value": "{lg.ref.scale.press}",
+          "$type": "number",
+          "$description": "押下潰れの既定スケール"
+        },
+        "press-duration": {
+          "$value": "{lg.ref.duration.press}",
+          "$type": "duration",
+          "$description": "押下潰れの所要時間（1:1 に見える即応）"
+        },
+        "press-easing": {
+          "$value": "{lg.ref.easing.press}",
+          "$type": "cubicBezier",
+          "$description": "押下カーブ"
+        },
+        "release-duration": {
+          "$value": "{lg.ref.duration.release}",
+          "$type": "duration",
+          "$description": "JS 無効時の CSS フォールバック復帰時間"
+        },
+        "release-easing": {
+          "$value": "{lg.ref.easing.gel-release}",
+          "$type": "cubicBezier",
+          "$description": "JS 無効時の CSS フォールバック復帰カーブ"
+        },
+        "optics-press": {
+          "$value": 0.3,
+          "$type": "number",
+          "$description": "押下時に屈折スケールへ掛かる係数（応答する光学・R12）。レンズが潰れて平らになる = 屈折・分散が 30% まで弱まる。離すとバネで揺り戻り、屈折が一度ゆらぐ。reduced-motion ではスナップ"
+        },
+        "optics-hover": {
+          "$value": 0.92,
+          "$type": "number",
+          "$description": "瞳孔反射（生命徴・R13）: hover でレンズがわずかに締まる係数。押す前の予兆。1 で無効"
+        },
+        "squash-y": {
+          "$value": 0.9,
+          "$type": "number",
+          "$description": "press の縦潰れ（Squash & Stretch・R14）。体積保存のため横は stretch-x で伸びる"
+        },
+        "stretch-x": {
+          "$value": 1.06,
+          "$type": "number",
+          "$description": "press の横伸び。squash-y と対で「潰れた gel」を作る"
+        },
+        "hover-scale": {
+          "$value": 1.03,
+          "$type": "number",
+          "$description": "hover でわずかに膨らむ（気づきの反応）。揺れながら到達する"
+        },
+        "wobble-zeta": {
+          "$value": 0.42,
+          "$type": "number",
+          "$description": "gel の減衰比（R14 で 0.65→0.42）。release/hover でぷるんと2〜3回揺れる follow-through。1:1 の押下即応は不変"
+        }
+      }
+    },
+    "observer": {
+      "$description": "sys 層 — 観測者効果（R16）。トークンが「範囲」を定義し、観測者シードが値を確定する。揺れるのは分光色相・光源角・呼吸周期・個体差プールのみ。コントラスト・予算・レイアウト・状態色の意味・accent は不変（憲法で固定）",
+      "spectrum-rotation": {
+        "$value": 60,
+        "$type": "number",
+        "$description": "リム分光の色相回転範囲（±deg）。30→60（R16補遺: タップの一瞬でも個体差が分かる強さに。SP は hover がないため）"
+      },
+      "angle-range": {
+        "$value": 15,
+        "$type": "number",
+        "$description": "仮想光源の基準角の揺れ幅（±deg）。光の来る方向が観測者ごとに違う"
+      },
+      "breath-min": {
+        "$value": "2600ms",
+        "$type": "duration",
+        "$description": "呼吸周期の下限。レンジ拡大（R16補遺）で個体差を体感可能に"
+      },
+      "breath-max": {
+        "$value": "4600ms",
+        "$type": "duration",
+        "$description": "呼吸周期の上限"
+      },
+      "ambient-rotation": {
+        "$value": 360,
+        "$type": "number",
+        "$description": "環境光（装飾背景）の色相ホイール幅。360 = 観測者を全色相に均等配置（「ほぼ既定」のシードが存在しない = 誰と比べても違う）。0 でオフ。装飾背景専用層のみが消費し、accent・UI 色は不変"
+      }
+    },
+    "physique": {
+      "$description": "sys 層 — 体質 Physique（R17）。動き・光学の2軸の trait（0〜1）が、各性質を min/max の間で確定する。trait 0.5 = 現行既定。ソースは (a) ホストが渡す抽象 trait（data-lg-trait-* / API。生の個人データは受けない）(b) 端末内の操作テンポ学習（personal のみ・翌訪問反映）(c) OS 信号。検索履歴等の外部データは扱わない（プライバシー境界）",
+      "motion-default": {
+        "$value": 0.5,
+        "$type": "number",
+        "$description": "動き trait の既定（still 0 ↔ lively 1）"
+      },
+      "optics-default": {
+        "$value": 0.5,
+        "$type": "number",
+        "$description": "光学 trait の既定（quiet 0 ↔ dramatic 1）"
+      },
+      "wobble-zeta-min": {
+        "$value": 0.6,
+        "$type": "number",
+        "$description": "still 側: ほぼ揺れない"
+      },
+      "wobble-zeta-max": {
+        "$value": 0.24,
+        "$type": "number",
+        "$description": "lively 側: よく揺れる（減衰比は逆向き）"
+      },
+      "squash-y-min": {
+        "$value": 0.95,
+        "$type": "number",
+        "$description": "still 側の潰れ"
+      },
+      "squash-y-max": {
+        "$value": 0.85,
+        "$type": "number",
+        "$description": "lively 側の潰れ"
+      },
+      "stretch-x-min": {
+        "$value": 1.02,
+        "$type": "number",
+        "$description": "still 側の伸び"
+      },
+      "stretch-x-max": {
+        "$value": 1.1,
+        "$type": "number",
+        "$description": "lively 側の伸び"
+      },
+      "hover-scale-min": {
+        "$value": 1.01,
+        "$type": "number",
+        "$description": "still 側の hover 膨らみ"
+      },
+      "hover-scale-max": {
+        "$value": 1.05,
+        "$type": "number",
+        "$description": "lively 側"
+      },
+      "breath-depth-min": {
+        "$value": 0.12,
+        "$type": "number",
+        "$description": "still 側の呼吸の深さ"
+      },
+      "breath-depth-max": {
+        "$value": 0.48,
+        "$type": "number",
+        "$description": "lively 側"
+      },
+      "optics-press-min": {
+        "$value": 0.45,
+        "$type": "number",
+        "$description": "quiet 側: 押下時の屈折潰れが浅い"
+      },
+      "optics-press-max": {
+        "$value": 0.15,
+        "$type": "number",
+        "$description": "dramatic 側: 深く潰れる"
+      },
+      "ca-min": {
+        "$value": 3,
+        "$type": "number",
+        "$description": "quiet 側の分散 px"
+      },
+      "ca-max": {
+        "$value": 9,
+        "$type": "number",
+        "$description": "dramatic 側"
+      },
+      "organic-min": {
+        "$value": 0.04,
+        "$type": "number",
+        "$description": "quiet 側の個体差ノイズ"
+      },
+      "organic-max": {
+        "$value": 0.2,
+        "$type": "number",
+        "$description": "dramatic 側"
+      },
+      "hover-int-min": {
+        "$value": 0.6,
+        "$type": "number",
+        "$description": "quiet 側のリム点灯強度"
+      },
+      "hover-int-max": {
+        "$value": 1,
+        "$type": "number",
+        "$description": "dramatic 側"
+      }
+    },
+    "signals": {
+      "$description": "sys 層 — 環境信号（R18）。すべて端末ローカルで完結し、許諾が要るもの（傾き/iOS）は明示ジェスチャー経由。0 で個別に無効化",
+      "sun-sync": {
+        "$value": 1,
+        "$type": "number",
+        "$description": "太陽同期: 時刻から太陽方位を近似し、仮想光源の基準角を実際の太陽に合わせる（朝=東/右、昼=天頂、夕=西/左。夜は既定角）。観測者の角度個性はオフセットとして残る"
+      },
+      "tilt": {
+        "$value": 1,
+        "$type": "number",
+        "$description": "傾き応答: DeviceOrientation で端末の傾きに光源が追従（SP の hover 代替）。iOS は LiquidGlass.enableTilt() をユーザー操作から呼ぶ"
+      },
+      "battery": {
+        "$value": 1,
+        "$type": "number",
+        "$description": "バッテリー=元気: 残量20%未満で呼吸が浅く・点灯が省エネに・押下の屈折潰れが浅くなる（生き物の疲労 + 描画コスト配慮）"
+      },
+      "affinity": {
+        "$value": 1,
+        "$type": "number",
+        "$description": "懐き: 訪問日数（localStorage・日単位）で生命徴が開く。初訪は人見知り（呼吸/点灯 50%）→ 通うほど全開"
+      },
+      "affinity-days-max": {
+        "$value": 8,
+        "$type": "number",
+        "$description": "全開までの訪問日数"
+      }
+    },
+    "avatar": {
+      "$description": "comp 層 — アバター（コンテンツ層・不透明）。イニシャルフォールバック内蔵",
+      "size": {
+        "$value": "32px",
+        "$type": "dimension",
+        "$description": "標準径"
+      },
+      "size-sm": {
+        "$value": "24px",
+        "$type": "dimension",
+        "$description": "テーブル行内"
+      },
+      "size-lg": {
+        "$value": "44px",
+        "$type": "dimension",
+        "$description": "プロフィール見出し"
+      },
+      "font-size": {
+        "$value": "11px",
+        "$type": "dimension",
+        "$description": "イニシャル文字"
+      },
+      "group-overlap": {
+        "$value": "-8px",
+        "$type": "dimension",
+        "$description": "グループ時の重なり"
+      }
+    },
+    "badge": {
+      "$description": "comp 層 — ステータスバッジ/ドット（コンテンツ層・塗り）。色は状態通知のみに使う",
+      "height": {
+        "$value": "20px",
+        "$type": "dimension",
+        "$description": "バッジ高"
+      },
+      "pad-x": {
+        "$value": "8px",
+        "$type": "dimension",
+        "$description": "左右パディング"
+      },
+      "font-size": {
+        "$value": "{lg.ref.type.micro-size}",
+        "$type": "dimension",
+        "$description": "uppercase 前提"
+      },
+      "dot-size": {
+        "$value": "7px",
+        "$type": "dimension",
+        "$description": "ステータスドット径"
+      }
+    },
+    "button": {
+      "$description": "comp 層 — button contract。取れるマテリアル: Regular のみ。primary はステンドグラス1箇所限定",
+      "radius": {
+        "$value": "{lg.ref.radius.pill}",
+        "$type": "dimension",
+        "$description": "ボタンはピル。concentric な親に入れる場合は calc で連鎖させる"
+      },
+      "height": {
+        "$value": "{lg.ref.size.control-height}",
+        "$type": "dimension",
+        "$description": "ボタン高"
+      },
+      "padding-x": {
+        "$value": "28px",
+        "$type": "dimension",
+        "$description": "ボタン左右パディング"
+      },
+      "font-size": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "ボタンラベルサイズ"
+      },
+      "font-weight": {
+        "$value": 500,
+        "$type": "fontWeight",
+        "$description": "ボタンラベルウェイト"
+      },
+      "material": {
+        "$value": "regular",
+        "$type": "string",
+        "$description": "contract: button は Regular のみ。Clear のボタンは可読性保証がないため禁止"
+      },
+      "press-scale": {
+        "$value": "{lg.ref.scale.press}",
+        "$type": "number",
+        "$description": "ボタンの押下潰れ"
+      },
+      "accent": {
+        "$value": "{lg.ref.color.accent}",
+        "$type": "color",
+        "$description": "primary ステンドグラスの上端色"
+      },
+      "accent-deep": {
+        "$value": "{lg.ref.color.accent-deep}",
+        "$type": "color",
+        "$description": "primary ステンドグラスの下端色"
+      },
+      "on-accent": {
+        "$value": "{lg.ref.color.on-accent}",
+        "$type": "color",
+        "$description": "primary のラベル色。ink 適応の対象外（アクセント上は常に明）"
+      },
+      "accent-solid": {
+        "$value": "{lg.ref.color.accent-solid}",
+        "$type": "color",
+        "$description": "opaque フォールバック時の primary 背景"
+      }
+    },
+    "chip": {
+      "$description": "comp 層 — filter chip contract。選択状態は ink 塗り反転。ガラスではなく塗り部品",
+      "height": {
+        "$value": "30px",
+        "$type": "dimension",
+        "$description": "チップ高"
+      },
+      "pad-x": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "左右パディング"
+      },
+      "font-size": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "ラベル"
+      },
+      "radius": {
+        "$value": "{lg.ref.radius.pill}",
+        "$type": "dimension",
+        "$description": "ピル形状"
+      }
+    },
+    "icon-button": {
+      "$description": "comp 層 — 円形アイコンボタン（塗り）。ガラス上・コンテンツ層どちらでも使える汎用操作子",
+      "size": {
+        "$value": "{lg.ref.size.icon-button}",
+        "$type": "dimension",
+        "$description": "外径"
+      },
+      "font-size": {
+        "$value": "{lg.ref.size.icon}",
+        "$type": "dimension",
+        "$description": "グリフサイズ"
+      }
+    },
+    "skeleton": {
+      "$description": "comp 層 — ローディングプレースホルダ（コンテンツ層）。shimmer は reduced-motion で静止",
+      "radius": {
+        "$value": "{lg.ref.radius.xs}",
+        "$type": "dimension",
+        "$description": "角丸"
+      },
+      "duration": {
+        "$value": "1600ms",
+        "$type": "duration",
+        "$description": "shimmer 1周"
+      },
+      "alpha": {
+        "$value": 0.09,
+        "$type": "number",
+        "$description": "ベースの ink 混合率"
+      },
+      "shine-alpha": {
+        "$value": 0.07,
+        "$type": "number",
+        "$description": "shimmer ハイライトの追加分"
+      }
+    },
+    "spec-tag": {
+      "$description": "comp 層 — 物性読み出しタグ。観測機器の意匠（v2 独自化 R11）。専用値は不要（micro type + hairline を共有）"
+    },
+    "tooltip": {
+      "$description": "comp 層 — tooltip contract。小さく薄いガラス。遅延表示・位置固定（ポインタ追従しない）",
+      "radius": {
+        "$value": "{lg.ref.radius.xs}",
+        "$type": "dimension",
+        "$description": "外径"
+      },
+      "pad-y": {
+        "$value": "6px",
+        "$type": "dimension",
+        "$description": "上下パディング"
+      },
+      "pad-x": {
+        "$value": "10px",
+        "$type": "dimension",
+        "$description": "左右パディング"
+      },
+      "font-size": {
+        "$value": "11.5px",
+        "$type": "dimension",
+        "$description": "ラベルサイズ"
+      },
+      "max-width": {
+        "$value": "240px",
+        "$type": "dimension",
+        "$description": "最大幅"
+      },
+      "delay": {
+        "$value": "{lg.ref.duration.tooltip-delay}",
+        "$type": "duration",
+        "$description": "表示遅延"
+      },
+      "material": {
+        "$value": "regular-thin (baseline blur only)",
+        "$type": "string",
+        "$description": "contract: 小型・多数出現のためレンズは張らず薄相 baseline のみ"
+      }
+    },
+    "banner": {
+      "$description": "comp 層 — インラインバナー/アラート（コンテンツ層・不透明）。ページ内に常駐する通知。toast との違いは「留まる」こと",
+      "radius": {
+        "$value": "{lg.ref.radius.md}",
+        "$type": "dimension",
+        "$description": "角丸"
+      },
+      "pad-y": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "上下パディング"
+      },
+      "pad-x": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "左右パディング"
+      },
+      "accent-width": {
+        "$value": "3px",
+        "$type": "dimension",
+        "$description": "左端のステータスライン幅"
+      }
+    },
+    "breadcrumbs": {
+      "$description": "comp 層 — 現在地の径路（塗り・非ガラス）。ナビだが恒常面ではないため塗りで作る",
+      "font-size": {
+        "$value": "12.5px",
+        "$type": "dimension",
+        "$description": "本文よりわずかに小さく"
+      },
+      "sep-alpha": {
+        "$value": 0.35,
+        "$type": "number",
+        "$description": "区切り記号の ink 混合率"
+      }
+    },
+    "checkbox": {
+      "$description": "comp 層 — checkbox / radio contract。radio は同寸の円形。操作中のみ発光",
+      "size": {
+        "$value": "18px",
+        "$type": "dimension",
+        "$description": "ボックス寸法（radio 共通）"
+      },
+      "radius": {
+        "$value": "6px",
+        "$type": "dimension",
+        "$description": "checkbox の外径（radio は 50%）"
+      },
+      "material": {
+        "$value": "transient (press only)",
+        "$type": "string",
+        "$description": "contract: 押下中のみガラスの光を帯びる"
+      }
+    },
+    "field": {
+      "$description": "comp 層 — text field contract。transient ガラス化の実装例: 静止時はほぼ不透明、focus でガラスに相転移（公理6の例外規定）",
+      "radius": {
+        "$value": "{lg.ref.radius.md}",
+        "$type": "dimension",
+        "$description": "field 外径"
+      },
+      "height": {
+        "$value": "{lg.ref.size.field-height}",
+        "$type": "dimension",
+        "$description": "field 高"
+      },
+      "padding-x": {
+        "$value": "18px",
+        "$type": "dimension",
+        "$description": "field 左右パディング"
+      },
+      "font-size": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "入力テキストサイズ"
+      },
+      "rest-opacity": {
+        "$value": 0.85,
+        "$type": "number",
+        "$description": "静止時の面の不透明度（opaque-bg との mix）。focus で face-alpha のガラス面に遷移する"
+      },
+      "material": {
+        "$value": "regular (transient)",
+        "$type": "string",
+        "$description": "contract: focus 中のみ Regular として振る舞う一時ガラス"
+      },
+      "disabled-opacity": {
+        "$value": 0.45,
+        "$type": "number",
+        "$description": "disabled 状態の field 全体不透明度"
+      },
+      "icon-size": {
+        "$value": "15px",
+        "$type": "dimension",
+        "$description": "input-group の prefix/suffix アイコンサイズ"
+      },
+      "multi-min-height": {
+        "$value": "96px",
+        "$type": "dimension",
+        "$description": "textarea の最小高。autosize の下限"
+      },
+      "fill-alpha": {
+        "$value": 0.09,
+        "$type": "number",
+        "$description": "ガラス上に置く塗りフィールド（.lg-field--fill）の ink 混合率。glass on glass 回避用"
+      },
+      "step-size": {
+        "$value": "26px",
+        "$type": "dimension",
+        "$description": "number input のステッパーボタン径"
+      }
+    },
+    "form-row": {
+      "$description": "comp 層 — フォーム行（ラベル + 入力 + ヘルプ/エラー）。エラー状態は adaptive.*.danger を参照",
+      "gap": {
+        "$value": "6px",
+        "$type": "dimension",
+        "$description": "行内の縦間隔"
+      },
+      "label-size": {
+        "$value": "12.5px",
+        "$type": "dimension",
+        "$description": "ラベル"
+      },
+      "help-size": {
+        "$value": "11.5px",
+        "$type": "dimension",
+        "$description": "ヘルプ/エラーテキスト"
+      }
+    },
+    "kv": {
+      "$description": "comp 層 — key-value リスト（Description list。dl/dt/dd）。Detail 画面のメタ情報等。コンテンツ層",
+      "gap": {
+        "$value": "{lg.ref.space.md}",
+        "$type": "dimension",
+        "$description": "行間"
+      },
+      "key-alpha": {
+        "$value": 0.55,
+        "$type": "number",
+        "$description": "キー側の ink 混合率"
+      }
+    },
+    "pagination": {
+      "$description": "comp 層 — ページ送り（塗り）。現在ページは ink 反転ピル",
+      "size": {
+        "$value": "30px",
+        "$type": "dimension",
+        "$description": "ページボタンの外径"
+      },
+      "gap": {
+        "$value": "{lg.ref.space.xs}",
+        "$type": "dimension",
+        "$description": "ボタン間"
+      }
+    },
+    "progress": {
+      "$description": "comp 層 — 進捗（コンテンツ層・不透明）。読む要素なのでガラスにしない。値は --lg-progress-val で 1:1",
+      "height": {
+        "$value": "6px",
+        "$type": "dimension",
+        "$description": "バーの太さ"
+      },
+      "radius": {
+        "$value": "{lg.ref.radius.pill}",
+        "$type": "dimension",
+        "$description": "端は常に丸"
+      },
+      "spinner-size": {
+        "$value": "18px",
+        "$type": "dimension",
+        "$description": "スピナー外径"
+      },
+      "spinner-width": {
+        "$value": "2px",
+        "$type": "dimension",
+        "$description": "スピナー線幅"
+      },
+      "duration": {
+        "$value": "900ms",
+        "$type": "duration",
+        "$description": "indeterminate / spinner の1周。これより速いと焦燥感が出る"
+      }
+    },
+    "segmented": {
+      "$description": "comp 層 — segmented control contract。lg-nav の小型版。ピル機構を共有",
+      "height": {
+        "$value": "36px",
+        "$type": "dimension",
+        "$description": "全体高"
+      },
+      "radius": {
+        "$value": "{lg.ref.radius.md}",
+        "$type": "dimension",
+        "$description": "外径。ピル radius = radius − gap（concentricity）"
+      },
+      "gap": {
+        "$value": "4px",
+        "$type": "dimension",
+        "$description": "内側パディング"
+      },
+      "font-size": {
+        "$value": "12.5px",
+        "$type": "dimension",
+        "$description": "セグメントラベル"
+      }
+    },
+    "select": {
+      "$description": "comp 層 — select contract。lg-menu を土台にした単一選択。トリガーは field と同形",
+      "min-width": {
+        "$value": "220px",
+        "$type": "dimension",
+        "$description": "トリガー最小幅"
+      },
+      "material": {
+        "$value": "regular (menu)",
+        "$type": "string",
+        "$description": "contract: パネルは menu と同じ Regular"
+      }
+    },
+    "slider": {
+      "$description": "comp 層 — slider contract。ドラッグ中のみノブがガラス化（公式明文の例）。値は 1:1 追従・遅延なし",
+      "track-height": {
+        "$value": "4px",
+        "$type": "dimension",
+        "$description": "トラック高"
+      },
+      "knob-size": {
+        "$value": "18px",
+        "$type": "dimension",
+        "$description": "ノブ径"
+      },
+      "material": {
+        "$value": "transient (drag only)",
+        "$type": "string",
+        "$description": "contract: ガラス化はドラッグ中のノブのみ"
+      }
+    },
+    "stat": {
+      "$description": "comp 層 — KPI/統計タイル（コンテンツ層・不透明）。数値 + ラベル + 差分",
+      "pad": {
+        "$value": "18px",
+        "$type": "dimension",
+        "$description": "内側パディング"
+      },
+      "value-size": {
+        "$value": "26px",
+        "$type": "dimension",
+        "$description": "主数値"
+      },
+      "label-size": {
+        "$value": "11px",
+        "$type": "dimension",
+        "$description": "ラベル"
+      },
+      "delta-size": {
+        "$value": "11.5px",
+        "$type": "dimension",
+        "$description": "差分表示"
+      }
+    },
+    "stepper": {
+      "$description": "comp 層 — ウィザードの進行表示（塗り）。done / current / todo の3状態",
+      "dot-size": {
+        "$value": "22px",
+        "$type": "dimension",
+        "$description": "ステップ円の外径"
+      },
+      "line-alpha": {
+        "$value": 0.18,
+        "$type": "number",
+        "$description": "接続線の ink 混合率"
+      }
+    },
+    "switch": {
+      "$description": "comp 層 — switch contract。公式例外『操作子は操作中だけガラス化』の実装。rest は塗り、操作中ノブがガラス化して光る。ノブ移動は gel バネ",
+      "width": {
+        "$value": "44px",
+        "$type": "dimension",
+        "$description": "トラック幅"
+      },
+      "height": {
+        "$value": "26px",
+        "$type": "dimension",
+        "$description": "トラック高。ノブ径 = height − gap×2（concentricity）"
+      },
+      "gap": {
+        "$value": "3px",
+        "$type": "dimension",
+        "$description": "トラックとノブの間隔"
+      },
+      "material": {
+        "$value": "transient (knob only)",
+        "$type": "string",
+        "$description": "contract: ガラス化するのは操作中のノブのみ"
+      }
+    },
+    "toast": {
+      "$description": "comp 層 — 通知トースト contract。右下スタック・バネ入場・フェード退場。一時面なのでガラス予算外",
+      "width": {
+        "$value": "320px",
+        "$type": "dimension",
+        "$description": "トースト幅"
+      },
+      "radius": {
+        "$value": "{lg.ref.radius.md}",
+        "$type": "dimension",
+        "$description": "外径"
+      },
+      "pad-y": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "上下パディング"
+      },
+      "pad-x": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "左右パディング"
+      },
+      "gap": {
+        "$value": "10px",
+        "$type": "dimension",
+        "$description": "スタック間隔"
+      },
+      "duration": {
+        "$value": "{lg.ref.duration.toast}",
+        "$type": "duration",
+        "$description": "自動退場までの滞留"
+      },
+      "enter-scale": {
+        "$value": 0.92,
+        "$type": "number",
+        "$description": "登場開始スケール"
+      },
+      "material": {
+        "$value": "regular",
+        "$type": "string",
+        "$description": "contract: Regular のみ"
+      },
+      "action-height": {
+        "$value": "28px",
+        "$type": "dimension",
+        "$description": "トースト内アクションボタンの高さ"
+      }
+    },
+    "accordion": {
+      "$description": "comp 層 — 開閉するコンテンツ（不透明）。native details/summary ベース",
+      "pad-y": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "行の上下パディング"
+      },
+      "pad-x": {
+        "$value": "2px",
+        "$type": "dimension",
+        "$description": "左右（panel 内に置く前提で最小）"
+      }
+    },
+    "card": {
+      "$description": "comp 層 — card contract。取れるマテリアル: Regular（テキストを載せるため Clear 禁止）",
+      "radius": {
+        "$value": "{lg.ref.radius.lg}",
+        "$type": "dimension",
+        "$description": "card 外径"
+      },
+      "gap": {
+        "$value": "{lg.ref.gap.card}",
+        "$type": "dimension",
+        "$description": "card パディング。内側 radius = radius − gap（concentricity を calc で強制）"
+      },
+      "material": {
+        "$value": "regular",
+        "$type": "string",
+        "$description": "contract: card は Regular のみ"
+      },
+      "press-scale": {
+        "$value": 0.985,
+        "$type": "number",
+        "$description": "card の押下潰れ。面積が大きいほど浅く潰す"
+      }
+    },
+    "command": {
+      "$description": "comp 層 — ⌘K コマンドパレット contract。scrim + 大きめ Regular ガラス。SaaS の旗艦要素",
+      "width": {
+        "$value": "560px",
+        "$type": "dimension",
+        "$description": "パレット幅（max-width）"
+      },
+      "radius": {
+        "$value": "{lg.ref.radius.xl}",
+        "$type": "dimension",
+        "$description": "パレット外径"
+      },
+      "pad": {
+        "$value": "8px",
+        "$type": "dimension",
+        "$description": "内側パディング。項目 radius = radius − pad（concentricity）"
+      },
+      "input-height": {
+        "$value": "54px",
+        "$type": "dimension",
+        "$description": "検索入力の高さ"
+      },
+      "item-height": {
+        "$value": "44px",
+        "$type": "dimension",
+        "$description": "結果項目高"
+      },
+      "list-max-height": {
+        "$value": "320px",
+        "$type": "dimension",
+        "$description": "結果リストの最大高（超過はスクロール）"
+      },
+      "enter-scale": {
+        "$value": "{lg.ref.scale.modal-enter}",
+        "$type": "number",
+        "$description": "登場開始スケール（modal と同族）"
+      },
+      "material": {
+        "$value": "regular",
+        "$type": "string",
+        "$description": "contract: Regular のみ"
+      }
+    },
+    "datepicker": {
+      "$description": "comp 層 — 日付選択（popover 内のカレンダー）。input[data-lg-datepicker] に自動配線",
+      "cell-size": {
+        "$value": "32px",
+        "$type": "dimension",
+        "$description": "日セルの外径"
+      },
+      "pad": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "カレンダーの内側パディング"
+      }
+    },
+    "drawer": {
+      "$description": "comp 層 — サイドから滑り込む一時面（設定・詳細編集）。scrim を伴うガラス。予算外の一時面",
+      "width": {
+        "$value": "380px",
+        "$type": "dimension",
+        "$description": "右ドロワーの標準幅"
+      },
+      "radius": {
+        "$value": "{lg.ref.radius.xl}",
+        "$type": "dimension",
+        "$description": "角丸。画面端と concentric"
+      },
+      "pad": {
+        "$value": "20px",
+        "$type": "dimension",
+        "$description": "内側パディング"
+      },
+      "enter-offset": {
+        "$value": "28px",
+        "$type": "dimension",
+        "$description": "入場バネの開始オフセット（translateX）"
+      },
+      "margin": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "画面端からの浮き"
+      }
+    },
+    "dropzone": {
+      "$description": "comp 層 — ファイル投下域（不透明）。drag over の間だけガラス化する = transient の応用",
+      "min-height": {
+        "$value": "130px",
+        "$type": "dimension",
+        "$description": "最小高"
+      },
+      "radius": {
+        "$value": "{lg.ref.radius.lg}",
+        "$type": "dimension",
+        "$description": "角丸"
+      },
+      "border-alpha": {
+        "$value": 0.28,
+        "$type": "number",
+        "$description": "破線境界の ink 混合率"
+      }
+    },
+    "empty": {
+      "$description": "comp 層 — 空状態（不透明）。アイコン+見出し+補足+アクションの定型",
+      "pad-y": {
+        "$value": "{lg.ref.space.4xl}",
+        "$type": "dimension",
+        "$description": "上下余白"
+      },
+      "icon-size": {
+        "$value": "34px",
+        "$type": "dimension",
+        "$description": "アイコン/グリフのサイズ"
+      },
+      "max-width": {
+        "$value": "340px",
+        "$type": "dimension",
+        "$description": "本文の最大幅"
+      }
+    },
+    "menu": {
+      "$description": "comp 層 — dropdown/popover contract。トリガーからの流動モーフ（バネ入場・フェード退場）。Regular のみ",
+      "min-width": {
+        "$value": "208px",
+        "$type": "dimension",
+        "$description": "メニュー最小幅"
+      },
+      "radius": {
+        "$value": "{lg.ref.radius.md}",
+        "$type": "dimension",
+        "$description": "メニュー外径"
+      },
+      "pad": {
+        "$value": "6px",
+        "$type": "dimension",
+        "$description": "内側パディング。項目 radius = radius − pad（concentricity）"
+      },
+      "item-height": {
+        "$value": "36px",
+        "$type": "dimension",
+        "$description": "項目高"
+      },
+      "item-pad-x": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "項目左右パディング"
+      },
+      "item-font-size": {
+        "$value": "13px",
+        "$type": "dimension",
+        "$description": "項目ラベル"
+      },
+      "enter-scale": {
+        "$value": "{lg.ref.scale.menu-enter}",
+        "$type": "number",
+        "$description": "登場開始スケール。transform-origin はトリガー側"
+      },
+      "exit-duration": {
+        "$value": "{lg.ref.duration.menu-exit}",
+        "$type": "duration",
+        "$description": "退場フェード時間"
+      },
+      "material": {
+        "$value": "regular",
+        "$type": "string",
+        "$description": "contract: menu は Regular のみ"
+      }
+    },
+    "modal": {
+      "$description": "comp 層 — modal contract。取れるマテリアル: Regular。開閉は gel バネ、backdrop は scrim",
+      "radius": {
+        "$value": "{lg.ref.radius.xl}",
+        "$type": "dimension",
+        "$description": "modal 外径"
+      },
+      "padding": {
+        "$value": "24px",
+        "$type": "dimension",
+        "$description": "modal パディング"
+      },
+      "width": {
+        "$value": "420px",
+        "$type": "dimension",
+        "$description": "modal 標準幅（max-width として使う）"
+      },
+      "scrim": {
+        "$value": "{lg.ref.color.scrim}",
+        "$type": "color",
+        "$description": "backdrop の遮光色"
+      },
+      "enter-scale": {
+        "$value": "{lg.ref.scale.modal-enter}",
+        "$type": "number",
+        "$description": "登場開始スケール。ここからバネで 1.0 へ"
+      },
+      "material": {
+        "$value": "regular",
+        "$type": "string",
+        "$description": "contract: modal は Regular のみ。scrim の上なので実効 surface は dark 寄り"
+      }
+    },
+    "nav": {
+      "$description": "comp 層 — nav（タブバー）contract。取れるマテリアル: Regular / Clear（media 上のみ Clear 可）",
+      "radius": {
+        "$value": "{lg.ref.radius.xl}",
+        "$type": "dimension",
+        "$description": "nav 外径"
+      },
+      "gap": {
+        "$value": "{lg.ref.gap.nav}",
+        "$type": "dimension",
+        "$description": "nav パディング。ピル radius = radius − gap（concentricity）"
+      },
+      "height": {
+        "$value": "{lg.ref.size.control-height}",
+        "$type": "dimension",
+        "$description": "nav 全体高"
+      },
+      "material": {
+        "$value": "regular | clear(on media)",
+        "$type": "string",
+        "$description": "contract: 標準は Regular。リッチメディア直上に限り Clear 可"
+      },
+      "tab-press-scale": {
+        "$value": "{lg.ref.scale.press-small}",
+        "$type": "number",
+        "$description": "タブの押下潰れ"
+      },
+      "tab-font-size": {
+        "$value": "13px",
+        "$type": "dimension",
+        "$description": "タブラベルサイズ"
+      }
+    },
+    "panel": {
+      "$description": "comp 層 — 不透明パネル（コンテンツ層）。ガラスの相方。surface 連動の面色 + 僅かなリフト",
+      "radius": {
+        "$value": "{lg.ref.radius.lg}",
+        "$type": "dimension",
+        "$description": "パネル外径"
+      },
+      "pad": {
+        "$value": "20px",
+        "$type": "dimension",
+        "$description": "内側パディング"
+      },
+      "lift": {
+        "$value": 0.04,
+        "$type": "number",
+        "$description": "opaque-bg に white を混ぜる率。ページ地からの分離"
+      },
+      "border-alpha": {
+        "$value": 0.08,
+        "$type": "number",
+        "$description": "輪郭ヘアラインの ink 率"
+      }
+    },
+    "popover": {
+      "$description": "comp 層 — フォーム内容を持つ一時面。menu と同機構だが item 選択で閉じず、role=dialog",
+      "min-width": {
+        "$value": "260px",
+        "$type": "dimension",
+        "$description": "最小幅"
+      },
+      "pad": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "内側パディング（menu より広い = 内容がフォームのため）"
+      }
+    },
+    "shell": {
+      "$description": "comp 層 — SaaS アプリレイアウト。sidebar + topbar は『アプリの恒常クローム』としてガラス予算1枚扱い",
+      "sidebar-width": {
+        "$value": "248px",
+        "$type": "dimension",
+        "$description": "サイドバー幅"
+      },
+      "topbar-height": {
+        "$value": "60px",
+        "$type": "dimension",
+        "$description": "トップバー高"
+      },
+      "gap": {
+        "$value": "18px",
+        "$type": "dimension",
+        "$description": "クロームとコンテンツの間隔"
+      },
+      "pad": {
+        "$value": "22px",
+        "$type": "dimension",
+        "$description": "コンテンツ領域のパディング"
+      },
+      "sidebar-width-collapsed": {
+        "$value": "0px",
+        "$type": "dimension",
+        "$description": "モバイル時。サイドバーはオフキャンバスdrawer化"
+      }
+    },
+    "sidebar": {
+      "$description": "comp 層 — sidebar contract。取れるマテリアル: regular-thick のみ。ナビは塗りピル（glass on glass 禁止）",
+      "radius": {
+        "$value": "{lg.ref.radius.xl}",
+        "$type": "dimension",
+        "$description": "サイドバー外径"
+      },
+      "pad": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "内側パディング。項目 radius = radius − pad（concentricity）"
+      },
+      "item-height": {
+        "$value": "38px",
+        "$type": "dimension",
+        "$description": "ナビ項目高"
+      },
+      "item-font-size": {
+        "$value": "13.5px",
+        "$type": "dimension",
+        "$description": "ナビ項目ラベル"
+      },
+      "material": {
+        "$value": "regular-thick",
+        "$type": "string",
+        "$description": "contract: 大型恒常クロームなので厚相固定"
+      }
+    },
+    "topbar": {
+      "$description": "comp 層 — topbar contract。取れるマテリアル: regular-thin のみ",
+      "pad-x": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "左右パディング"
+      },
+      "material": {
+        "$value": "regular-thin",
+        "$type": "string",
+        "$description": "contract: ツールバーは薄相固定"
+      }
+    },
+    "table": {
+      "$description": "comp 層 — データテーブル（コンテンツ層・不透明）。装飾最小限、密度2種",
+      "row-height": {
+        "$value": "44px",
+        "$type": "dimension",
+        "$description": "regular 密度の行高"
+      },
+      "row-height-compact": {
+        "$value": "34px",
+        "$type": "dimension",
+        "$description": "compact 密度の行高"
+      },
+      "pad-x": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "セル左右パディング"
+      },
+      "header-font-size": {
+        "$value": "10.5px",
+        "$type": "dimension",
+        "$description": "ヘッダ行ラベル"
+      },
+      "hover-alpha": {
+        "$value": 0.05,
+        "$type": "number",
+        "$description": "hover 行の ink 塗り率"
+      },
+      "border-alpha": {
+        "$value": 0.07,
+        "$type": "number",
+        "$description": "行罫線の ink 率"
+      }
+    },
+    "layout": {
+      "$description": "comp 層 — 画面レイアウト型。Web サービスの画面類型（基本/一覧/閲覧/編集/新規/設定/認証）を .lg-page + .lg-layout-* で組む。全型 SP 対応（md 900 / sm 640）",
+      "page-max": {
+        "$value": "1200px",
+        "$type": "dimension",
+        "$description": "コンテンツの最大幅。これ以上は左右余白で受ける"
+      },
+      "page-pad": {
+        "$value": "{lg.ref.space.2xl}",
+        "$type": "dimension",
+        "$description": "ページ左右パディング（デスクトップ）"
+      },
+      "page-pad-sp": {
+        "$value": "{lg.ref.space.lg}",
+        "$type": "dimension",
+        "$description": "ページ左右パディング（sm 以下）"
+      },
+      "form-max": {
+        "$value": "640px",
+        "$type": "dimension",
+        "$description": "編集/新規フォームの1カラム最大幅。可読性の上限"
+      },
+      "split-aside": {
+        "$value": "320px",
+        "$type": "dimension",
+        "$description": "Detail 画面のメタ情報サイドの幅。md 以下で1カラム化"
+      },
+      "subnav-width": {
+        "$value": "200px",
+        "$type": "dimension",
+        "$description": "Settings のサブナビ幅。md 以下で横スクロールタブ化"
+      },
+      "auth-card-width": {
+        "$value": "400px",
+        "$type": "dimension",
+        "$description": "認証カードの幅"
+      },
+      "actionbar-gap": {
+        "$value": "{lg.ref.space.sm}",
+        "$type": "dimension",
+        "$description": "アクションバー内のボタン間隔"
+      },
+      "section-gap": {
+        "$value": "{lg.ref.space.3xl}",
+        "$type": "dimension",
+        "$description": "ページ内セクション間の標準 gap（= space.3xl 32。foundation のセクション間定義と一致）。toolbar 直下のみ lg(16) に詰めてグルーピングする"
+      },
+      "stats-min": {
+        "$value": "180px",
+        "$type": "dimension",
+        "$description": "統計グリッドの最小カラム幅（auto-fit の下限）"
+      }
+    }
+  }
+}

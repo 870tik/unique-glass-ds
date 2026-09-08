@@ -1,0 +1,9 @@
+.DS_Store
+.pkg-stage/
+tools/video/node_modules/
+showcase/*.zip
+
+# AI 機構は GitHub には公開しない（zip 配布には同梱）
+SKILL.md
+prompts/
+prompts.md

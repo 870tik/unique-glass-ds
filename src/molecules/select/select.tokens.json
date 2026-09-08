@@ -1,0 +1,17 @@
+{
+  "lg": {
+    "select": {
+      "$description": "comp 層 — select contract。lg-menu を土台にした単一選択。トリガーは field と同形",
+      "min-width": {
+        "$value": "220px",
+        "$type": "dimension",
+        "$description": "トリガー最小幅"
+      },
+      "material": {
+        "$value": "regular (menu)",
+        "$type": "string",
+        "$description": "contract: パネルは menu と同じ Regular"
+      }
+    }
+  }
+}

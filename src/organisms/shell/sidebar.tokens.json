@@ -1,0 +1,32 @@
+{
+  "lg": {
+    "sidebar": {
+      "$description": "comp 層 — sidebar contract。取れるマテリアル: regular-thick のみ。ナビは塗りピル（glass on glass 禁止）",
+      "radius": {
+        "$value": "{lg.ref.radius.xl}",
+        "$type": "dimension",
+        "$description": "サイドバー外径"
+      },
+      "pad": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "内側パディング。項目 radius = radius − pad（concentricity）"
+      },
+      "item-height": {
+        "$value": "38px",
+        "$type": "dimension",
+        "$description": "ナビ項目高"
+      },
+      "item-font-size": {
+        "$value": "13.5px",
+        "$type": "dimension",
+        "$description": "ナビ項目ラベル"
+      },
+      "material": {
+        "$value": "regular-thick",
+        "$type": "string",
+        "$description": "contract: 大型恒常クロームなので厚相固定"
+      }
+    }
+  }
+}

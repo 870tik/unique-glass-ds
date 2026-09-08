@@ -1,0 +1,9 @@
+/* ---------- stats grid ---------- */
+.lg-grid-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--lg-layout-stats-min), 1fr));
+  gap: var(--lg-ref-space-lg);
+}
+@media (max-width: 640px) {
+  .lg-grid-stats { grid-template-columns: repeat(2, 1fr); gap: var(--lg-ref-space-md); }
+}

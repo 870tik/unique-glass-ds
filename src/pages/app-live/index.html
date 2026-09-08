@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="ja" data-lg-surface="dark" data-lg-observer="personal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unique Glass DS — phase 3 / SaaS app demo</title>
+<!-- @include src/pages/_shared/persona-boot.html -->
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/liquid-glass.css">
+<link rel="stylesheet" href="../css/themes/studio-dark.css">
+<style>
+/* ====== demo app chrome（showcase 専用。値はトークン参照） ====== */
+:root { --mono: var(--lg-ref-type-family-mono); }
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  min-height: 100vh;
+  background: color-mix(in srgb, var(--lg-ref-color-opaque-dark) 88%, var(--lg-ref-color-black));
+}
+body {
+  font-family: -apple-system, "Helvetica Neue", "Hiragino Sans", sans-serif;
+  color: var(--lg-adaptive-dark-ink);
+}
+/* 構造を持つ背景 — ガラス（シェル）の縁で屈折が見えるように。fixed でスクロールと分離 */
+.app-bg {
+  position: fixed; inset: 0; z-index: -1; overflow: hidden;
+  background:
+    radial-gradient(52vw 42vh at 78% 6%,
+      color-mix(in srgb, var(--lg-ref-color-accent) 16%, transparent), transparent 70%),
+    radial-gradient(40vw 50vh at 8% 96%,
+      color-mix(in srgb, var(--lg-ref-color-accent-deep) 10%, transparent), transparent 72%);
+}
+.app-bg .grid {
+  position: absolute; inset: -60px;
+  background:
+    linear-gradient(color-mix(in srgb, var(--lg-adaptive-dark-ink) 7%, transparent) 1px, transparent 1px) 0 0 / 100% 56px,
+    linear-gradient(90deg, color-mix(in srgb, var(--lg-adaptive-dark-ink) 7%, transparent) 1px, transparent 1px) 0 0 / 56px 100%;
+  mask-image: radial-gradient(80% 70% at 50% 30%, #000 30%, transparent 100%);
+}
+@media (prefers-reduced-transparency: reduce) { .app-bg { display: none; } }
+
+.mono { font-family: var(--mono); }
+.tag {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .16em;
+  text-transform: uppercase; opacity: .6;
+}
+
+/* shell 内レイアウト */
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 8px 16px; font-family: var(--mono);
+  font-size: 12px; letter-spacing: .12em;
+}
+.brand .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--lg-button-accent);
+  box-shadow: 0 0 10px var(--lg-button-accent);
+}
+.lg-sidebar .lg-tab .glyph { width: 16px; text-align: center; opacity: .8; }
+.sidebar-foot { margin-top: auto; padding: 8px; }
+
+.topbar-title { font-size: 14px; font-weight: 600; margin-right: auto; white-space: nowrap; }
+.lg-topbar .lg-field--fill { flex: 0 1 260px; min-width: 140px; }
+.kbd {
+  font-family: var(--mono); font-size: 10px; opacity: .55;
+  border: 1px solid color-mix(in srgb, var(--lg-ink) 30%, transparent);
+  border-radius: 5px; padding: 2px 5px;
+}
+
+/* コンテンツ層 — レイアウトは DS テンプレート（lg-toolbar / lg-grid-stats / lg-split）を使用 */
+@media (max-width: 640px) {
+  .lg-topbar .lg-field--fill { flex: 1 1 80px; min-width: 0; }
+  .kbd, #cmdHint { display: none; } /* ⌘K はポインタ+キーボードの文脈 */
+  .topbar-title { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+}
+.panel-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.panel-head h2 { font-size: 13px; font-weight: 600; margin: 0; margin-right: auto; letter-spacing: .02em; }
+.settings { display: flex; flex-direction: column; gap: 16px; }
+.settings .lg-form-row + .lg-form-row { border-top: 1px solid color-mix(in srgb, var(--lg-ink) 8%, transparent); padding-top: 16px; }
+.status-pill { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; opacity: .8; }
+
+</style>
+</head>
+<body>
+<div class="app-bg" data-lg-animate aria-hidden="true"><div class="grid"></div></div>
+
+<div class="lg-shell">
+  <!-- 恒常クローム: sidebar + topbar = ガラス1枚（予算内） -->
+  <aside class="lg-glass lg-sidebar" data-lg-phase="thick" aria-label="アプリナビゲーション">
+    <div class="brand"><span class="dot"></span>GLASSWORKS</div>
+    <nav class="lg-nav lg-nav--vertical" aria-label="主要メニュー">
+      <button class="lg-tab" aria-selected="true"><span class="glyph"><i data-lg-icon="layout-dashboard"></i></span>Dashboard</button>
+      <button class="lg-tab"><span class="glyph"><i data-lg-icon="file-text"></i></span>Invoices</button>
+      <button class="lg-tab"><span class="glyph"><i data-lg-icon="users"></i></span>Customers</button>
+      <button class="lg-tab"><span class="glyph"><i data-lg-icon="chart-column"></i></span>Reports</button>
+      <button class="lg-tab"><span class="glyph"><i data-lg-icon="settings"></i></span>Settings</button>
+    </nav>
+    <div class="sidebar-foot tag">liquid-glass-ds v1</div>
+  </aside>
+
+  <header class="lg-glass lg-topbar" data-lg-phase="thin">
+    <button class="lg-shell-menu-btn" aria-label="メニューを開く"><i data-lg-icon="menu"></i></button>
+    <div class="topbar-title">Dashboard</div>
+    <!-- ガラス上の検索は塗り相（glass on glass 禁止 — .lg-field--fill） -->
+    <div class="lg-field lg-field--fill">
+      <span class="lg-field-affix" aria-hidden="true"><i data-lg-icon="search"></i></span>
+      <input class="lg-field-input" type="search" placeholder="Search…" aria-label="検索">
+    </div>
+    <button class="lg-icon-button" id="cmdHint" data-lg-tooltip="コマンドパレット（⌘K）">⌘K</button>
+    <button class="lg-icon-button" id="themeToggle" data-lg-tooltip="テーマ切替（無色コア ⇄ studio-dark）"><i data-lg-icon="sun-moon"></i></button>
+    <div class="lg-menu-anchor">
+      <button class="lg-icon-button" data-lg-tooltip="アカウント">TH</button>
+      <div class="lg-glass lg-menu" data-lg-align="right">
+        <button class="lg-menu-item">Profile</button>
+        <button class="lg-menu-item">Workspace settings</button>
+        <div class="lg-menu-sep" role="separator"></div>
+        <button class="lg-menu-item is-danger">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="lg-shell-content">
+    <div class="lg-page">
+      <h1 class="lg-type-display" style="margin:0">Revenue overview</h1>
+
+      <div class="lg-toolbar">
+        <div class="lg-segmented" role="tablist" aria-label="期間">
+          <button class="lg-tab" aria-selected="true">7d</button>
+          <button class="lg-tab">30d</button>
+          <button class="lg-tab">90d</button>
+        </div>
+        <button class="lg-chip" aria-pressed="true">Paid</button>
+        <button class="lg-chip" aria-pressed="false">Pending</button>
+        <button class="lg-chip" aria-pressed="false">Overdue</button>
+        <span class="spacer"></span>
+        <div class="lg-select">
+          <button class="lg-select-trigger">
+            <span class="lg-select-label">All regions</span><span class="caret"><i data-lg-icon="chevron-down"></i></span>
+          </button>
+          <div class="lg-glass lg-menu">
+            <button class="lg-menu-item" aria-selected="true">All regions</button>
+            <button class="lg-menu-item">Japan</button>
+            <button class="lg-menu-item">North America</button>
+            <button class="lg-menu-item">Europe</button>
+          </div>
+        </div>
+        <button class="lg-glass lg-button lg-button--primary" id="newInvoice" data-lg-gel>New invoice</button>
+      </div>
+
+      <!-- コンテンツ層: 統計は不透明（読む要素はガラスにしない） -->
+      <div class="lg-grid-stats">
+        <div class="lg-panel lg-stat">
+          <div class="lg-stat-label">MRR</div>
+          <div class="lg-stat-value">¥2,841,000</div>
+          <div class="lg-stat-delta up">+4.2% vs last month</div>
+        </div>
+        <div class="lg-panel lg-stat">
+          <div class="lg-stat-label">Active customers</div>
+          <div class="lg-stat-value">312</div>
+          <div class="lg-stat-delta up">+11</div>
+        </div>
+        <div class="lg-panel lg-stat">
+          <div class="lg-stat-label">Churn</div>
+          <div class="lg-stat-value">1.8%</div>
+          <div class="lg-stat-delta down">+0.3pt</div>
+        </div>
+        <div class="lg-panel lg-stat">
+          <div class="lg-stat-label">Open invoices</div>
+          <div class="lg-stat-value">47</div>
+          <div class="lg-stat-delta">—</div>
+        </div>
+      </div>
+
+      <div class="lg-split">
+        <section class="lg-panel">
+          <div class="panel-head">
+            <h2>Recent invoices</h2>
+            <span class="tag">content layer / opaque</span>
+          </div>
+          <table class="lg-table">
+            <thead>
+              <tr><th>Invoice</th><th>Customer</th><th>Status</th><th class="num">Amount</th><th></th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="mono">INV-2094</td><td>Northwind K.K.</td><td class="status-pill">PAID</td><td class="num">¥420,000</td><td>
+                <div class="lg-menu-anchor"><button class="lg-icon-button" aria-label="行メニュー"><i data-lg-icon="ellipsis"></i></button>
+                  <div class="lg-glass lg-menu" data-lg-align="right">
+                    <button class="lg-menu-item">View</button>
+                    <button class="lg-menu-item">Duplicate</button>
+                    <button class="lg-menu-item is-danger" data-del="INV-2094">Delete</button>
+                  </div></div></td></tr>
+              <tr><td class="mono">INV-2093</td><td>Aperture Design</td><td class="status-pill">PENDING</td><td class="num">¥168,500</td><td>
+                <div class="lg-menu-anchor"><button class="lg-icon-button" aria-label="行メニュー"><i data-lg-icon="ellipsis"></i></button>
+                  <div class="lg-glass lg-menu" data-lg-align="right">
+                    <button class="lg-menu-item">View</button>
+                    <button class="lg-menu-item">Duplicate</button>
+                    <button class="lg-menu-item is-danger" data-del="INV-2093">Delete</button>
+                  </div></div></td></tr>
+              <tr><td class="mono">INV-2092</td><td>Hoshino Lab</td><td class="status-pill">PAID</td><td class="num">¥96,000</td><td></td></tr>
+              <tr><td class="mono">INV-2091</td><td>Field &amp; Form</td><td class="status-pill">OVERDUE</td><td class="num">¥312,400</td><td></td></tr>
+              <tr><td class="mono">INV-2090</td><td>Kite Systems</td><td class="status-pill">PAID</td><td class="num">¥58,800</td><td></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <aside class="lg-panel">
+          <div class="panel-head"><h2>Workspace settings</h2></div>
+          <div class="settings">
+            <label class="lg-switch">
+              <input type="checkbox" checked>
+              <span class="lg-switch-track"><span class="lg-switch-knob"></span></span>
+              Auto-send receipts
+            </label>
+            <label class="lg-switch">
+              <input type="checkbox">
+              <span class="lg-switch-track"><span class="lg-switch-knob"></span></span>
+              Weekly summary
+            </label>
+            <div class="lg-form-row">
+              <label class="lg-form-label" for="vol">Notification volume</label>
+              <input type="range" class="lg-slider" id="vol" min="0" max="100" value="65">
+            </div>
+            <div class="lg-form-row">
+              <span class="lg-form-label">Invoice format</span>
+              <label class="lg-radio"><input type="radio" name="fmt" checked><span class="lg-check-box"></span>PDF</label>
+              <label class="lg-radio"><input type="radio" name="fmt"><span class="lg-check-box"></span>Web link</label>
+              <label class="lg-checkbox"><input type="checkbox" checked><span class="lg-check-box"></span>Include tax breakdown</label>
+            </div>
+            <div class="lg-form-row is-error">
+              <label class="lg-form-label" for="hook">Webhook URL</label>
+              <div class="lg-glass lg-field is-error">
+                <input class="lg-field-input" id="hook" type="url" value="htp://example">
+              </div>
+              <span class="lg-help lg-help--error">URL の形式が正しくありません</span>
+            </div>
+            <button class="lg-glass lg-button" id="saveSettings" data-lg-gel>Save changes</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ⌘K コマンドパレット（一時オーバーレイ = 予算外） -->
+<div class="lg-backdrop lg-backdrop--command" id="cmdk" data-lg-surface="dark" aria-hidden="true">
+  <div class="lg-glass lg-command" role="dialog" aria-modal="true" aria-label="コマンドパレット">
+    <input class="lg-command-input" type="text" placeholder="Type a command…" aria-label="コマンド検索">
+    <div class="lg-command-list">
+      <button class="lg-command-item" data-cmd="dashboard">Go to Dashboard <span class="hint">G D</span></button>
+      <button class="lg-command-item" data-cmd="invoice">Create new invoice <span class="hint">N I</span></button>
+      <button class="lg-command-item" data-cmd="customer">Add customer <span class="hint">N C</span></button>
+      <button class="lg-command-item" data-cmd="theme">Toggle theme <span class="hint">T</span></button>
+      <button class="lg-command-item" data-cmd="export">Export CSV</button>
+    </div>
+    <div class="lg-command-empty" hidden>No matching commands</div>
+  </div>
+</div>
+
+<!-- 削除確認モーダル -->
+<div class="lg-backdrop" id="delBackdrop" data-lg-surface="dark" aria-hidden="true">
+  <div class="lg-glass lg-modal" role="dialog" aria-modal="true" aria-labelledby="delTitle" tabindex="-1">
+    <h4 id="delTitle">Delete invoice?</h4>
+    <p id="delBody">この請求書を削除します。この操作は取り消せません。</p>
+    <div class="actions">
+      <button class="lg-button lg-button--quiet" id="delCancel" data-lg-gel>Cancel</button>
+      <button class="lg-button lg-button--solid lg-button--danger" id="delConfirm" data-lg-gel>Delete</button>
+    </div>
+  </div>
+</div>
+
+
+<script src="../js/lg-icons.js"></script>
+<script src="../js/liquid-glass.js"></script>
+<script>
+(function () {
+  var LG = window.LiquidGlass;
+
+  
+  /* テーマ切替 — html に付与（JS が読む値の単一ソースのため）→ refresh で再構築 */
+  function toggleTheme() {
+    var html = document.documentElement;
+    if (html.getAttribute('data-lg-theme')) html.removeAttribute('data-lg-theme');
+    else html.setAttribute('data-lg-theme', 'studio-dark');
+    LG.refresh();
+    badge();
+  }
+  document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+  /* モーダル + 行削除 */
+  var delModal = LG.modal(document.getElementById('delBackdrop'));
+  var pendingDel = null;
+  document.querySelectorAll('[data-del]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      pendingDel = b.getAttribute('data-del');
+      document.getElementById('delBody').textContent =
+        pendingDel + ' を削除します。この操作は取り消せません。';
+      delModal.open();
+    });
+  });
+  document.getElementById('delCancel').addEventListener('click', function () { delModal.close(); });
+  document.getElementById('delConfirm').addEventListener('click', function () {
+    delModal.close();
+    LG.toast(pendingDel + ' を削除しました', { action: 'Undo', onAction: function () {
+      LG.toast('削除を取り消しました', { positive: true });
+    } });
+  });
+
+  /* 保存・新規作成 → toast */
+  document.getElementById('saveSettings').addEventListener('click', function () {
+    LG.toast('設定を保存しました', { positive: true });
+  });
+  document.getElementById('newInvoice').addEventListener('click', function () {
+    LG.toast('新しい請求書ドラフトを作成しました');
+  });
+
+  /* ⌘K コマンド実行（配線は init 済み。ここでは実行内容だけ足す） */
+  document.querySelectorAll('.lg-command-item').forEach(function (item) {
+    item.addEventListener('click', function () {
+      var cmd = item.getAttribute('data-cmd');
+      if (cmd === 'theme') toggleTheme();
+      else LG.toast('Command: ' + item.textContent.trim());
+    });
+  });
+  document.getElementById('cmdHint').addEventListener('click', function () {
+    var ev = new KeyboardEvent('keydown', { key: 'k', metaKey: true });
+    document.dispatchEvent(ev);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+/* ---------- 声（R15）: 同梱フォント。パスは dist(css/) からの相対 ---------- */
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('../assets/fonts/space-grotesk-latin-400-normal.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('../assets/fonts/space-grotesk-latin-500-normal.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('../assets/fonts/space-grotesk-latin-700-normal.woff2') format('woff2');
+  font-weight: 600 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../assets/fonts/ibm-plex-mono-latin-400-normal.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../assets/fonts/ibm-plex-mono-latin-500-normal.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+
+/* ------------------------------------------------------------
+   phase 4 — foundation utilities + 高頻度部品
+   （typography / progress / skeleton / badge / avatar / banner /
+     textarea / input-group / button states）
+   ------------------------------------------------------------ */
+
+/* ---------- typography scale（.lg-type-*。margin は持たない） ---------- */
+.lg-type-display {
+  font-family: var(--lg-ref-type-family-display);
+  font-size: var(--lg-ref-type-display-size);
+  font-weight: var(--lg-ref-type-weight-semibold);
+  line-height: var(--lg-ref-type-leading-tight);
+}
+.lg-type-title {
+  font-family: var(--lg-ref-type-family-display);
+  font-size: var(--lg-ref-type-title-size);
+  font-weight: var(--lg-ref-type-weight-semibold);
+  line-height: var(--lg-ref-type-leading-tight);
+}
+.lg-type-heading {
+  font-family: var(--lg-ref-type-family-display);
+  font-size: var(--lg-ref-type-heading-size);
+  font-weight: var(--lg-ref-type-weight-semibold);
+  line-height: var(--lg-ref-type-leading-tight);
+}
+.lg-type-body {
+  font-size: var(--lg-ref-type-body-size);
+  font-weight: var(--lg-ref-type-weight-regular);
+  line-height: var(--lg-ref-type-leading-body);
+}
+.lg-type-caption {
+  font-size: var(--lg-ref-type-caption-size);
+  line-height: var(--lg-ref-type-leading-body);
+  color: color-mix(in srgb, currentColor 72%, transparent);
+}
+.lg-type-label {
+  font-family: var(--lg-ref-type-family-mono);
+  font-size: var(--lg-ref-type-micro-size);
+  font-weight: var(--lg-ref-type-weight-medium);
+  letter-spacing: var(--lg-ref-type-tracking-wide);
+  text-transform: uppercase;
+  color: color-mix(in srgb, currentColor 60%, transparent);
+}

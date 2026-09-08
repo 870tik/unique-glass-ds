@@ -1,0 +1,27 @@
+{
+  "lg": {
+    "banner": {
+      "$description": "comp 層 — インラインバナー/アラート（コンテンツ層・不透明）。ページ内に常駐する通知。toast との違いは「留まる」こと",
+      "radius": {
+        "$value": "{lg.ref.radius.md}",
+        "$type": "dimension",
+        "$description": "角丸"
+      },
+      "pad-y": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "上下パディング"
+      },
+      "pad-x": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "左右パディング"
+      },
+      "accent-width": {
+        "$value": "3px",
+        "$type": "dimension",
+        "$description": "左端のステータスライン幅"
+      }
+    }
+  }
+}

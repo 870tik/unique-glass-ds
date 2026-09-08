@@ -1,0 +1,135 @@
+/* ---------- shell（sidebar + topbar = 恒常クローム1枚） ---------- */
+.lg-shell {
+  display: grid;
+  grid-template-columns: var(--lg-shell-sidebar-width) 1fr;
+  grid-template-rows: var(--lg-shell-topbar-height) 1fr;
+  grid-template-areas: "sidebar topbar" "sidebar content";
+  gap: var(--lg-shell-gap);
+  padding: var(--lg-shell-gap);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+.lg-shell-content {
+  grid-area: content;
+  min-width: 0;
+  padding: calc(var(--lg-shell-pad) - var(--lg-shell-gap)) 0 0;
+}
+
+/* sidebar — regular-thick。ナビは塗りピル（glass on glass 禁止） */
+.lg-sidebar {
+  grid-area: sidebar;
+  /* 恒常クローム: コンテンツが長くてもサイドバーは画面に留まる */
+  position: sticky;
+  top: var(--lg-shell-gap);
+  align-self: start;
+  height: calc(100vh - var(--lg-shell-gap) * 2);
+  --lg-r: var(--lg-sidebar-radius);
+  padding: var(--lg-sidebar-pad);
+  display: flex;
+  flex-direction: column;
+  gap: var(--lg-ref-space-xs);
+}
+.lg-nav--vertical {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 0;
+  gap: var(--lg-ref-space-2xs);
+}
+.lg-nav--vertical .lg-nav-pill {
+  top: 0; left: 0; right: 0; bottom: auto;
+  width: auto; height: 0;
+  border-radius: calc(var(--lg-sidebar-radius) - var(--lg-sidebar-pad)); /* concentricity */
+}
+.lg-nav--vertical .lg-tab {
+  justify-content: flex-start;
+  height: var(--lg-sidebar-item-height);
+  font-size: var(--lg-sidebar-item-font-size);
+  border-radius: calc(var(--lg-sidebar-radius) - var(--lg-sidebar-pad));
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lg-ref-space-sm);
+  text-align: left;
+  width: 100%;
+}
+
+/* topbar — regular-thin。アプリ型クロームの黒ナビ = コンテンツ列の最上部に固定 */
+.lg-topbar {
+  grid-area: topbar;
+  position: sticky;
+  top: var(--lg-shell-gap);
+  z-index: 10; /* スクロールしてくるコンテンツより上（一時面 z-backdrop 未満） */
+  min-width: 0; /* grid item の min-width:auto だと縮まない内容幅に列が引きずられる（SP） */
+  --lg-r: var(--lg-sidebar-radius);
+  display: flex;
+  align-items: center;
+  gap: var(--lg-ref-space-md);
+  padding: 0 var(--lg-topbar-pad-x);
+}
+
+/* ---------- mobile shell（breakpoint md = 900px。tokens.ref.breakpoint.md と同値） ---------- */
+.lg-shell-menu-btn { display: none; }
+@media (max-width: 900px) {
+  .lg-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--lg-shell-topbar-height) 1fr;
+    grid-template-areas: "topbar" "content";
+  }
+  .lg-shell-menu-btn {
+    display: grid;
+    flex: none; /* topbar の flex で潰れて楕円になるのを防ぐ */
+    place-items: center;
+    appearance: none;
+    border: 0;
+    cursor: pointer;
+    width: var(--lg-ref-size-icon-button); height: var(--lg-ref-size-icon-button);
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--lg-ink) 10%, transparent);
+    color: var(--lg-ink);
+    font-size: var(--lg-ref-size-icon);
+  }
+  .lg-shell-menu-btn:focus-visible {
+    outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+    outline-offset: var(--lg-ref-size-focus-offset);
+  }
+  .lg-shell .lg-sidebar {
+    position: fixed;
+    z-index: var(--lg-ref-z-backdrop);
+    top: var(--lg-drawer-margin);
+    bottom: var(--lg-drawer-margin);
+    left: var(--lg-drawer-margin);
+    width: var(--lg-shell-sidebar-width);
+    transform: translateX(calc(-100% - var(--lg-drawer-margin) * 2));
+    transition: transform var(--lg-ref-duration-release) var(--lg-ref-easing-gel-release);
+  }
+  .lg-shell.is-nav-open .lg-sidebar { transform: none; }
+  .lg-shell::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: calc(var(--lg-ref-z-backdrop) - 1);
+    background: var(--lg-modal-scrim);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--lg-ref-duration-fade) ease;
+  }
+  .lg-shell.is-nav-open::after { opacity: 1; pointer-events: auto; }
+}
+
+/* mobile: サイドバー右上の閉じるボタン（mobile-shell.js が注入） */
+.lg-shell-close { display: none; }
+@media (max-width: 900px) {
+  .lg-shell-close {
+    display: grid; place-items: center;
+    position: absolute; top: var(--lg-sidebar-pad); right: var(--lg-sidebar-pad);
+    appearance: none; border: 0; cursor: pointer;
+    width: var(--lg-ref-size-icon-button); height: var(--lg-ref-size-icon-button);
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--lg-ink) 10%, transparent);
+    color: var(--lg-ink);
+  }
+  .lg-shell-close:focus-visible {
+    outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+    outline-offset: var(--lg-ref-size-focus-offset);
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "lg": {
+    "drawer": {
+      "$description": "comp 層 — サイドから滑り込む一時面（設定・詳細編集）。scrim を伴うガラス。予算外の一時面",
+      "width": {
+        "$value": "380px",
+        "$type": "dimension",
+        "$description": "右ドロワーの標準幅"
+      },
+      "radius": {
+        "$value": "{lg.ref.radius.xl}",
+        "$type": "dimension",
+        "$description": "角丸。画面端と concentric"
+      },
+      "pad": {
+        "$value": "20px",
+        "$type": "dimension",
+        "$description": "内側パディング"
+      },
+      "enter-offset": {
+        "$value": "28px",
+        "$type": "dimension",
+        "$description": "入場バネの開始オフセット（translateX）"
+      },
+      "margin": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "画面端からの浮き"
+      }
+    }
+  }
+}

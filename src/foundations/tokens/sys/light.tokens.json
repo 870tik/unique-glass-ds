@@ -1,0 +1,82 @@
+{
+  "lg": {
+    "light": {
+      "$description": "sys 層 — 仮想光源。角度 --lg-la と強度 --lg-li の2変数でリムとブルームを駆動（公理4）。角度はポインタ 1:1、遷移するのは強度のみ",
+      "angle": {
+        "$value": "{lg.ref.angle.light}",
+        "$type": "string",
+        "$description": "非操作時の光源角度。JS がポインタ角で上書きする"
+      },
+      "rim-width": {
+        "$value": "{lg.ref.size.rim-width}",
+        "$type": "dimension",
+        "$description": "リムの線幅"
+      },
+      "rim-peak": {
+        "$value": "{lg.ref.alpha.rim-peak}",
+        "$type": "number",
+        "$description": "リムのピーク強度係数"
+      },
+      "rim-mid": {
+        "$value": "{lg.ref.alpha.rim-mid}",
+        "$type": "number",
+        "$description": "リムの肩の強度係数"
+      },
+      "rim-side": {
+        "$value": "{lg.ref.alpha.rim-side}",
+        "$type": "number",
+        "$description": "リムの第二反射の強度係数"
+      },
+      "bloom": {
+        "$value": "{lg.ref.alpha.bloom}",
+        "$type": "number",
+        "$description": "面内ブルームの強度係数"
+      },
+      "hover-intensity": {
+        "$value": 0.8,
+        "$type": "number",
+        "$description": "hover / focus 時の --lg-li。触れると光る"
+      },
+      "press-intensity": {
+        "$value": 1,
+        "$type": "number",
+        "$description": "押下時の --lg-li。最大点灯"
+      },
+      "fade": {
+        "$value": "{lg.ref.duration.rim-fade}",
+        "$type": "duration",
+        "$description": "点灯/消灯の遷移時間"
+      },
+      "key": {
+        "$value": "{lg.ref.color.light-key}",
+        "$type": "color",
+        "$description": "対角2光源・寒色キー（inset 左上）"
+      },
+      "fill": {
+        "$value": "{lg.ref.color.light-fill}",
+        "$type": "color",
+        "$description": "対角2光源・暖色フィル（inset 右下）"
+      },
+      "rim-spec-cool": {
+        "$value": "{lg.ref.color.spectrum-cool}",
+        "$type": "color",
+        "$description": "リムの入射側（回り込みの先端）の分光色。quiet テーマでは白に上書きされ単色リムに縮退"
+      },
+      "rim-spec-warm": {
+        "$value": "{lg.ref.color.spectrum-warm}",
+        "$type": "color",
+        "$description": "リムの射出側の分光色。同上"
+      },
+      "breath-depth": {
+        "$value": 0.3,
+        "$type": "number",
+        "$description": "注視の呼吸（生命徴・R13、公理4の唯一の例外）: focus-visible で注視されている間だけ、リム強度が base×(1−depth)〜base をゆっくり往復する。0 で無効"
+      },
+      "breath-period": {
+        "$value": "3600ms",
+        "$type": "duration",
+        "$description": "呼吸の1周期。ヒトの安静呼吸（3〜4秒）に合わせる"
+      }
+    }
+  }
+}

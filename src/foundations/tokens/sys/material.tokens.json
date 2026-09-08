@@ -1,0 +1,154 @@
+{
+  "lg": {
+    "material": {
+      "$description": "sys 層 — 素材レシピ。Regular = 適応する標準相 / Clear = 高透過・非適応相（明 surface では 35% dim 必須）",
+      "regular": {
+        "blur": {
+          "$value": "{lg.ref.blur.baseline-regular}",
+          "$type": "dimension",
+          "$description": "Regular の baseline backdrop blur。lens モードでは chain-blur に置き換わる"
+        },
+        "chain-blur": {
+          "$value": "{lg.ref.blur.chain-regular}",
+          "$type": "dimension",
+          "$description": "Regular の lens モード後段 blur"
+        },
+        "saturate": {
+          "$value": "{lg.ref.saturate.regular}",
+          "$type": "number",
+          "$description": "Regular の彩度リフト。JS がこの CSS 変数を読んで SVG チェーンにも配る（単一ソース）"
+        },
+        "falloff-ratio": {
+          "$value": "{lg.ref.lens.falloff-regular}",
+          "$type": "number",
+          "$description": "Regular のレンズ帯幅。JS の variant lookup table が参照"
+        },
+        "scale-ratio": {
+          "$value": "{lg.ref.lens.scale-ratio-regular}",
+          "$type": "number",
+          "$description": "Regular の変位量比"
+        },
+        "scale-max": {
+          "$value": "{lg.ref.lens.scale-max-regular}",
+          "$type": "number",
+          "$description": "Regular の変位上限"
+        },
+        "scale-min": {
+          "$value": "{lg.ref.lens.scale-min-regular}",
+          "$type": "number",
+          "$description": "Regular の変位下限"
+        },
+        "ca": {
+          "$value": "{lg.ref.lens.ca}",
+          "$type": "number",
+          "$description": "Regular の色収差オフセット"
+        },
+        "shadow": {
+          "$value": [
+            {
+              "inset": false,
+              "offsetX": "0px",
+              "offsetY": "18px",
+              "blur": "44px",
+              "spread": "-12px",
+              "color": "{lg.ref.color.shadow-ambient}"
+            },
+            {
+              "inset": false,
+              "offsetX": "0px",
+              "offsetY": "2px",
+              "blur": "8px",
+              "spread": "0px",
+              "color": "{lg.ref.color.shadow-contact}"
+            }
+          ],
+          "$type": "shadow",
+          "$description": "浮遊ガラスの二重影。環境影 + 接地影"
+        }
+      },
+      "clear": {
+        "blur": {
+          "$value": "{lg.ref.blur.baseline-clear}",
+          "$type": "dimension",
+          "$description": "Clear の baseline backdrop blur"
+        },
+        "chain-blur": {
+          "$value": "{lg.ref.blur.chain-clear}",
+          "$type": "dimension",
+          "$description": "Clear の lens モード後段 blur（ゼロ = 素通し）"
+        },
+        "saturate": {
+          "$value": "{lg.ref.saturate.clear}",
+          "$type": "number",
+          "$description": "Clear の彩度リフト"
+        },
+        "falloff-ratio": {
+          "$value": "{lg.ref.lens.falloff-clear}",
+          "$type": "number",
+          "$description": "Clear のレンズ帯幅"
+        },
+        "scale-ratio": {
+          "$value": "{lg.ref.lens.scale-ratio-clear}",
+          "$type": "number",
+          "$description": "Clear の変位量比"
+        },
+        "scale-max": {
+          "$value": "{lg.ref.lens.scale-max-clear}",
+          "$type": "number",
+          "$description": "Clear の変位上限"
+        },
+        "scale-min": {
+          "$value": "{lg.ref.lens.scale-min-clear}",
+          "$type": "number",
+          "$description": "Clear の変位下限"
+        },
+        "ca": {
+          "$value": "{lg.ref.lens.ca}",
+          "$type": "number",
+          "$description": "Clear の色収差オフセット（Regular と共通）"
+        },
+        "face-alpha": {
+          "$value": 0.03,
+          "$type": "number",
+          "$description": "Clear の面リフト。surface 適応（adaptive.*.face-alpha）を上書きしてほぼ透明にする"
+        },
+        "ink": {
+          "$value": "{lg.ref.color.ink-light}",
+          "$type": "color",
+          "$description": "Clear のラベル色。Clear は非適応なので明暗反転せず常に明。明 surface では 35% dim 層がコントラストを保証する"
+        },
+        "shadow": {
+          "$value": "{lg.material.regular.shadow}",
+          "$type": "shadow",
+          "$description": "Clear の影は Regular と共通"
+        }
+      },
+      "regular-thick": {
+        "$description": "sys 層 — Regular の厚相。大型の恒常クローム（sidebar）用。屈折レシピは regular と共有し、blur と面リフトのみ厚くする",
+        "blur": {
+          "$value": "{lg.ref.blur.baseline-thick}",
+          "$type": "dimension",
+          "$description": "厚相の baseline blur"
+        },
+        "face-scale": {
+          "$value": 1.8,
+          "$type": "number",
+          "$description": "surface の face-alpha に掛ける倍率。面を濃くして大面積の可読性を守る"
+        }
+      },
+      "regular-thin": {
+        "$description": "sys 層 — Regular の薄相。topbar・tooltip 用。背後のコンテンツ文脈を保つ",
+        "blur": {
+          "$value": "{lg.ref.blur.baseline-thin}",
+          "$type": "dimension",
+          "$description": "薄相の baseline blur"
+        },
+        "face-scale": {
+          "$value": 0.75,
+          "$type": "number",
+          "$description": "surface の face-alpha に掛ける倍率。薄相は面も薄く"
+        }
+      }
+    }
+  }
+}

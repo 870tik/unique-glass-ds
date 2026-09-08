@@ -1,0 +1,38 @@
+{
+  "lg": {
+    "ref": {
+      "blur": {
+        "baseline-regular": {
+          "$value": "20px",
+          "$type": "dimension",
+          "$description": "baseline（非 Chromium）での Regular の backdrop blur。lens 非対応時の素材の本体"
+        },
+        "baseline-clear": {
+          "$value": "6px",
+          "$type": "dimension",
+          "$description": "baseline での Clear の backdrop blur。高透過を保つため弱い"
+        },
+        "chain-regular": {
+          "$value": "1.5px",
+          "$type": "dimension",
+          "$description": "lens モードで屈折の後段に足す微小 blur。Regular のすりの薄さ"
+        },
+        "chain-clear": {
+          "$value": "0px",
+          "$type": "dimension",
+          "$description": "lens モードでの Clear の後段 blur。素通しなのでゼロ"
+        },
+        "baseline-thick": {
+          "$value": "28px",
+          "$type": "dimension",
+          "$description": "厚いガラス（sidebar 等の大型恒常クローム）の baseline blur。公式「大きい要素ほど厚いガラス」の帰結"
+        },
+        "baseline-thin": {
+          "$value": "12px",
+          "$type": "dimension",
+          "$description": "薄いガラス（topbar・tooltip）の baseline blur。ツールバーは背後の文脈を読ませたい"
+        }
+      }
+    }
+  }
+}

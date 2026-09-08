@@ -1,0 +1,69 @@
+/* ---------- checkbox / radio（押下中のみ発光） ---------- */
+.lg-checkbox,
+.lg-radio {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lg-ref-space-sm);
+  cursor: pointer;
+  color: var(--lg-ink);
+  font-size: var(--lg-menu-item-font-size);
+  -webkit-user-select: none;
+  user-select: none;
+}
+.lg-checkbox input,
+.lg-radio input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.lg-check-box {
+  flex: none;
+  width: var(--lg-checkbox-size);
+  height: var(--lg-checkbox-size);
+  border-radius: var(--lg-checkbox-radius);
+  border: 1px solid color-mix(in srgb, var(--lg-ink) 35%, transparent); /* lint: structural */
+  background: color-mix(in srgb, var(--lg-ink) 6%, transparent);
+  display: grid;
+  place-items: center;
+  transition:
+    background var(--lg-ref-duration-fade) ease,
+    border-color var(--lg-ref-duration-fade) ease;
+}
+.lg-radio .lg-check-box { border-radius: 50%; }
+.lg-check-box::after {
+  content: "";
+  width: 9px; /* lint: structural */
+  height: 5px; /* lint: structural */
+  border-left: 2px solid var(--lg-opaque-bg); /* lint: structural */
+  border-bottom: 2px solid var(--lg-opaque-bg); /* lint: structural */
+  transform: rotate(-45deg) translate(1px, -1px); /* lint: structural */
+  opacity: 0;
+}
+.lg-radio .lg-check-box::after {
+  width: 8px; /* lint: structural */
+  height: 8px; /* lint: structural */
+  border: 0;
+  border-radius: 50%;
+  background: var(--lg-opaque-bg);
+  transform: none;
+}
+.lg-checkbox input:checked + .lg-check-box,
+.lg-radio input:checked + .lg-check-box {
+  background: color-mix(in srgb, var(--lg-ink) 85%, transparent);
+  border-color: transparent;
+}
+.lg-checkbox input:checked + .lg-check-box::after,
+.lg-radio input:checked + .lg-check-box::after { opacity: 1; }
+.lg-checkbox input:active + .lg-check-box,
+.lg-radio input:active + .lg-check-box {
+  box-shadow: 0 0 10px color-mix(in srgb, var(--lg-rim) /* lint: structural */
+    calc(var(--lg-ref-alpha-rim-mid) * 100%), transparent);
+}
+.lg-checkbox:has(input:focus-visible) .lg-check-box,
+.lg-radio:has(input:focus-visible) .lg-check-box {
+  outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+  outline-offset: var(--lg-ref-size-focus-offset);
+}

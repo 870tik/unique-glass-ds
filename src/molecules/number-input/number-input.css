@@ -1,0 +1,32 @@
+/* ---------- number input（field 拡張 + ステッパー） ---------- */
+.lg-field--number { padding: 0 var(--lg-ref-space-sm); }
+.lg-field--number .lg-field-input {
+  text-align: center;
+  padding: 0 var(--lg-ref-space-sm);
+  font-variant-numeric: tabular-nums;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.lg-field--number .lg-field-input::-webkit-outer-spin-button,
+.lg-field--number .lg-field-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.lg-step {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  flex: none;
+  width: var(--lg-field-step-size);
+  height: var(--lg-field-step-size);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--lg-ink) 10%, transparent);
+  color: var(--lg-ink);
+  font-family: inherit;
+  font-size: var(--lg-ref-type-body-size);
+  line-height: 1;
+}
+.lg-step:hover { background: color-mix(in srgb, var(--lg-ink) 16%, transparent); }
+.lg-step:focus-visible {
+  outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+  outline-offset: var(--lg-ref-size-focus-offset);
+}

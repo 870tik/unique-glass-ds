@@ -1,0 +1,17 @@
+{
+  "lg": {
+    "stepper": {
+      "$description": "comp 層 — ウィザードの進行表示（塗り）。done / current / todo の3状態",
+      "dot-size": {
+        "$value": "22px",
+        "$type": "dimension",
+        "$description": "ステップ円の外径"
+      },
+      "line-alpha": {
+        "$value": 0.18,
+        "$type": "number",
+        "$description": "接続線の ink 混合率"
+      }
+    }
+  }
+}

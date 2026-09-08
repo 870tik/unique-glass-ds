@@ -1,0 +1,30 @@
+/* ---------- pagination（塗り。現在ページは ink 反転） ---------- */
+.lg-pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lg-pagination-gap);
+}
+.lg-pagination-item {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  min-width: var(--lg-pagination-size);
+  height: var(--lg-pagination-size);
+  padding: 0 var(--lg-ref-space-sm);
+  border-radius: var(--lg-ref-radius-pill);
+  background: transparent;
+  color: color-mix(in srgb, var(--lg-ink) 72%, transparent);
+  font-family: inherit;
+  font-size: var(--lg-ref-type-caption-size);
+  font-variant-numeric: tabular-nums;
+}
+.lg-pagination-item:hover { background: color-mix(in srgb, var(--lg-ink) 10%, transparent); }
+.lg-pagination-item[aria-current="page"] {
+  background: color-mix(in srgb, var(--lg-ink) 85%, transparent);
+  color: var(--lg-opaque-bg);
+}
+.lg-pagination-item:disabled { opacity: 0.35; pointer-events: none; }
+.lg-pagination-item:focus-visible {
+  outline: var(--lg-ref-size-focus-width) solid var(--lg-ink);
+  outline-offset: var(--lg-ref-size-focus-offset);
+}

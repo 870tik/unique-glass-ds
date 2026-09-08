@@ -1,0 +1,48 @@
+<!-- ============ 一覧画面: List ============ -->
+    <section class="screen lg-page" id="sc-list" data-title="一覧（List）" data-class=".lg-toolbar + .lg-table--responsive + .lg-pagination">
+      <div class="lg-page-header">
+        <div class="row">
+          <h1 class="lg-type-display" style="margin:0">Invoices</h1>
+          <div class="actions"><button class="lg-glass lg-button lg-button--primary" data-lg-gel>New invoice</button></div>
+        </div>
+      </div>
+      <div class="lg-toolbar">
+        <div class="lg-field lg-field--fill" data-sc="sc4">
+          <span class="lg-field-affix" aria-hidden="true"><i data-lg-icon="search"></i></span>
+          <input class="lg-field-input" placeholder="Search…" aria-label="検索">
+        </div>
+        <button class="lg-chip" aria-pressed="true">Paid</button>
+        <button class="lg-chip" aria-pressed="false">Pending</button>
+        <button class="lg-chip" aria-pressed="false">Overdue</button>
+        <span class="spacer"></span>
+        <div class="lg-select">
+          <button class="lg-select-trigger" data-sc="sc5"><span class="lg-select-label">This month</span><span class="caret"><i data-lg-icon="chevron-down"></i></span></button>
+          <div class="lg-glass lg-menu">
+            <button class="lg-menu-item" aria-selected="true">This month</button>
+            <button class="lg-menu-item">Last month</button>
+            <button class="lg-menu-item">This year</button>
+          </div>
+        </div>
+      </div>
+      <div class="lg-panel">
+        <table class="lg-table lg-table--responsive">
+          <thead><tr><th>Invoice</th><th>Customer</th><th>Status</th><th class="num">Amount</th></tr></thead>
+          <tbody>
+            <tr><td data-th="Invoice" style="font-family:var(--mono)">INV-2094</td><td data-th="Customer">Northwind K.K.</td><td data-th="Status"><span class="lg-badge is-positive"><span class="lg-dot"></span>Paid</span></td><td data-th="Amount" class="num">¥420,000</td></tr>
+            <tr><td data-th="Invoice" style="font-family:var(--mono)">INV-2093</td><td data-th="Customer">Aperture Design</td><td data-th="Status"><span class="lg-badge">Pending</span></td><td data-th="Amount" class="num">¥168,500</td></tr>
+            <tr><td data-th="Invoice" style="font-family:var(--mono)">INV-2092</td><td data-th="Customer">Hoshino Lab</td><td data-th="Status"><span class="lg-badge is-positive"><span class="lg-dot"></span>Paid</span></td><td data-th="Amount" class="num">¥96,000</td></tr>
+            <tr><td data-th="Invoice" style="font-family:var(--mono)">INV-2091</td><td data-th="Customer">Field &amp; Form</td><td data-th="Status"><span class="lg-badge is-danger"><span class="lg-dot"></span>Overdue</span></td><td data-th="Amount" class="num">¥312,400</td></tr>
+            <tr><td data-th="Invoice" style="font-family:var(--mono)">INV-2090</td><td data-th="Customer">Kite Systems</td><td data-th="Status"><span class="lg-badge is-positive"><span class="lg-dot"></span>Paid</span></td><td data-th="Amount" class="num">¥58,800</td></tr>
+          </tbody>
+        </table>
+        <div data-sc="sc6">
+          <nav class="lg-pagination" aria-label="ページ">
+            <button class="lg-pagination-item" disabled aria-label="前へ"><i data-lg-icon="chevron-left"></i></button>
+            <button class="lg-pagination-item" aria-current="page">1</button>
+            <button class="lg-pagination-item">2</button>
+            <button class="lg-pagination-item">3</button>
+            <button class="lg-pagination-item" aria-label="次へ"><i data-lg-icon="chevron-right"></i></button>
+          </nav>
+        </div>
+      </div>
+    </section>

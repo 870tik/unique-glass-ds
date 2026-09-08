@@ -1,0 +1,17 @@
+{
+  "lg": {
+    "popover": {
+      "$description": "comp 層 — フォーム内容を持つ一時面。menu と同機構だが item 選択で閉じず、role=dialog",
+      "min-width": {
+        "$value": "260px",
+        "$type": "dimension",
+        "$description": "最小幅"
+      },
+      "pad": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "内側パディング（menu より広い = 内容がフォームのため）"
+      }
+    }
+  }
+}

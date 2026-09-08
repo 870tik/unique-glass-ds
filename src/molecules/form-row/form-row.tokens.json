@@ -1,0 +1,22 @@
+{
+  "lg": {
+    "form-row": {
+      "$description": "comp 層 — フォーム行（ラベル + 入力 + ヘルプ/エラー）。エラー状態は adaptive.*.danger を参照",
+      "gap": {
+        "$value": "6px",
+        "$type": "dimension",
+        "$description": "行内の縦間隔"
+      },
+      "label-size": {
+        "$value": "12.5px",
+        "$type": "dimension",
+        "$description": "ラベル"
+      },
+      "help-size": {
+        "$value": "11.5px",
+        "$type": "dimension",
+        "$description": "ヘルプ/エラーテキスト"
+      }
+    }
+  }
+}

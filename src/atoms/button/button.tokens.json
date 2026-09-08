@@ -1,0 +1,62 @@
+{
+  "lg": {
+    "button": {
+      "$description": "comp 層 — button contract。取れるマテリアル: Regular のみ。primary はステンドグラス1箇所限定",
+      "radius": {
+        "$value": "{lg.ref.radius.pill}",
+        "$type": "dimension",
+        "$description": "ボタンはピル。concentric な親に入れる場合は calc で連鎖させる"
+      },
+      "height": {
+        "$value": "{lg.ref.size.control-height}",
+        "$type": "dimension",
+        "$description": "ボタン高"
+      },
+      "padding-x": {
+        "$value": "28px",
+        "$type": "dimension",
+        "$description": "ボタン左右パディング"
+      },
+      "font-size": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "ボタンラベルサイズ"
+      },
+      "font-weight": {
+        "$value": 500,
+        "$type": "fontWeight",
+        "$description": "ボタンラベルウェイト"
+      },
+      "material": {
+        "$value": "regular",
+        "$type": "string",
+        "$description": "contract: button は Regular のみ。Clear のボタンは可読性保証がないため禁止"
+      },
+      "press-scale": {
+        "$value": "{lg.ref.scale.press}",
+        "$type": "number",
+        "$description": "ボタンの押下潰れ"
+      },
+      "accent": {
+        "$value": "{lg.ref.color.accent}",
+        "$type": "color",
+        "$description": "primary ステンドグラスの上端色"
+      },
+      "accent-deep": {
+        "$value": "{lg.ref.color.accent-deep}",
+        "$type": "color",
+        "$description": "primary ステンドグラスの下端色"
+      },
+      "on-accent": {
+        "$value": "{lg.ref.color.on-accent}",
+        "$type": "color",
+        "$description": "primary のラベル色。ink 適応の対象外（アクセント上は常に明）"
+      },
+      "accent-solid": {
+        "$value": "{lg.ref.color.accent-solid}",
+        "$type": "color",
+        "$description": "opaque フォールバック時の primary 背景"
+      }
+    }
+  }
+}

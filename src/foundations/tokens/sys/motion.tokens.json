@@ -1,0 +1,74 @@
+{
+  "lg": {
+    "motion": {
+      "$description": "sys 層 — gel の物理（公理5）。変形に慣性、追従に慣性なし",
+      "gel": {
+        "k": {
+          "$value": "{lg.ref.spring.k}",
+          "$type": "number",
+          "$description": "復帰バネの剛性。JS Spring クラスの既定"
+        },
+        "zeta": {
+          "$value": "{lg.ref.spring.zeta}",
+          "$type": "number",
+          "$description": "復帰バネの減衰比の既定"
+        },
+        "press-scale": {
+          "$value": "{lg.ref.scale.press}",
+          "$type": "number",
+          "$description": "押下潰れの既定スケール"
+        },
+        "press-duration": {
+          "$value": "{lg.ref.duration.press}",
+          "$type": "duration",
+          "$description": "押下潰れの所要時間（1:1 に見える即応）"
+        },
+        "press-easing": {
+          "$value": "{lg.ref.easing.press}",
+          "$type": "cubicBezier",
+          "$description": "押下カーブ"
+        },
+        "release-duration": {
+          "$value": "{lg.ref.duration.release}",
+          "$type": "duration",
+          "$description": "JS 無効時の CSS フォールバック復帰時間"
+        },
+        "release-easing": {
+          "$value": "{lg.ref.easing.gel-release}",
+          "$type": "cubicBezier",
+          "$description": "JS 無効時の CSS フォールバック復帰カーブ"
+        },
+        "optics-press": {
+          "$value": 0.3,
+          "$type": "number",
+          "$description": "押下時に屈折スケールへ掛かる係数（応答する光学・R12）。レンズが潰れて平らになる = 屈折・分散が 30% まで弱まる。離すとバネで揺り戻り、屈折が一度ゆらぐ。reduced-motion ではスナップ"
+        },
+        "optics-hover": {
+          "$value": 0.92,
+          "$type": "number",
+          "$description": "瞳孔反射（生命徴・R13）: hover でレンズがわずかに締まる係数。押す前の予兆。1 で無効"
+        },
+        "squash-y": {
+          "$value": 0.9,
+          "$type": "number",
+          "$description": "press の縦潰れ（Squash & Stretch・R14）。体積保存のため横は stretch-x で伸びる"
+        },
+        "stretch-x": {
+          "$value": 1.06,
+          "$type": "number",
+          "$description": "press の横伸び。squash-y と対で「潰れた gel」を作る"
+        },
+        "hover-scale": {
+          "$value": 1.03,
+          "$type": "number",
+          "$description": "hover でわずかに膨らむ（気づきの反応）。揺れながら到達する"
+        },
+        "wobble-zeta": {
+          "$value": 0.42,
+          "$type": "number",
+          "$description": "gel の減衰比（R14 で 0.65→0.42）。release/hover でぷるんと2〜3回揺れる follow-through。1:1 の押下即応は不変"
+        }
+      }
+    }
+  }
+}

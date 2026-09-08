@@ -1,0 +1,21 @@
+<!-- Shell — sidebar(thick) + topbar(thin) = 恒常クローム合計1枚。
+     md(900px) 以下でサイドバーはオフキャンバス化（.lg-shell-menu-btn で開閉） -->
+<div class="lg-shell">
+  <aside class="lg-glass lg-sidebar" data-lg-phase="thick" aria-label="ナビゲーション">
+    <nav class="lg-nav lg-nav--vertical">
+      <button class="lg-tab" aria-selected="true">Dashboard</button>
+      <button class="lg-tab">Invoices</button>
+    </nav>
+  </aside>
+  <header class="lg-glass lg-topbar" data-lg-phase="thin">
+    <button class="lg-shell-menu-btn" aria-label="メニュー"><i data-lg-icon="menu"></i></button>
+    <span class="lg-type-heading">Dashboard</span>
+    <!-- ガラス上の入力は塗り相 -->
+    <div class="lg-field lg-field--fill">
+      <input class="lg-field-input" type="search" placeholder="Search…" aria-label="検索">
+    </div>
+  </header>
+  <main class="lg-shell-content">
+    <!-- コンテンツ層（.lg-page を置く） -->
+  </main>
+</div>

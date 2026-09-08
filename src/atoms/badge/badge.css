@@ -1,0 +1,31 @@
+/* ---------- badge / status dot（塗り。色は状態通知のみ） ---------- */
+.lg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--lg-ref-space-xs) + 1px);
+  height: var(--lg-badge-height);
+  padding: 0 var(--lg-badge-pad-x);
+  border-radius: var(--lg-ref-radius-pill);
+  font-size: var(--lg-badge-font-size);
+  font-weight: var(--lg-ref-type-weight-medium);
+  letter-spacing: var(--lg-ref-type-tracking-wide);
+  text-transform: uppercase;
+  background: color-mix(in srgb, var(--lg-ink) 10%, transparent);
+  color: color-mix(in srgb, var(--lg-ink) 80%, transparent);
+}
+.lg-badge.is-positive {
+  color: var(--lg-ref-color-positive);
+  background: color-mix(in srgb, var(--lg-ref-color-positive) 14%, transparent);
+}
+.lg-badge.is-danger {
+  color: var(--lg-danger);
+  background: color-mix(in srgb, var(--lg-danger) 14%, transparent);
+}
+.lg-dot {
+  flex: none;
+  width: var(--lg-badge-dot-size);
+  height: var(--lg-badge-dot-size);
+  border-radius: 50%;
+  background: currentColor;
+  display: inline-block;
+}

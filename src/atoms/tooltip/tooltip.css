@@ -1,0 +1,28 @@
+/* ---------- tooltip（薄相 baseline のみ。位置固定・ポインタ非追従） ---------- */
+.lg-tooltip {
+  position: fixed;
+  z-index: var(--lg-ref-z-tooltip);
+  pointer-events: none;
+  max-width: var(--lg-tooltip-max-width);
+  padding: var(--lg-tooltip-pad-y) var(--lg-tooltip-pad-x);
+  border-radius: var(--lg-tooltip-radius);
+  font-size: var(--lg-tooltip-font-size);
+  line-height: 1.45;
+  color: var(--lg-ink);
+  background: color-mix(in srgb, var(--lg-ref-color-white)
+    calc(var(--lg-face-alpha) * var(--lg-material-regular-thick-face-scale) * 100%), transparent);
+  -webkit-backdrop-filter: blur(var(--lg-material-regular-thin-blur))
+    saturate(var(--lg-material-regular-saturate));
+  backdrop-filter: blur(var(--lg-material-regular-thin-blur))
+    saturate(var(--lg-material-regular-saturate));
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--lg-rim)
+      calc(var(--lg-ref-alpha-hairline) * 100%), transparent),
+    var(--lg-material-regular-shadow);
+  opacity: 0;
+  transform: translateY(4px); /* lint: structural */
+  transition:
+    opacity var(--lg-menu-exit-duration) ease,
+    transform var(--lg-menu-exit-duration) ease;
+}
+.lg-tooltip.is-open { opacity: 1; transform: none; }

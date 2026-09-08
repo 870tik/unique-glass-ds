@@ -1,0 +1,32 @@
+{
+  "lg": {
+    "observer": {
+      "$description": "sys 層 — 観測者効果（R16）。トークンが「範囲」を定義し、観測者シードが値を確定する。揺れるのは分光色相・光源角・呼吸周期・個体差プールのみ。コントラスト・予算・レイアウト・状態色の意味・accent は不変（憲法で固定）",
+      "spectrum-rotation": {
+        "$value": 60,
+        "$type": "number",
+        "$description": "リム分光の色相回転範囲（±deg）。30→60（R16補遺: タップの一瞬でも個体差が分かる強さに。SP は hover がないため）"
+      },
+      "angle-range": {
+        "$value": 15,
+        "$type": "number",
+        "$description": "仮想光源の基準角の揺れ幅（±deg）。光の来る方向が観測者ごとに違う"
+      },
+      "breath-min": {
+        "$value": "2600ms",
+        "$type": "duration",
+        "$description": "呼吸周期の下限。レンジ拡大（R16補遺）で個体差を体感可能に"
+      },
+      "breath-max": {
+        "$value": "4600ms",
+        "$type": "duration",
+        "$description": "呼吸周期の上限"
+      },
+      "ambient-rotation": {
+        "$value": 360,
+        "$type": "number",
+        "$description": "環境光（装飾背景）の色相ホイール幅。360 = 観測者を全色相に均等配置（「ほぼ既定」のシードが存在しない = 誰と比べても違う）。0 でオフ。装飾背景専用層のみが消費し、accent・UI 色は不変"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+/* ---------- progress / spinner（コンテンツ層。読む要素はガラスにしない） ---------- */
+.lg-progress {
+  --lg-progress-val: 0%;
+  width: 100%;
+  height: var(--lg-progress-height);
+  border-radius: var(--lg-progress-radius);
+  background: color-mix(in srgb, var(--lg-ink) 14%, transparent);
+  overflow: hidden;
+}
+.lg-progress::before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: var(--lg-progress-val);
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--lg-ink) 80%, transparent);
+  transition: width var(--lg-ref-duration-fade) ease;
+}
+.lg-progress.is-indeterminate::before {
+  width: 34%;
+  animation: lg-indeterminate calc(var(--lg-progress-duration) * 1.6) ease-in-out infinite;
+}
+@keyframes lg-indeterminate {
+  from { transform: translateX(-110%); }
+  to   { transform: translateX(400%); }
+}

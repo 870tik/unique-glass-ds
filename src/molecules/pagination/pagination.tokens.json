@@ -1,0 +1,17 @@
+{
+  "lg": {
+    "pagination": {
+      "$description": "comp 層 — ページ送り（塗り）。現在ページは ink 反転ピル",
+      "size": {
+        "$value": "30px",
+        "$type": "dimension",
+        "$description": "ページボタンの外径"
+      },
+      "gap": {
+        "$value": "{lg.ref.space.xs}",
+        "$type": "dimension",
+        "$description": "ボタン間"
+      }
+    }
+  }
+}

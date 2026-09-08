@@ -1,0 +1,27 @@
+{
+  "lg": {
+    "segmented": {
+      "$description": "comp 層 — segmented control contract。lg-nav の小型版。ピル機構を共有",
+      "height": {
+        "$value": "36px",
+        "$type": "dimension",
+        "$description": "全体高"
+      },
+      "radius": {
+        "$value": "{lg.ref.radius.md}",
+        "$type": "dimension",
+        "$description": "外径。ピル radius = radius − gap（concentricity）"
+      },
+      "gap": {
+        "$value": "4px",
+        "$type": "dimension",
+        "$description": "内側パディング"
+      },
+      "font-size": {
+        "$value": "12.5px",
+        "$type": "dimension",
+        "$description": "セグメントラベル"
+      }
+    }
+  }
+}

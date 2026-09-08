@@ -1,0 +1,22 @@
+{
+  "lg": {
+    "checkbox": {
+      "$description": "comp 層 — checkbox / radio contract。radio は同寸の円形。操作中のみ発光",
+      "size": {
+        "$value": "18px",
+        "$type": "dimension",
+        "$description": "ボックス寸法（radio 共通）"
+      },
+      "radius": {
+        "$value": "6px",
+        "$type": "dimension",
+        "$description": "checkbox の外径（radio は 50%）"
+      },
+      "material": {
+        "$value": "transient (press only)",
+        "$type": "string",
+        "$description": "contract: 押下中のみガラスの光を帯びる"
+      }
+    }
+  }
+}

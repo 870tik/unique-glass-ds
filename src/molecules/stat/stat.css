@@ -1,0 +1,18 @@
+/* ---------- stat（KPI タイル。lg-panel と併用） ---------- */
+.lg-stat { padding: var(--lg-stat-pad); }
+.lg-stat-label {
+  font-size: var(--lg-stat-label-size);
+  letter-spacing: var(--lg-ref-type-tracking-wide);
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--lg-ink) 55%, transparent);
+}
+.lg-stat-value {
+  font-family: var(--lg-ref-type-family-display);
+  font-size: var(--lg-stat-value-size);
+  font-weight: 600;
+  margin-top: var(--lg-ref-space-xs);
+  font-variant-numeric: tabular-nums;
+}
+.lg-stat-delta { font-size: var(--lg-stat-delta-size); margin-top: var(--lg-ref-space-xs); }
+.lg-stat-delta.up { color: var(--lg-ref-color-positive); }
+.lg-stat-delta.down { color: var(--lg-danger); }

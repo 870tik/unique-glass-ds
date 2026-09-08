@@ -1,0 +1,11 @@
+/* ---------- split: 本文 + メタサイド（Detail 型の骨格） ---------- */
+.lg-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--lg-layout-split-aside);
+  gap: var(--lg-ref-space-lg);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .lg-split { grid-template-columns: minmax(0, 1fr); } /* 1fr だと min-width:auto が復活し表で溢れる */
+  .lg-split--aside-first > :last-child { order: -1; } /* メタ先頭（Detail 等の opt-in） */
+}

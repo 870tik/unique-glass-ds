@@ -1,0 +1,13 @@
+{
+  "lg": {
+    "ref": {
+      "angle": {
+        "light": {
+          "$value": "215deg",
+          "$type": "string",
+          "$description": "仮想光源の既定角度（左上やや上）。@property の initial-value と同値に保つこと（initial-value は var 参照不可のため二重定義）"
+        }
+      }
+    }
+  }
+}

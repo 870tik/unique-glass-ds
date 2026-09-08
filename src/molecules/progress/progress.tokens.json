@@ -1,0 +1,32 @@
+{
+  "lg": {
+    "progress": {
+      "$description": "comp 層 — 進捗（コンテンツ層・不透明）。読む要素なのでガラスにしない。値は --lg-progress-val で 1:1",
+      "height": {
+        "$value": "6px",
+        "$type": "dimension",
+        "$description": "バーの太さ"
+      },
+      "radius": {
+        "$value": "{lg.ref.radius.pill}",
+        "$type": "dimension",
+        "$description": "端は常に丸"
+      },
+      "spinner-size": {
+        "$value": "18px",
+        "$type": "dimension",
+        "$description": "スピナー外径"
+      },
+      "spinner-width": {
+        "$value": "2px",
+        "$type": "dimension",
+        "$description": "スピナー線幅"
+      },
+      "duration": {
+        "$value": "900ms",
+        "$type": "duration",
+        "$description": "indeterminate / spinner の1周。これより速いと焦燥感が出る"
+      }
+    }
+  }
+}

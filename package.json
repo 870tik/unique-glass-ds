@@ -1,0 +1,23 @@
+{
+  "name": "unique-glass-ds",
+  "version": "1.0.0",
+  "description": "Unique Glass DS — Prism — a buildless liquid-glass design system. Real refraction (SVG displacement), edge dispersion as a signature, gel physics, and per-observer personality. Zero dependencies: copy css/ and js/, add class names.",
+  "author": "Taiki Hanaoka (https://taikihanaoka.com)",
+  "license": "MIT",
+  "homepage": "https://taikihanaoka.com/lab/liquid-glass/index.html",
+  "keywords": ["design-system", "liquid-glass", "glassmorphism", "css", "buildless", "ui-components"],
+  "files": [
+    "css/",
+    "js/",
+    "assets/fonts/",
+    "assets/icons/LICENSE.txt",
+    "docs/",
+    "showcase/",
+    "prompts/",
+    "SKILL.md",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "style": "css/liquid-glass.css"
+}

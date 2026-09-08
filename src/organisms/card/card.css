@@ -1,0 +1,12 @@
+a.lg-card { text-decoration: none; color: var(--lg-ink); display: block; } /* リンクカード */
+/* card — concentricity: 内側 radius = 外側 radius − gap を calc で強制 */
+.lg-card {
+  --lg-r: var(--lg-card-radius);
+  padding: var(--lg-card-gap);
+}
+.lg-card .lg-concentric {
+  border-radius: calc(var(--lg-card-radius) - var(--lg-card-gap));
+}
+.lg-card-body {
+  padding: var(--lg-card-gap) calc(var(--lg-card-gap) / 2) calc(var(--lg-card-gap) / 2);
+}

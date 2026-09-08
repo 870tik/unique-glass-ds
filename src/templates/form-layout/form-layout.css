@@ -1,0 +1,11 @@
+/* ---------- form layout（編集/新規の1カラム） ---------- */
+.lg-layout-form {
+  width: 100%;
+  max-width: var(--lg-layout-form-max);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--lg-ref-space-xl);
+}
+
+.lg-page .lg-layout-form { margin-inline: 0; } /* シェル内は左軸。中央寄せは focus のみ */

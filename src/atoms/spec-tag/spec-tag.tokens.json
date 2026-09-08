@@ -1,0 +1,7 @@
+{
+  "lg": {
+    "spec-tag": {
+      "$description": "comp 層 — 物性読み出しタグ。観測機器の意匠（v2 独自化 R11）。専用値は不要（micro type + hairline を共有）"
+    }
+  }
+}

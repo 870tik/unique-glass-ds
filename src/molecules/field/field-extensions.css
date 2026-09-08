@@ -1,0 +1,36 @@
+/* ---------- field 拡張: textarea / affix（prefix・suffix）/ 塗りフィールド ---------- */
+.lg-field--multi {
+  height: auto;
+  min-height: var(--lg-field-multi-min-height);
+  align-items: stretch;
+}
+.lg-field--multi textarea.lg-field-input {
+  resize: none;
+  height: auto;
+  min-height: calc(var(--lg-field-multi-min-height) - var(--lg-ref-space-xl));
+  padding-top: var(--lg-ref-space-md);
+  padding-bottom: var(--lg-ref-space-md);
+  line-height: var(--lg-ref-type-leading-body);
+}
+.lg-field-affix {
+  flex: none;
+  display: grid;
+  place-items: center;
+  font-size: var(--lg-field-icon-size);
+  opacity: 0.55;
+}
+.lg-field-affix:first-child { margin-left: var(--lg-field-padding-x); }
+.lg-field-affix:first-child + .lg-field-input { padding-left: var(--lg-ref-space-sm); }
+.lg-field-input + .lg-field-affix { margin-right: var(--lg-field-padding-x); }
+.lg-field-input:has(+ .lg-field-affix) { padding-right: var(--lg-ref-space-sm); }
+/* ガラスの上に置く検索・入力は塗り相（glass on glass 回避）。.lg-glass を併用しない */
+.lg-field--fill {
+  --lg-r: var(--lg-ref-radius-pill);
+  border-radius: var(--lg-ref-radius-pill);
+  height: calc(var(--lg-ref-size-control-height) - var(--lg-ref-space-lg));
+  background: color-mix(in srgb, var(--lg-ink)
+    calc(var(--lg-field-fill-alpha) * 100%), transparent) !important;
+  box-shadow: none;
+}
+.lg-field--fill:not(:focus-within) { background: color-mix(in srgb, var(--lg-ink)
+  calc(var(--lg-field-fill-alpha) * 100%), transparent) !important; }

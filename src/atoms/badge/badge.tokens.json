@@ -1,0 +1,27 @@
+{
+  "lg": {
+    "badge": {
+      "$description": "comp 層 — ステータスバッジ/ドット（コンテンツ層・塗り）。色は状態通知のみに使う",
+      "height": {
+        "$value": "20px",
+        "$type": "dimension",
+        "$description": "バッジ高"
+      },
+      "pad-x": {
+        "$value": "8px",
+        "$type": "dimension",
+        "$description": "左右パディング"
+      },
+      "font-size": {
+        "$value": "{lg.ref.type.micro-size}",
+        "$type": "dimension",
+        "$description": "uppercase 前提"
+      },
+      "dot-size": {
+        "$value": "7px",
+        "$type": "dimension",
+        "$description": "ステータスドット径"
+      }
+    }
+  }
+}
