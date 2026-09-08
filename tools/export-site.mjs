@@ -24,6 +24,7 @@ for (const dir of ['css', 'js']) {
 }
 cpSync(join(root, 'assets/fonts'), join(dest, 'assets/fonts'), { recursive: true });
 cpSync(join(root, 'assets/favicon.svg'), join(dest, 'assets/favicon.svg'));
+cpSync(join(root, 'assets/og.png'), join(dest, 'og.png'));
 
 /* 配布 zip（export-package.mjs の生成物）があれば一緒に配信する */
 if (existsSync(join(root, 'showcase/unique-glass-ds.zip'))) {

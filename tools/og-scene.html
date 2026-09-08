@@ -1,0 +1,83 @@
+<!doctype html>
+<!-- og-scene.html — OGP 撮影専用シーン（1200×630）。公開ページではない。
+     観測者の環境光回転は 0 に固定し、アイデンティティのペリウィンクルで撮る。
+     撮影: headless Chrome --window-size=1200,630 --screenshot -->
+<html lang="ja" data-lg-surface="dark" style="--lg-observer-ambient-rotation: 0">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/liquid-glass.css">
+<link rel="stylesheet" href="../css/themes/studio-dark.css">
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+body {
+  position: relative;
+  font-family: -apple-system, "Helvetica Neue", "Hiragino Sans", sans-serif;
+  color: var(--lg-adaptive-dark-ink);
+  background: color-mix(in srgb, var(--lg-ref-color-opaque-dark) 88%, var(--lg-ref-color-black));
+  display: grid;
+  place-items: center;
+}
+.bg {
+  position: absolute; inset: -60px; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(52% 60% at 74% 10%,
+      color-mix(in srgb, var(--lg-ref-color-accent) 62%, transparent), transparent 70%),
+    radial-gradient(46% 60% at 8% 96%,
+      color-mix(in srgb, var(--lg-ref-color-accent-deep) 42%, transparent), transparent 72%),
+    linear-gradient(color-mix(in srgb, var(--lg-adaptive-dark-ink) 7%, transparent) 1px, transparent 1px) 0 0 / 100% 52px,
+    linear-gradient(90deg, color-mix(in srgb, var(--lg-adaptive-dark-ink) 7%, transparent) 1px, transparent 1px) 0 0 / 52px 100%;
+  mask-image: radial-gradient(90% 90% at 50% 45%, #000 35%, transparent 100%);
+}
+.outline {
+  position: absolute; z-index: 0; top: -30px; left: 50%; transform: translateX(-50%);
+  font-family: var(--lg-ref-type-family-display);
+  font-weight: var(--lg-ref-type-weight-semibold);
+  font-size: 300px; letter-spacing: .04em; line-height: 1; white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--lg-ink) 34%, transparent);
+  user-select: none;
+}
+.inner { position: relative; z-index: 1; display: grid; justify-items: center; gap: 34px; margin-top: 8px; }
+h1 {
+  margin: 0; text-align: center;
+  font-size: 58px; font-weight: var(--lg-ref-type-weight-semibold);
+  line-height: 1.28; letter-spacing: -0.02em;
+}
+.stage-row { display: flex; align-items: center; gap: 22px; }
+.card { width: 470px; }
+.card .lg-card-body { padding: 22px 26px; }
+.card p { margin: 0; font-size: 19px; line-height: 1.7; }
+.foot {
+  position: absolute; z-index: 1; left: 44px; right: 44px; bottom: 30px;
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--lg-ref-type-family-mono); font-size: 15px; letter-spacing: .14em;
+}
+.foot img { width: 30px; height: 30px; }
+.foot .site { margin-left: auto; opacity: .55; }
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<div class="outline" aria-hidden="true">GLASS</div>
+<div class="inner">
+  <h1>ガラスをベースにした、<br>ユニークなデザインシステム。</h1>
+  <div class="stage-row">
+    <div class="lg-glass lg-card card" style="--lg-li:.95; --lg-light-rim-width: 2.5px">
+      <div class="lg-card-body">
+        <p>背後の光を屈折させ、縁で虹に割れる。<br>押すとぷるんと潰れる、Web UI 部品一式。</p>
+      </div>
+    </div>
+    <button class="lg-glass lg-button lg-button--primary" style="--lg-li:1; --lg-light-rim-width: 2.5px; font-size:19px; padding:0 30px; height:56px">使ってみる</button>
+  </div>
+</div>
+<div class="foot">
+  <img src="../assets/favicon.svg" alt="">
+  <span>UNIQUE GLASS DS</span>
+  <span class="site">taikihanaoka.com/lab/liquid-glass</span>
+</div>
+<script src="../js/lg-icons.js"></script>
+<script src="../js/liquid-glass.js"></script>
+</body>
+</html>
