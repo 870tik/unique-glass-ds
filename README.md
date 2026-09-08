@@ -24,8 +24,10 @@ MIT ライセンス。**商用利用・改変・再配布は自由**です。た
 トークン設計の調整・ブランド適用・画面設計まで含めた導入支援を請け負います。
 [taikihanaoka.com](https://taikihanaoka.com/) からご連絡ください。
 
-## 入手と利用（二本立て）
+## 入手と利用
 
+0. **GitHub** — https://github.com/870tik/unique-glass-ds （ソース公開。
+   AI 運用資産 SKILL.md / prompts/ は zip 配布のみに同梱）
 1. **そのまま使う** — showcase/unique-glass-ds.zip（LP からダウンロード可）。
    `node tools/export-package.mjs` で再生成。npm 公開の準備も済んでいる:
    package.json の files が zip と共通の配布定義で、`npm publish` 一発で
