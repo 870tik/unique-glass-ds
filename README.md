@@ -26,8 +26,8 @@ MIT ライセンス。**商用利用・改変・再配布は自由**です。た
 
 ## 入手と利用
 
-0. **GitHub** — https://github.com/870tik/unique-glass-ds （ソース公開。
-   AI 運用資産 SKILL.md / prompts/ は zip 配布のみに同梱）
+0. **GitHub** — https://github.com/870tik/unique-glass-ds （zip 配布と同一内容。
+   AI 運用資産 SKILL.md / prompts/ は非公開 — 導入支援の際に提供）
 1. **そのまま使う** — showcase/unique-glass-ds.zip（LP からダウンロード可）。
    `node tools/export-package.mjs` で再生成。npm 公開の準備も済んでいる:
    package.json の files が zip と共通の配布定義で、`npm publish` 一発で
